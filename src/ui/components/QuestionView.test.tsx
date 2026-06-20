@@ -34,6 +34,13 @@ describe("QuestionView", () => {
     expect(onAnswer).toHaveBeenCalledWith({ type: "multi_select", optionIds: ["a", "c"] });
   });
 
+  it("deselects an already-selected multi_select option", async () => {
+    const onAnswer = vi.fn();
+    render(<QuestionView question={multi} answer={{ type: "multi_select", optionIds: ["a", "c"] }} onAnswer={onAnswer} />);
+    await userEvent.click(screen.getByLabelText("C"));
+    expect(onAnswer).toHaveBeenCalledWith({ type: "multi_select", optionIds: ["a"] });
+  });
+
   it("renders true_false and reports the boolean", async () => {
     const onAnswer = vi.fn();
     render(<QuestionView question={tf} answer={undefined} onAnswer={onAnswer} />);

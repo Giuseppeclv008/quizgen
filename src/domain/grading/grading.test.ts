@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { gradeQuestion } from "./graderRegistry";
+import { MultiSelectGrader } from "./MultiSelectGrader";
 import type { Question } from "../schema";
 import type { Answer } from "../models";
 
@@ -46,6 +47,12 @@ describe("multi_select partial credit", () => {
   it("floors at zero when wrong selections exceed correct", () => {
     const a: Answer = { type: "multi_select", optionIds: ["b", "d"] };
     expect(gradeQuestion(multi, a).score).toBe(0);
+  });
+});
+
+describe("grader type guard", () => {
+  it("MultiSelectGrader throws when given a wrong question type", () => {
+    expect(() => new MultiSelectGrader().grade(single, undefined)).toThrow();
   });
 });
 

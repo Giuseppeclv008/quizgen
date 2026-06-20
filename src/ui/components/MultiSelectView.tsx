@@ -1,4 +1,3 @@
-import type { Answer } from "../../domain/models";
 import type { QuestionViewProps } from "./QuestionView";
 
 export function MultiSelectView({ question, answer, disabled, onAnswer }: QuestionViewProps) {
@@ -6,7 +5,7 @@ export function MultiSelectView({ question, answer, disabled, onAnswer }: Questi
   const selected = answer?.type === "multi_select" ? answer.optionIds : [];
   const toggle = (id: string) => {
     const next = selected.includes(id) ? selected.filter((x) => x !== id) : [...selected, id];
-    onAnswer({ type: "multi_select", optionIds: next } as Answer);
+    onAnswer({ type: "multi_select", optionIds: next });
   };
   return (
     <fieldset>

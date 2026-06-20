@@ -1,4 +1,3 @@
-import type { Answer } from "../../domain/models";
 import type { QuestionViewProps } from "./QuestionView";
 
 export function TrueFalseView({ question, answer, disabled, onAnswer }: QuestionViewProps) {
@@ -13,7 +12,7 @@ export function TrueFalseView({ question, answer, disabled, onAnswer }: Question
             name={question.id}
             checked={value === v}
             disabled={disabled}
-            onChange={() => onAnswer({ type: "true_false", value: v } as Answer)}
+            onChange={() => onAnswer({ type: "true_false", value: v })}
           />
           {label}
         </label>

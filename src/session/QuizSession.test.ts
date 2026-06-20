@@ -53,4 +53,12 @@ describe("QuizSession", () => {
     expect(s.result?.rawScore).toBe(2);
     expect(s.result?.pct).toBe(100);
   });
+
+  it("reducer is frozen after submit — further actions return the same state reference", () => {
+    let s = initSession(quiz, noShuffle);
+    s = sessionReducer(s, { kind: "submit" });
+    expect(s.submitted).toBe(true);
+    expect(sessionReducer(s, { kind: "next" })).toBe(s);
+    expect(sessionReducer(s, { kind: "answer", questionId: "1", answer: { type: "single_choice", optionId: "b" } })).toBe(s);
+  });
 });

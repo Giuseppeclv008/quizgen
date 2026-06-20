@@ -1,4 +1,3 @@
-import type { Answer } from "../../domain/models";
 import type { QuestionViewProps } from "./QuestionView";
 
 export function SingleChoiceView({ question, answer, disabled, onAnswer }: QuestionViewProps) {
@@ -13,7 +12,7 @@ export function SingleChoiceView({ question, answer, disabled, onAnswer }: Quest
             name={question.id}
             checked={picked === o.id}
             disabled={disabled}
-            onChange={() => onAnswer({ type: "single_choice", optionId: o.id } as Answer)}
+            onChange={() => onAnswer({ type: "single_choice", optionId: o.id })}
           />
           {o.text}
         </label>
