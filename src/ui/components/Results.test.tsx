@@ -24,6 +24,7 @@ describe("Results", () => {
     render(<Results quiz={quiz} answers={answers} result={result} onBackToMenu={vi.fn()} />);
     expect(screen.getByText(/0%/)).toBeInTheDocument();
     expect(screen.getByText(/Bananas are best\./)).toBeInTheDocument();
-    expect(screen.getAllByText(/Banana/).length).toBeGreaterThan(0);
+    // Verify "Correct answer: Banana" appears as its own element (not just in explanation)
+    expect(screen.getByText(/Correct answer: Banana/)).toBeInTheDocument();
   });
 });
