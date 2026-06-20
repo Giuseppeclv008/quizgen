@@ -1,0 +1,44 @@
+{
+  "id": "demo-mixed",
+  "title": "Demo — Mixed Question Types",
+  "source": "manual",
+  "createdAt": "2026-06-20",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "prompt": "Which planet is closest to the Sun?",
+      "options": [
+        { "id": "a", "text": "Venus orbits nearer than the others" },
+        { "id": "b", "text": "Mercury sits in the innermost orbit" },
+        { "id": "c", "text": "Earth holds the closest position" },
+        { "id": "d", "text": "Mars travels just inside Earth" }
+      ],
+      "correctOptionId": "b",
+      "explanation": "Mercury is the innermost planet. Venus is second, Earth third, and Mars is outside Earth's orbit."
+    },
+    {
+      "id": "q2",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "prompt": "Which of these are noble gases?",
+      "options": [
+        { "id": "a", "text": "Helium" },
+        { "id": "b", "text": "Oxygen" },
+        { "id": "c", "text": "Neon" },
+        { "id": "d", "text": "Nitrogen" }
+      ],
+      "correctOptionIds": ["a", "c"],
+      "explanation": "Helium and neon are noble gases (group 18). Oxygen and nitrogen are diatomic non-metals, not noble gases."
+    },
+    {
+      "id": "q3",
+      "type": "true_false",
+      "difficulty": "easy",
+      "prompt": "Water boils at 100°C at standard atmospheric pressure.",
+      "correctValue": true,
+      "explanation": "At 1 atm, water's boiling point is 100°C by definition of the Celsius scale."
+    }
+  ]
+}
