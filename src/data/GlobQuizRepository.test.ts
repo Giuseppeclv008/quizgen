@@ -30,4 +30,17 @@ describe("GlobQuizRepository", () => {
     expect((await repo.get("valid"))?.title).toBe("Valid");
     expect(await repo.get("nope")).toBeUndefined();
   });
+
+  it("collects errors when loader throws", async () => {
+    const modulesWithThrow: QuizModuleMap = {
+      "./quizzes/valid.json": () => Promise.resolve({ default: validQuiz }),
+      "./quizzes/throws.json": () => Promise.reject(new Error("network error")),
+    };
+    const repo = new GlobQuizRepository(modulesWithThrow);
+    const { quizzes, errors } = await repo.list();
+    expect(quizzes.map((q) => q.id)).toEqual(["valid"]);
+    expect(errors).toHaveLength(1);
+    expect(errors[0].source).toContain("throws.json");
+    expect(errors[0].message).toContain("network error");
+  });
 });
