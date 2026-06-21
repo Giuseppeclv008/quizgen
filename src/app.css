@@ -360,3 +360,11 @@ button.ghost:hover { color: var(--text); border-color: var(--line-2); background
 
 .muted { color: var(--muted); }
 .loading { color: var(--muted); }
+
+/* ---------- topic selector ---------- */
+.topic-list { list-style: none; padding: 0; margin: 0 0 1rem; display: grid; gap: 0.5rem; }
+.topic-row { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; border: 1px solid var(--line); border-radius: 8px; cursor: pointer; }
+.topic-row .t-name { font-weight: 600; }
+.topic-row .t-count { margin-left: auto; opacity: 0.7; font-size: 0.9em; }
+.max-field { display: flex; flex-direction: column; gap: 0.25rem; max-width: 12rem; margin-bottom: 1rem; }
+.max-field input { padding: 0.4rem 0.6rem; }
