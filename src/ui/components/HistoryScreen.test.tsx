@@ -60,4 +60,20 @@ describe("HistoryScreen", () => {
     await userEvent.click(screen.getByRole("button", { name: /back/i }));
     expect(onBack).toHaveBeenCalled();
   });
+
+  it("orders groups by their most recent attempt, newest first", () => {
+    const groups = {
+      "quiz-old": [attempt("quiz-old", "Old Quiz", "2026-06-19T10:00:00.000Z", 40)],
+      "quiz-new": [attempt("quiz-new", "New Quiz", "2026-06-21T10:00:00.000Z", 90)],
+    };
+    render(<HistoryScreen groups={groups} onBack={vi.fn()} />);
+    const headings = screen.getAllByRole("heading", { level: 2 }).map((h) => h.textContent);
+    expect(headings).toEqual(["New Quiz", "Old Quiz"]);
+  });
+
+  it("falls back to the quizId when a non-combined group's title is empty", () => {
+    const groups = { "quiz-x": [attempt("quiz-x", "", "2026-06-21T10:00:00.000Z", 60)] };
+    render(<HistoryScreen groups={groups} onBack={vi.fn()} />);
+    expect(screen.getByRole("heading", { name: "quiz-x" })).toBeInTheDocument();
+  });
 });

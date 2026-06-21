@@ -15,7 +15,7 @@ Attempts are persisted by `AttemptRepository`, which already exposes
 `allByQuiz(): Record<string, Attempt[]>`. Each `Attempt` stores `quizId`,
 `quizTitle`, `timestamp`, `pct`, etc. Combined quiz runs all save under the
 synthetic `quizId: "combined"` but carry distinct `quizTitle` values (the joined
-topic list). Today history is only visible on the post-submit results screen via
+topic list). Today history is only visible in `QuizRunner`'s submitted/results branch via
 `<History attempts={attemptRepo.listByQuiz(quiz.id)} />`.
 
 ## Decisions
