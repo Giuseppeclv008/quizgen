@@ -6,6 +6,12 @@ export interface TopicGroup {
   questions: Question[];
 }
 
+export interface SourceGroup {
+  quizId: string;
+  title: string;
+  questions: Question[];
+}
+
 export function collectTopics(quizzes: Quiz[]): TopicGroup[] {
   const byTopic = new Map<string, Question[]>();
   for (const quiz of quizzes) {
@@ -20,20 +26,20 @@ export function collectTopics(quizzes: Quiz[]): TopicGroup[] {
     .map(([topic, questions]) => ({ topic, questions }));
 }
 
-export function assembleQuiz(
-  groups: TopicGroup[],
-  selectedTopics: string[],
-  cap: number,
-  rng: Rng = Math.random,
-): Quiz {
-  const selected = groups.filter((g) => selectedTopics.includes(g.topic));
-  const available = selected.map((g) => g.questions.length);
-  const alloc = selected.map(() => 0);
+export function collectSources(quizzes: Quiz[]): SourceGroup[] {
+  return quizzes.map((q) => ({ quizId: q.id, title: q.title, questions: q.questions }));
+}
+
+// Round-robin water-fill: even split across groups + redistribute leftovers,
+// capped at min(cap, pool). Returns the combined picked questions (unshuffled).
+function pickEvenly(groups: { questions: Question[] }[], cap: number, rng: Rng): Question[] {
+  const available = groups.map((g) => g.questions.length);
+  const alloc = groups.map(() => 0);
 
   let remaining = Math.min(cap, available.reduce((a, b) => a + b, 0));
   while (remaining > 0) {
     let progressed = false;
-    for (let i = 0; i < selected.length && remaining > 0; i++) {
+    for (let i = 0; i < groups.length && remaining > 0; i++) {
       if (alloc[i] < available[i]) {
         alloc[i]++;
         remaining--;
@@ -44,15 +50,38 @@ export function assembleQuiz(
   }
 
   const picked: Question[] = [];
-  selected.forEach((g, i) => {
+  groups.forEach((g, i) => {
     picked.push(...shuffle(g.questions, rng).slice(0, alloc[i]));
   });
+  return picked;
+}
 
+function synthetic(title: string, questions: Question[]): Quiz {
   return {
     id: "combined",
-    title: selectedTopics.join(", "),
+    title,
     source: "combined",
     createdAt: new Date().toISOString().slice(0, 10),
-    questions: shuffle(picked, rng),
+    questions,
   };
+}
+
+export function assembleQuiz(
+  groups: TopicGroup[],
+  selectedTopics: string[],
+  cap: number,
+  rng: Rng = Math.random,
+): Quiz {
+  const selected = groups.filter((g) => selectedTopics.includes(g.topic));
+  return synthetic(selectedTopics.join(", "), shuffle(pickEvenly(selected, cap, rng), rng));
+}
+
+export function assembleFromSources(
+  sources: SourceGroup[],
+  selectedQuizIds: string[],
+  cap: number,
+  rng: Rng = Math.random,
+): Quiz {
+  const selected = sources.filter((s) => selectedQuizIds.includes(s.quizId));
+  return synthetic(selected.map((s) => s.title).join(", "), shuffle(pickEvenly(selected, cap, rng), rng));
 }

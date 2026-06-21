@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { collectTopics, assembleQuiz } from "./topics";
+import { collectTopics, collectSources, assembleQuiz, assembleFromSources } from "./topics";
 import type { Quiz } from "./schema";
 import type { TopicGroup } from "./topics";
 
@@ -9,6 +9,11 @@ function tf(id: string, topic: string): Quiz["questions"][number] {
 
 function quiz(id: string, questions: Quiz["questions"]): Quiz {
   return { id, title: id, source: "s", createdAt: "2026-06-21", questions };
+}
+
+// every question's topic == the quiz id, so countByTopic doubles as count-by-source
+function sourceQuiz(id: string, n: number): Quiz {
+  return quiz(id, Array.from({ length: n }, (_, i) => tf(`${id}-${i}`, id)));
 }
 
 describe("collectTopics", () => {
@@ -87,3 +92,56 @@ function countByTopic(quiz: { questions: { topic: string }[] }): Record<string, 
   for (const q of quiz.questions) out[q.topic] = (out[q.topic] ?? 0) + 1;
   return out;
 }
+
+describe("collectSources", () => {
+  it("returns one group per quiz with id, title, and its questions", () => {
+    const groups = collectSources([quiz("a", [tf("1", "X")]), quiz("b", [tf("2", "Y"), tf("3", "Z")])]);
+    expect(groups.map((g) => g.quizId)).toEqual(["a", "b"]);
+    expect(groups.map((g) => g.title)).toEqual(["a", "b"]);
+    expect(groups[1].questions.map((q) => q.id)).toEqual(["2", "3"]);
+  });
+
+  it("returns an empty array for no quizzes", () => {
+    expect(collectSources([])).toEqual([]);
+  });
+});
+
+describe("assembleFromSources", () => {
+  it("splits the cap evenly across selected PDFs", () => {
+    const sources = collectSources([sourceQuiz("a", 10), sourceQuiz("b", 10), sourceQuiz("c", 10)]);
+    const quizOut = assembleFromSources(sources, ["a", "b", "c"], 6, rng0);
+    expect(countByTopic(quizOut)).toEqual({ a: 2, b: 2, c: 2 });
+    expect(quizOut.questions).toHaveLength(6);
+  });
+
+  it("redistributes leftover slots from PDFs that run out", () => {
+    const sources = collectSources([sourceQuiz("a", 1), sourceQuiz("b", 10), sourceQuiz("c", 10)]);
+    const quizOut = assembleFromSources(sources, ["a", "b", "c"], 9, rng0);
+    const counts = countByTopic(quizOut);
+    expect(counts.a).toBe(1);
+    expect(counts.b).toBe(4);
+    expect(counts.c).toBe(4);
+    expect(quizOut.questions).toHaveLength(9);
+  });
+
+  it("ignores unselected PDFs", () => {
+    const sources = collectSources([sourceQuiz("a", 5), sourceQuiz("b", 5)]);
+    const quizOut = assembleFromSources(sources, ["a"], 3, rng0);
+    expect(countByTopic(quizOut)).toEqual({ a: 3 });
+  });
+
+  it("caps at the total available when cap exceeds the pool", () => {
+    const sources = collectSources([sourceQuiz("a", 2), sourceQuiz("b", 2)]);
+    const quizOut = assembleFromSources(sources, ["a", "b"], 100, rng0);
+    expect(quizOut.questions).toHaveLength(4);
+  });
+
+  it("sets synthetic combined metadata with the joined PDF titles", () => {
+    const sources = collectSources([sourceQuiz("a", 2), sourceQuiz("b", 2)]);
+    const quizOut = assembleFromSources(sources, ["a", "b"], 1, rng0);
+    expect(quizOut.id).toBe("combined");
+    expect(quizOut.source).toBe("combined");
+    expect(quizOut.title).toBe("a, b");
+    expect(quizOut.createdAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+  });
+});
