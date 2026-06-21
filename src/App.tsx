@@ -24,6 +24,8 @@ export function App() {
       if (!alive) return;
       setTopics(collectTopics(listing.quizzes));
       setErrors(listing.errors);
+    }).catch(() => {
+      if (alive) setTopics([]);
     });
     return () => {
       alive = false;
