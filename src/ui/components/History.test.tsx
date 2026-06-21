@@ -19,4 +19,15 @@ describe("History", () => {
     render(<History attempts={[]} />);
     expect(screen.getByText(/no past attempts/i)).toBeInTheDocument();
   });
+
+  it("shows the quiz title column when showTitle is set", () => {
+    render(<History attempts={attempts} showTitle />);
+    expect(screen.getByText("Quiz")).toBeInTheDocument();
+    expect(screen.getByText("T")).toBeInTheDocument();
+  });
+
+  it("omits the quiz title column by default", () => {
+    render(<History attempts={attempts} />);
+    expect(screen.queryByText("Quiz")).not.toBeInTheDocument();
+  });
 });
