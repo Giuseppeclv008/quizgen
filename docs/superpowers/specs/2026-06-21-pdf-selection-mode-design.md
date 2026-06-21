@@ -104,8 +104,8 @@ export interface PdfSelectorProps {
 ```
 
 Checkbox per PDF showing `title` + `questions.length` count, max-questions input
-(default = total across selected... use total across all sources, min 1,
-max = total), Start button disabled until ≥1 PDF selected. `onStart` fires with
+(default = total questions across all sources, min 1, max = that total), Start
+button disabled until ≥1 PDF selected. `onStart` fires with
 the selected quiz ids and the clamped max. Mirrors `TopicSelector` structure.
 
 ### `QuizMenu.tsx` (modify → container)
