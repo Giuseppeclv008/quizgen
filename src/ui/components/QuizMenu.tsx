@@ -1,48 +1,75 @@
-import { useEffect, useState } from "react";
-import type { Quiz } from "../../domain/schema";
-import type { QuizRepository, QuizListing } from "../../data/QuizRepository";
+import { useState } from "react";
+import type { TopicGroup } from "../../domain/topics";
+import type { LoadError } from "../../data/QuizRepository";
 
 export interface QuizMenuProps {
-  repository: QuizRepository;
-  onSelect: (quiz: Quiz) => void;
+  topics: TopicGroup[];
+  errors: LoadError[];
+  onStart: (selectedTopics: string[], max: number) => void;
 }
 
-export function QuizMenu({ repository, onSelect }: QuizMenuProps) {
-  const [listing, setListing] = useState<QuizListing | null>(null);
+export function QuizMenu({ topics, errors, onStart }: QuizMenuProps) {
+  const total = topics.reduce((n, t) => n + t.questions.length, 0);
+  const [selected, setSelected] = useState<string[]>([]);
+  const [max, setMax] = useState(total);
 
-  useEffect(() => {
-    let active = true;
-    repository.list().then((l) => {
-      if (active) setListing(l);
-    });
-    return () => {
-      active = false;
-    };
-  }, [repository]);
+  function toggle(topic: string) {
+    setSelected((prev) =>
+      prev.includes(topic) ? prev.filter((t) => t !== topic) : [...prev, topic],
+    );
+  }
 
-  if (!listing) return <p>Loading…</p>;
+  function start() {
+    const clamped = Math.min(Math.max(1, max || 1), total);
+    onStart(selected, clamped);
+  }
 
   return (
-    <div>
+    <main className="menu">
       <h1>Quiz Generator</h1>
-      {listing.quizzes.length === 0 ? (
-        <p>No quizzes found. Drop a quiz JSON into <code>src/quizzes/</code> and reload.</p>
+      <p className="lede">Pick topics and how many questions to practice.</p>
+      {topics.length === 0 ? (
+        <div className="empty">
+          <p>No quizzes found.</p>
+          <p className="muted">Drop a quiz JSON into <code>src/quizzes/</code> and reload.</p>
+        </div>
       ) : (
-        <ul>
-          {listing.quizzes.map((q) => (
-            <li key={q.id} style={{ marginBottom: "0.5rem" }}>
-              <button onClick={() => onSelect(q)}>
-                {q.title} ({q.questions.length} questions)
-              </button>
-            </li>
-          ))}
-        </ul>
+        <>
+          <ul className="topic-list">
+            {topics.map((t) => (
+              <li key={t.topic}>
+                <label className="topic-row">
+                  <input
+                    type="checkbox"
+                    checked={selected.includes(t.topic)}
+                    onChange={() => toggle(t.topic)}
+                  />
+                  <span className="t-name">{t.topic}</span>
+                  <span className="t-count">{t.questions.length} questions</span>
+                </label>
+              </li>
+            ))}
+          </ul>
+          <label className="max-field">
+            Max questions
+            <input
+              type="number"
+              min={1}
+              max={total}
+              value={max}
+              onChange={(e) => setMax(Number(e.target.value))}
+            />
+          </label>
+          <button className="primary" disabled={selected.length === 0} onClick={start}>
+            Start quiz
+          </button>
+        </>
       )}
-      {listing.errors.length > 0 && (
-        <div style={{ marginTop: "1rem", color: "crimson" }}>
+      {errors.length > 0 && (
+        <div className="errors">
           <p>Some files could not be loaded:</p>
           <ul>
-            {listing.errors.map((e) => (
+            {errors.map((e) => (
               <li key={e.source}>
                 {e.source}: {e.message}
               </li>
@@ -50,6 +77,6 @@ export function QuizMenu({ repository, onSelect }: QuizMenuProps) {
           </ul>
         </div>
       )}
-    </div>
+    </main>
   );
 }

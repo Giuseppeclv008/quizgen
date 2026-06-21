@@ -8,16 +8,16 @@ export function MultiSelectView({ question, answer, disabled, onAnswer }: Questi
     onAnswer({ type: "multi_select", optionIds: next });
   };
   return (
-    <fieldset>
+    <fieldset className="options">
       {question.options.map((o) => (
-        <label key={o.id} style={{ display: "block" }}>
+        <label key={o.id} className="option">
           <input
             type="checkbox"
             checked={selected.includes(o.id)}
             disabled={disabled}
             onChange={() => toggle(o.id)}
           />
-          {o.text}
+          <span>{o.text}</span>
         </label>
       ))}
     </fieldset>

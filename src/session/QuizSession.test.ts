@@ -5,10 +5,10 @@ import type { Quiz } from "../domain/schema";
 const quiz: Quiz = {
   id: "q", title: "t", source: "s", createdAt: "2026-06-20",
   questions: [
-    { id: "1", type: "single_choice", difficulty: "easy", prompt: "p",
+    { id: "1", type: "single_choice", difficulty: "easy", topic: "General", prompt: "p",
       options: [{ id: "a", text: "A" }, { id: "b", text: "B" }],
       correctOptionId: "a", explanation: "e" },
-    { id: "2", type: "true_false", difficulty: "easy", prompt: "p",
+    { id: "2", type: "true_false", difficulty: "easy", topic: "General", prompt: "p",
       correctValue: true, explanation: "e" },
   ],
 };

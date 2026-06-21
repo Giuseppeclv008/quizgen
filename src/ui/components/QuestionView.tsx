@@ -21,8 +21,8 @@ const viewRegistry: Record<QuestionType, FC<QuestionViewProps>> = {
 export function QuestionView(props: QuestionViewProps) {
   const View = viewRegistry[props.question.type];
   return (
-    <div>
-      <p>{props.question.prompt}</p>
+    <div className="question">
+      <p className="prompt">{props.question.prompt}</p>
       <View {...props} />
     </div>
   );

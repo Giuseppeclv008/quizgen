@@ -10,6 +10,7 @@ export const optionSchema = z.object({
 const baseFields = {
   id: z.string().min(1),
   difficulty: difficultySchema,
+  topic: z.string().min(1),
   prompt: z.string().min(1),
   explanation: z.string().min(1),
 };

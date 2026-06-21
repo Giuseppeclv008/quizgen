@@ -4,9 +4,9 @@ export function TrueFalseView({ question, answer, disabled, onAnswer }: Question
   if (question.type !== "true_false") return null;
   const value = answer?.type === "true_false" ? answer.value : null;
   return (
-    <fieldset>
+    <fieldset className="options">
       {[{ label: "True", v: true }, { label: "False", v: false }].map(({ label, v }) => (
-        <label key={label} style={{ display: "block" }}>
+        <label key={label} className="option">
           <input
             type="radio"
             name={question.id}
@@ -14,7 +14,7 @@ export function TrueFalseView({ question, answer, disabled, onAnswer }: Question
             disabled={disabled}
             onChange={() => onAnswer({ type: "true_false", value: v })}
           />
-          {label}
+          <span>{label}</span>
         </label>
       ))}
     </fieldset>

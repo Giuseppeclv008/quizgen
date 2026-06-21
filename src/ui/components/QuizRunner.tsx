@@ -36,36 +36,42 @@ export function QuizRunner({ quiz, attemptRepo, onExit }: QuizRunnerProps) {
 
   if (state.submitted && state.result) {
     return (
-      <div>
+      <main className="results-screen">
         <Results quiz={state.quiz} answers={state.answers} result={state.result} onBackToMenu={onExit} />
         <h3>Past attempts</h3>
         <History attempts={attemptRepo.listByQuiz(quiz.id)} />
-      </div>
+      </main>
     );
   }
 
+  const total = state.quiz.questions.length;
   const question = state.quiz.questions[state.currentIndex];
-  const isLast = state.currentIndex === state.quiz.questions.length - 1;
+  const isLast = state.currentIndex === total - 1;
+  const progressPct = ((state.currentIndex + 1) / total) * 100;
 
   return (
-    <div>
-      <p>
-        Question {state.currentIndex + 1} of {state.quiz.questions.length} · answered{" "}
-        {answeredCount(state)}/{state.quiz.questions.length}
-      </p>
+    <main className="runner">
+      <div className="progress-head">
+        <span>Question {state.currentIndex + 1} of {total}</span>
+        <span>{answeredCount(state)}/{total} answered</span>
+      </div>
+      <div className="progress-track">
+        <div className="progress-fill" style={{ width: `${progressPct}%` }} />
+      </div>
       <QuestionView
         question={question}
         answer={state.answers[question.id]}
         onAnswer={(answer) => dispatch({ kind: "answer", questionId: question.id, answer })}
       />
-      <div style={{ display: "flex", gap: "0.5rem", marginTop: "1rem" }}>
-        <button onClick={() => dispatch({ kind: "prev" })} disabled={state.currentIndex === 0}>
+      <div className="nav-row">
+        <button className="ghost" onClick={() => dispatch({ kind: "prev" })} disabled={state.currentIndex === 0}>
           Previous
         </button>
-        {!isLast && <button onClick={() => dispatch({ kind: "next" })}>Next</button>}
-        {isLast && <button onClick={() => dispatch({ kind: "submit" })}>Submit</button>}
-        <button onClick={onExit}>Quit</button>
+        <span className="spacer" />
+        <button className="ghost" onClick={onExit}>Quit</button>
+        {!isLast && <button className="primary" onClick={() => dispatch({ kind: "next" })}>Next</button>}
+        {isLast && <button className="primary" onClick={() => dispatch({ kind: "submit" })}>Submit</button>}
       </div>
-    </div>
+    </main>
   );
 }

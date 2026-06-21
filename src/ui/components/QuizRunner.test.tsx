@@ -8,7 +8,7 @@ import type { Quiz } from "../../domain/schema";
 const quiz: Quiz = {
   id: "q", title: "Demo", source: "s", createdAt: "2026-06-20",
   questions: [
-    { id: "1", type: "true_false", difficulty: "easy", prompt: "Sky is blue?",
+    { id: "1", type: "true_false", difficulty: "easy", topic: "General", prompt: "Sky is blue?",
       correctValue: true, explanation: "Yes." },
   ],
 };
