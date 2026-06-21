@@ -8,6 +8,7 @@
       "id": "q1",
       "type": "single_choice",
       "difficulty": "easy",
+      "topic": "Astronomy",
       "prompt": "Which planet is closest to the Sun?",
       "options": [
         { "id": "a", "text": "Venus orbits nearer than the others" },
@@ -22,6 +23,7 @@
       "id": "q2",
       "type": "multi_select",
       "difficulty": "medium",
+      "topic": "Chemistry",
       "prompt": "Which of these are noble gases?",
       "options": [
         { "id": "a", "text": "Helium" },
@@ -36,6 +38,7 @@
       "id": "q3",
       "type": "true_false",
       "difficulty": "easy",
+      "topic": "Physics",
       "prompt": "Water boils at 100°C at standard atmospheric pressure.",
       "correctValue": true,
       "explanation": "At 1 atm, water's boiling point is 100°C by definition of the Celsius scale."

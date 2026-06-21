@@ -8,6 +8,7 @@
       "id": "q1",
       "type": "single_choice",
       "difficulty": "easy",
+      "topic": "Microservices Basics",
       "prompt": "Which of these is listed as an advantage of a microservice architecture?",
       "options": [
         { "id": "a", "text": "The application is simpler to develop overall" },
@@ -22,6 +23,7 @@
       "id": "q2",
       "type": "multi_select",
       "difficulty": "medium",
+      "topic": "Microservices Basics",
       "prompt": "Select the drawbacks of microservices highlighted in the slides.",
       "options": [
         { "id": "a", "text": "Finding the right set of services is hard" },
@@ -37,6 +39,7 @@
       "id": "q3",
       "type": "single_choice",
       "difficulty": "medium",
+      "topic": "Microservices Basics",
       "prompt": "Decomposition by business capability groups services around…",
       "options": [
         { "id": "a", "text": "how the code is currently structured" },
@@ -51,6 +54,7 @@
       "id": "q4",
       "type": "single_choice",
       "difficulty": "medium",
+      "topic": "Domain-Driven Design",
       "prompt": "\"Classes that change for the same reason should be in the same package\" states the…",
       "options": [
         { "id": "a", "text": "Single Responsibility Principle" },
@@ -65,6 +69,7 @@
       "id": "q5",
       "type": "true_false",
       "difficulty": "easy",
+      "topic": "Domain-Driven Design",
       "prompt": "In DDD, two value objects with identical values are considered interchangeable.",
       "correctValue": true,
       "explanation": "True. A value object represents a collection of values; two with the same values are interchangeable. An entity, by contrast, has a persistent identity, so equal values still mean distinct items."
@@ -73,6 +78,7 @@
       "id": "q6",
       "type": "single_choice",
       "difficulty": "medium",
+      "topic": "Domain-Driven Design",
       "prompt": "What distinguishes an Entity from a Value Object in DDD?",
       "options": [
         { "id": "a", "text": "An Entity is always immutable once created" },
@@ -87,6 +93,7 @@
       "id": "q7",
       "type": "single_choice",
       "difficulty": "medium",
+      "topic": "Domain-Driven Design",
       "prompt": "Which DDD class pattern holds business logic that does not belong to a single entity?",
       "options": [
         { "id": "a", "text": "Repository" },
@@ -101,6 +108,7 @@
       "id": "q8",
       "type": "single_choice",
       "difficulty": "easy",
+      "topic": "Domain-Driven Design",
       "prompt": "What is the role of the Repository pattern?",
       "options": [
         { "id": "a", "text": "Construct objects while hiding the concrete class" },
@@ -115,6 +123,7 @@
       "id": "q9",
       "type": "single_choice",
       "difficulty": "hard",
+      "topic": "Aggregates",
       "prompt": "The \"reference roots only\" aggregate rule requires that…",
       "options": [
         { "id": "a", "text": "external code references only the root" },
@@ -129,6 +138,7 @@
       "id": "q10",
       "type": "single_choice",
       "difficulty": "hard",
+      "topic": "Aggregates",
       "prompt": "How should one aggregate reference another aggregate?",
       "options": [
         { "id": "a", "text": "Through a direct in-memory object reference" },
@@ -143,6 +153,7 @@
       "id": "q11",
       "type": "single_choice",
       "difficulty": "hard",
+      "topic": "Aggregates",
       "prompt": "A consequence of the \"one aggregate per transaction\" rule is that…",
       "options": [
         { "id": "a", "text": "a transaction stays within a single service" },
@@ -157,6 +168,7 @@
       "id": "q12",
       "type": "multi_select",
       "difficulty": "hard",
+      "topic": "Aggregates",
       "prompt": "Which are benefits of FINE-grained aggregates?",
       "options": [
         { "id": "a", "text": "Better scalability since updates are serialized" },
@@ -172,6 +184,7 @@
       "id": "q13",
       "type": "single_choice",
       "difficulty": "medium",
+      "topic": "Aggregates",
       "prompt": "How is a domain event name conventionally formed?",
       "options": [
         { "id": "a", "text": "As an imperative command verb" },
@@ -186,6 +199,7 @@
       "id": "q14",
       "type": "single_choice",
       "difficulty": "medium",
+      "topic": "Inter-Service Communication",
       "prompt": "Which is a drawback of synchronous RPC noted in the slides?",
       "options": [
         { "id": "a", "text": "It cannot support the simple request/reply style" },
@@ -200,6 +214,7 @@
       "id": "q15",
       "type": "single_choice",
       "difficulty": "medium",
+      "topic": "Inter-Service Communication",
       "prompt": "How does the Circuit Breaker pattern behave?",
       "options": [
         { "id": "a", "text": "It retries the failing call immediately and forever" },
@@ -214,6 +229,7 @@
       "id": "q16",
       "type": "single_choice",
       "difficulty": "hard",
+      "topic": "Inter-Service Communication",
       "prompt": "In the client-side discovery pattern, who selects the service instance?",
       "options": [
         { "id": "a", "text": "The client queries the registry and load-balances" },
@@ -228,6 +244,7 @@
       "id": "q17",
       "type": "true_false",
       "difficulty": "medium",
+      "topic": "Inter-Service Communication",
       "prompt": "Message brokers usually guarantee at-least-once delivery, so a message may be delivered more than once.",
       "correctValue": true,
       "explanation": "True. Delivery is guaranteed at least once but not exactly once, so duplicates can occur. Countermeasures include idempotent messages and message tracking."
@@ -236,6 +253,7 @@
       "id": "q18",
       "type": "single_choice",
       "difficulty": "medium",
+      "topic": "Data Management",
       "prompt": "How does the transactional outbox keep data and messaging consistent?",
       "options": [
         { "id": "a", "text": "It commits the message to the broker before the DB write" },
@@ -250,6 +268,7 @@
       "id": "q19",
       "type": "single_choice",
       "difficulty": "easy",
+      "topic": "Data Management",
       "prompt": "\"Database per service\" means that…",
       "options": [
         { "id": "a", "text": "all services share one schema and DB" },
@@ -264,6 +283,7 @@
       "id": "q20",
       "type": "single_choice",
       "difficulty": "hard",
+      "topic": "Sagas",
       "prompt": "What is a saga?",
       "options": [
         { "id": "a", "text": "A single distributed ACID transaction spanning all services" },
@@ -278,6 +298,7 @@
       "id": "q21",
       "type": "single_choice",
       "difficulty": "hard",
+      "topic": "Sagas",
       "prompt": "In a saga, the \"pivot\" transaction is…",
       "options": [
         { "id": "a", "text": "the first compensatable step" },
@@ -292,6 +313,7 @@
       "id": "q22",
       "type": "multi_select",
       "difficulty": "hard",
+      "topic": "Sagas",
       "prompt": "Which of these are saga countermeasures for the lack of isolation?",
       "options": [
         { "id": "a", "text": "Semantic lock" },
@@ -307,6 +329,7 @@
       "id": "q23",
       "type": "single_choice",
       "difficulty": "medium",
+      "topic": "Data Management",
       "prompt": "How does event sourcing persist an aggregate?",
       "options": [
         { "id": "a", "text": "As one current-state row via an ORM" },
@@ -321,6 +344,7 @@
       "id": "q24",
       "type": "single_choice",
       "difficulty": "medium",
+      "topic": "Data Management",
       "prompt": "How does CQRS make cross-service queries easy?",
       "options": [
         { "id": "a", "text": "It shards the write database by tenant" },
@@ -335,6 +359,7 @@
       "id": "q25",
       "type": "single_choice",
       "difficulty": "medium",
+      "topic": "Data Management",
       "prompt": "The API Composition pattern answers a composed query by…",
       "options": [
         { "id": "a", "text": "joining tables across all of the service databases" },
@@ -349,6 +374,7 @@
       "id": "q26",
       "type": "single_choice",
       "difficulty": "easy",
+      "topic": "Microservices Basics",
       "prompt": "Which approach migrates a monolith to microservices incrementally?",
       "options": [
         { "id": "a", "text": "A big-bang full rewrite" },
