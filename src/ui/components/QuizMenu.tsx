@@ -6,9 +6,10 @@ export interface QuizMenuProps {
   topics: TopicGroup[];
   errors: LoadError[];
   onStart: (selectedTopics: string[], max: number) => void;
+  onShowHistory: () => void;
 }
 
-export function QuizMenu({ topics, errors, onStart }: QuizMenuProps) {
+export function QuizMenu({ topics, errors, onStart, onShowHistory }: QuizMenuProps) {
   const total = topics.reduce((n, t) => n + t.questions.length, 0);
   const [selected, setSelected] = useState<string[]>([]);
   const [max, setMax] = useState(total);
@@ -28,6 +29,7 @@ export function QuizMenu({ topics, errors, onStart }: QuizMenuProps) {
     <main className="menu">
       <h1>Quiz Generator</h1>
       <p className="lede">Pick topics and how many questions to practice.</p>
+      <button className="ghost" onClick={onShowHistory}>Past attempts</button>
       {topics.length === 0 ? (
         <div className="empty">
           <p>No quizzes found.</p>

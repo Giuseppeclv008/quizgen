@@ -16,7 +16,7 @@ const topics: TopicGroup[] = [
 describe("QuizMenu", () => {
   it("starts with the selected topics and chosen max", async () => {
     const onStart = vi.fn();
-    render(<QuizMenu topics={topics} errors={[]} onStart={onStart} />);
+    render(<QuizMenu topics={topics} errors={[]} onStart={onStart} onShowHistory={vi.fn()} />);
     await userEvent.click(screen.getByRole("checkbox", { name: /Alpha/ }));
     const max = screen.getByRole("spinbutton");
     await userEvent.clear(max);
@@ -26,17 +26,29 @@ describe("QuizMenu", () => {
   });
 
   it("disables Start until a topic is selected", () => {
-    render(<QuizMenu topics={topics} errors={[]} onStart={vi.fn()} />);
+    render(<QuizMenu topics={topics} errors={[]} onStart={vi.fn()} onShowHistory={vi.fn()} />);
     expect(screen.getByRole("button", { name: /start/i })).toBeDisabled();
   });
 
   it("shows an empty state when there are no topics", () => {
-    render(<QuizMenu topics={[]} errors={[]} onStart={vi.fn()} />);
+    render(<QuizMenu topics={[]} errors={[]} onStart={vi.fn()} onShowHistory={vi.fn()} />);
     expect(screen.getByText(/drop a quiz/i)).toBeInTheDocument();
   });
 
   it("surfaces load errors", () => {
-    render(<QuizMenu topics={[]} errors={[{ source: "bad.json", message: "boom" }]} onStart={vi.fn()} />);
+    render(<QuizMenu topics={[]} errors={[{ source: "bad.json", message: "boom" }]} onStart={vi.fn()} onShowHistory={vi.fn()} />);
     expect(screen.getByText(/bad\.json/)).toBeInTheDocument();
+  });
+
+  it("fires onShowHistory when Past attempts is clicked", async () => {
+    const onShowHistory = vi.fn();
+    render(<QuizMenu topics={topics} errors={[]} onStart={vi.fn()} onShowHistory={onShowHistory} />);
+    await userEvent.click(screen.getByRole("button", { name: /past attempts/i }));
+    expect(onShowHistory).toHaveBeenCalled();
+  });
+
+  it("shows Past attempts even when there are no topics", () => {
+    render(<QuizMenu topics={[]} errors={[]} onStart={vi.fn()} onShowHistory={vi.fn()} />);
+    expect(screen.getByRole("button", { name: /past attempts/i })).toBeInTheDocument();
   });
 });
