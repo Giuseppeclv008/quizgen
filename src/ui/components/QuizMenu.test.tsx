@@ -2,37 +2,41 @@ import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { QuizMenu } from "./QuizMenu";
-import type { QuizRepository, QuizListing } from "../../data/QuizRepository";
-import type { Quiz } from "../../domain/schema";
+import type { TopicGroup } from "../../domain/topics";
 
-const quiz: Quiz = {
-  id: "demo", title: "Demo Quiz", source: "s", createdAt: "2026-06-20",
-  questions: [{ id: "1", type: "true_false", difficulty: "easy", topic: "General", prompt: "p", correctValue: true, explanation: "e" }],
-};
-
-function repoWith(listing: QuizListing): QuizRepository {
-  return {
-    list: () => Promise.resolve(listing),
-    get: (id) => Promise.resolve(listing.quizzes.find((q) => q.id === id)),
-  };
+function tf(id: string, topic: string): TopicGroup["questions"][number] {
+  return { id, type: "true_false", difficulty: "easy", topic, prompt: "p", correctValue: true, explanation: "e" };
 }
 
+const topics: TopicGroup[] = [
+  { topic: "Alpha", questions: [tf("1", "Alpha"), tf("2", "Alpha")] },
+  { topic: "Beta", questions: [tf("3", "Beta")] },
+];
+
 describe("QuizMenu", () => {
-  it("lists quizzes and fires onSelect", async () => {
-    const onSelect = vi.fn();
-    render(<QuizMenu repository={repoWith({ quizzes: [quiz], errors: [] })} onSelect={onSelect} />);
-    const btn = await screen.findByRole("button", { name: /Demo Quiz/ });
-    await userEvent.click(btn);
-    expect(onSelect).toHaveBeenCalledWith(quiz);
+  it("starts with the selected topics and chosen max", async () => {
+    const onStart = vi.fn();
+    render(<QuizMenu topics={topics} errors={[]} onStart={onStart} />);
+    await userEvent.click(screen.getByRole("checkbox", { name: /Alpha/ }));
+    const max = screen.getByRole("spinbutton");
+    await userEvent.clear(max);
+    await userEvent.type(max, "1");
+    await userEvent.click(screen.getByRole("button", { name: /start/i }));
+    expect(onStart).toHaveBeenCalledWith(["Alpha"], 1);
   });
 
-  it("shows an empty state when there are no quizzes", async () => {
-    render(<QuizMenu repository={repoWith({ quizzes: [], errors: [] })} onSelect={vi.fn()} />);
-    expect(await screen.findByText(/drop a quiz/i)).toBeInTheDocument();
+  it("disables Start until a topic is selected", () => {
+    render(<QuizMenu topics={topics} errors={[]} onStart={vi.fn()} />);
+    expect(screen.getByRole("button", { name: /start/i })).toBeDisabled();
   });
 
-  it("surfaces load errors", async () => {
-    render(<QuizMenu repository={repoWith({ quizzes: [], errors: [{ source: "bad.json", message: "boom" }] })} onSelect={vi.fn()} />);
-    expect(await screen.findByText(/bad\.json/)).toBeInTheDocument();
+  it("shows an empty state when there are no topics", () => {
+    render(<QuizMenu topics={[]} errors={[]} onStart={vi.fn()} />);
+    expect(screen.getByText(/drop a quiz/i)).toBeInTheDocument();
+  });
+
+  it("surfaces load errors", () => {
+    render(<QuizMenu topics={[]} errors={[{ source: "bad.json", message: "boom" }]} onStart={vi.fn()} />);
+    expect(screen.getByText(/bad\.json/)).toBeInTheDocument();
   });
 });
