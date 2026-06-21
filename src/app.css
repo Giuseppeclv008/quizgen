@@ -373,3 +373,9 @@ button.ghost:hover { color: var(--text); border-color: var(--line-2); background
 .history-screen { max-width: 48rem; margin: 0 auto; padding: 2rem 1rem; }
 .history-group { margin-bottom: 1.5rem; }
 .history-group h2 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+
+/* ---------- tabs ---------- */
+.tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+.tab { padding: 0.5rem 1rem; border: 1px solid var(--line); border-radius: var(--r-sm); background: none; cursor: pointer; }
+.tab.is-active { background: var(--line); font-weight: 600; }
+.pdf-list { list-style: none; padding: 0; margin: 0 0 1rem; display: grid; gap: 0.5rem; }
