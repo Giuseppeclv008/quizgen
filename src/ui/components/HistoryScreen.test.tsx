@@ -16,6 +16,11 @@ describe("HistoryScreen", () => {
     expect(screen.getByText(/no past attempts/i)).toBeInTheDocument();
   });
 
+  it("shows the empty state when groups contain only empty arrays", () => {
+    render(<HistoryScreen groups={{ quiz1: [] }} onBack={vi.fn()} />);
+    expect(screen.getByText(/no past attempts/i)).toBeInTheDocument();
+  });
+
   it("labels the combined group 'Combined quizzes'", () => {
     const groups = { combined: [attempt("combined", "Astronomy, Physics", "2026-06-21T10:00:00.000Z", 80)] };
     render(<HistoryScreen groups={groups} onBack={vi.fn()} />);
