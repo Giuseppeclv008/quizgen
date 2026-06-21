@@ -7,7 +7,7 @@ import type { Answer, QuizResult } from "../../domain/models";
 const quiz: Quiz = {
   id: "q", title: "t", source: "s", createdAt: "2026-06-20",
   questions: [
-    { id: "1", type: "single_choice", difficulty: "easy", prompt: "Pick B",
+    { id: "1", type: "single_choice", difficulty: "easy", topic: "General", prompt: "Pick B",
       options: [{ id: "a", text: "Apple" }, { id: "b", text: "Banana" }],
       correctOptionId: "b", explanation: "Bananas are best." },
   ],

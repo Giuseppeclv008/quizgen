@@ -7,7 +7,7 @@ import type { Quiz } from "../../domain/schema";
 
 const quiz: Quiz = {
   id: "demo", title: "Demo Quiz", source: "s", createdAt: "2026-06-20",
-  questions: [{ id: "1", type: "true_false", difficulty: "easy", prompt: "p", correctValue: true, explanation: "e" }],
+  questions: [{ id: "1", type: "true_false", difficulty: "easy", topic: "General", prompt: "p", correctValue: true, explanation: "e" }],
 };
 
 function repoWith(listing: QuizListing): QuizRepository {

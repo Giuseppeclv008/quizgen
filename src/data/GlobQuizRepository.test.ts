@@ -4,7 +4,7 @@ import { GlobQuizRepository, type QuizModuleMap } from "./GlobQuizRepository";
 const validQuiz = {
   id: "valid", title: "Valid", source: "s.pdf", createdAt: "2026-06-20",
   questions: [
-    { id: "1", type: "true_false", difficulty: "easy", prompt: "p",
+    { id: "1", type: "true_false", difficulty: "easy", topic: "General", prompt: "p",
       correctValue: true, explanation: "e" },
   ],
 };

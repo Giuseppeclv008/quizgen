@@ -5,17 +5,17 @@ import { QuestionView } from "./QuestionView";
 import type { Question } from "../../domain/schema";
 
 const single: Question = {
-  id: "1", type: "single_choice", difficulty: "easy", prompt: "Pick B",
+  id: "1", type: "single_choice", difficulty: "easy", topic: "General", prompt: "Pick B",
   options: [{ id: "a", text: "Apple" }, { id: "b", text: "Banana" }],
   correctOptionId: "b", explanation: "e",
 };
 const multi: Question = {
-  id: "2", type: "multi_select", difficulty: "easy", prompt: "Pick A and C",
+  id: "2", type: "multi_select", difficulty: "easy", topic: "General", prompt: "Pick A and C",
   options: [{ id: "a", text: "A" }, { id: "b", text: "B" }, { id: "c", text: "C" }],
   correctOptionIds: ["a", "c"], explanation: "e",
 };
 const tf: Question = {
-  id: "3", type: "true_false", difficulty: "easy", prompt: "True please",
+  id: "3", type: "true_false", difficulty: "easy", topic: "General", prompt: "True please",
   correctValue: true, explanation: "e",
 };
 

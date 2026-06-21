@@ -6,13 +6,13 @@ import type { Answer } from "../models";
 const quiz: Quiz = {
   id: "q", title: "t", source: "s", createdAt: "2026-06-20",
   questions: [
-    { id: "1", type: "single_choice", difficulty: "easy", prompt: "p",
+    { id: "1", type: "single_choice", difficulty: "easy", topic: "General", prompt: "p",
       options: [{ id: "a", text: "A" }, { id: "b", text: "B" }],
       correctOptionId: "a", explanation: "e" },
-    { id: "2", type: "multi_select", difficulty: "hard", prompt: "p",
+    { id: "2", type: "multi_select", difficulty: "hard", topic: "General", prompt: "p",
       options: [{ id: "a", text: "A" }, { id: "b", text: "B" }],
       correctOptionIds: ["a", "b"], explanation: "e" },
-    { id: "3", type: "true_false", difficulty: "hard", prompt: "p",
+    { id: "3", type: "true_false", difficulty: "hard", topic: "General", prompt: "p",
       correctValue: true, explanation: "e" },
   ],
 };

@@ -5,17 +5,17 @@ import type { Question } from "../schema";
 import type { Answer } from "../models";
 
 const single: Question = {
-  id: "1", type: "single_choice", difficulty: "easy", prompt: "p",
+  id: "1", type: "single_choice", difficulty: "easy", topic: "General", prompt: "p",
   options: [{ id: "a", text: "A" }, { id: "b", text: "B" }],
   correctOptionId: "b", explanation: "e",
 };
 const multi: Question = {
-  id: "2", type: "multi_select", difficulty: "hard", prompt: "p",
+  id: "2", type: "multi_select", difficulty: "hard", topic: "General", prompt: "p",
   options: [{ id: "a", text: "A" }, { id: "b", text: "B" }, { id: "c", text: "C" }, { id: "d", text: "D" }],
   correctOptionIds: ["a", "c"], explanation: "e",
 };
 const tf: Question = {
-  id: "3", type: "true_false", difficulty: "medium", prompt: "p",
+  id: "3", type: "true_false", difficulty: "medium", topic: "General", prompt: "p",
   correctValue: true, explanation: "e",
 };
 
