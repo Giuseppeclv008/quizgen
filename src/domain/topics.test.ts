@@ -56,6 +56,8 @@ describe("assembleQuiz", () => {
     const counts = countByTopic(quiz);
     expect(counts.A).toBe(1);
     expect(counts.B + counts.C).toBe(8);
+    expect(counts.B).toBe(4);
+    expect(counts.C).toBe(4);
     expect(quiz.questions).toHaveLength(9);
   });
 
@@ -75,7 +77,8 @@ describe("assembleQuiz", () => {
     const quiz = assembleQuiz([group("A", 2)], ["A"], 1, rng0);
     expect(quiz.id).toBe("combined");
     expect(quiz.source).toBe("combined");
-    expect(quiz.title).toContain("A");
+    expect(quiz.title).toBe("A");
+    expect(quiz.createdAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
   });
 });
 
