@@ -368,3 +368,8 @@ button.ghost:hover { color: var(--text); border-color: var(--line-2); background
 .topic-row .t-count { margin-left: auto; opacity: 0.7; font-size: 0.9em; }
 .max-field { display: flex; flex-direction: column; gap: 0.25rem; max-width: 12rem; margin-bottom: 1rem; }
 .max-field input { padding: 0.4rem 0.6rem; }
+
+/* ---------- history screen ---------- */
+.history-screen { max-width: 48rem; margin: 0 auto; padding: 2rem 1rem; }
+.history-group { margin-bottom: 1.5rem; }
+.history-group h2 { font-size: 1.1rem; margin-bottom: 0.5rem; }
