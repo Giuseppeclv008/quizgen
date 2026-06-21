@@ -4,6 +4,7 @@ import { collectTopics, assembleQuiz, type TopicGroup } from "./domain/topics";
 import { GlobQuizRepository, type QuizModuleMap } from "./data/GlobQuizRepository";
 import { createAttemptRepository } from "./data/createAttemptRepository";
 import type { LoadError } from "./data/QuizRepository";
+import { HistoryScreen } from "./ui/components/HistoryScreen";
 import { QuizMenu } from "./ui/components/QuizMenu";
 import { QuizRunner } from "./ui/components/QuizRunner";
 
@@ -17,6 +18,7 @@ export function App() {
   const [topics, setTopics] = useState<TopicGroup[] | null>(null);
   const [errors, setErrors] = useState<LoadError[]>([]);
   const [active, setActive] = useState<Quiz | null>(null);
+  const [view, setView] = useState<"menu" | "history">("menu");
 
   useEffect(() => {
     let alive = true;
@@ -36,12 +38,16 @@ export function App() {
     return <QuizRunner quiz={active} attemptRepo={attemptRepo} onExit={() => setActive(null)} />;
   }
   if (!topics) return <p className="loading">Loading…</p>;
+  if (view === "history") {
+    return <HistoryScreen groups={attemptRepo.allByQuiz()} onBack={() => setView("menu")} />;
+  }
 
   return (
     <QuizMenu
       topics={topics}
       errors={errors}
       onStart={(selectedTopics, max) => setActive(assembleQuiz(topics, selectedTopics, max))}
+      onShowHistory={() => setView("history")}
     />
   );
 }

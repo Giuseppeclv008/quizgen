@@ -15,4 +15,12 @@ describe("App", () => {
     await userEvent.click(screen.getByRole("button", { name: /start/i }));
     expect(await screen.findByText(/Question 1 of/)).toBeInTheDocument();
   });
+
+  it("opens the past-attempts screen from the menu and returns", async () => {
+    render(<App />);
+    await userEvent.click(await screen.findByRole("button", { name: /past attempts/i }));
+    expect(screen.getByRole("heading", { name: /past attempts/i })).toBeInTheDocument();
+    await userEvent.click(screen.getByRole("button", { name: /back/i }));
+    expect(await screen.findByRole("checkbox", { name: /Astronomy/ })).toBeInTheDocument();
+  });
 });
