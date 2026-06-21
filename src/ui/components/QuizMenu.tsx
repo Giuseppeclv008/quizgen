@@ -20,26 +20,31 @@ export function QuizMenu({ repository, onSelect }: QuizMenuProps) {
     };
   }, [repository]);
 
-  if (!listing) return <p>Loading…</p>;
+  if (!listing) return <p className="loading">Loading…</p>;
 
   return (
-    <div>
+    <main className="menu">
       <h1>Quiz Generator</h1>
+      <p className="lede">Pick a set and test what you know.</p>
       {listing.quizzes.length === 0 ? (
-        <p>No quizzes found. Drop a quiz JSON into <code>src/quizzes/</code> and reload.</p>
+        <div className="empty">
+          <p>No quizzes found.</p>
+          <p className="muted">Drop a quiz JSON into <code>src/quizzes/</code> and reload.</p>
+        </div>
       ) : (
-        <ul>
+        <ul className="quiz-list">
           {listing.quizzes.map((q) => (
-            <li key={q.id} style={{ marginBottom: "0.5rem" }}>
-              <button onClick={() => onSelect(q)}>
-                {q.title} ({q.questions.length} questions)
+            <li key={q.id}>
+              <button className="quiz-card" onClick={() => onSelect(q)}>
+                <span className="q-title">{q.title}</span>
+                <span className="q-count">{q.questions.length} questions</span>
               </button>
             </li>
           ))}
         </ul>
       )}
       {listing.errors.length > 0 && (
-        <div style={{ marginTop: "1rem", color: "crimson" }}>
+        <div className="errors">
           <p>Some files could not be loaded:</p>
           <ul>
             {listing.errors.map((e) => (
@@ -50,6 +55,6 @@ export function QuizMenu({ repository, onSelect }: QuizMenuProps) {
           </ul>
         </div>
       )}
-    </div>
+    </main>
   );
 }

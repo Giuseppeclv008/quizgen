@@ -31,32 +31,39 @@ const DIFFICULTIES: Difficulty[] = ["easy", "medium", "hard"];
 export function Results({ quiz, answers, result, onBackToMenu }: ResultsProps) {
   const resultById = new Map(result.perQuestion.map((r) => [r.questionId, r]));
   return (
-    <div>
+    <div className="results">
       <h2>Results — {quiz.title}</h2>
-      <p>
-        Score: {result.rawScore.toFixed(2)} / {result.total} ({result.pct.toFixed(0)}%)
-      </p>
-      <ul>
+      <div className="score-card">
+        <span className="score-pct">{result.pct.toFixed(0)}%</span>
+        <span className="score-raw">
+          Score: {result.rawScore.toFixed(2)} / {result.total}
+        </span>
+      </div>
+      <ul className="difficulty-row">
         {DIFFICULTIES.filter((d) => result.byDifficulty[d].total > 0).map((d) => (
           <li key={d}>
             {d}: {result.byDifficulty[d].score.toFixed(2)} / {result.byDifficulty[d].total}
           </li>
         ))}
       </ul>
-      <hr />
       {quiz.questions.map((q) => {
         const r = resultById.get(q.id);
+        const tone = r?.correct ? "is-correct" : r && r.score > 0 ? "is-partial" : "is-wrong";
         const status = r?.correct ? "✓ correct" : r && r.score > 0 ? `partial (${r.score.toFixed(2)})` : "✗ wrong";
         return (
-          <div key={q.id} style={{ marginBottom: "1rem" }}>
-            <p><strong>{q.prompt}</strong> — {status}</p>
-            <p>Your answer: {formatUserAnswer(q, answers[q.id])}</p>
-            <p>Correct answer: {formatCorrectAnswer(q)}</p>
-            <p><em>{q.explanation}</em></p>
+          <div key={q.id} className={`review-item ${tone}`}>
+            <p className="review-q">
+              <strong>{q.prompt}</strong> — <span className="review-status">{status}</span>
+            </p>
+            <p className="review-line">Your answer: {formatUserAnswer(q, answers[q.id])}</p>
+            <p className="review-line">Correct answer: {formatCorrectAnswer(q)}</p>
+            <p className="review-explain">{q.explanation}</p>
           </div>
         );
       })}
-      <button onClick={onBackToMenu}>Back to menu</button>
+      <div className="results-actions">
+        <button className="primary" onClick={onBackToMenu}>Back to menu</button>
+      </div>
     </div>
   );
 }

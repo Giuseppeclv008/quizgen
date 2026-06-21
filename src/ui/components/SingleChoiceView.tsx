@@ -4,9 +4,9 @@ export function SingleChoiceView({ question, answer, disabled, onAnswer }: Quest
   if (question.type !== "single_choice") return null;
   const picked = answer?.type === "single_choice" ? answer.optionId : null;
   return (
-    <fieldset>
+    <fieldset className="options">
       {question.options.map((o) => (
-        <label key={o.id} style={{ display: "block" }}>
+        <label key={o.id} className="option">
           <input
             type="radio"
             name={question.id}
@@ -14,7 +14,7 @@ export function SingleChoiceView({ question, answer, disabled, onAnswer }: Quest
             disabled={disabled}
             onChange={() => onAnswer({ type: "single_choice", optionId: o.id })}
           />
-          {o.text}
+          <span>{o.text}</span>
         </label>
       ))}
     </fieldset>
