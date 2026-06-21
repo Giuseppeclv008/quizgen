@@ -2,53 +2,53 @@ import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { QuizMenu } from "./QuizMenu";
-import type { TopicGroup } from "../../domain/topics";
+import type { TopicGroup, SourceGroup } from "../../domain/topics";
 
 function tf(id: string, topic: string): TopicGroup["questions"][number] {
   return { id, type: "true_false", difficulty: "easy", topic, prompt: "p", correctValue: true, explanation: "e" };
 }
 
-const topics: TopicGroup[] = [
-  { topic: "Alpha", questions: [tf("1", "Alpha"), tf("2", "Alpha")] },
-  { topic: "Beta", questions: [tf("3", "Beta")] },
-];
+const topics: TopicGroup[] = [{ topic: "Alpha", questions: [tf("1", "Alpha")] }];
+const sources: SourceGroup[] = [{ quizId: "demo", title: "Demo Quiz", questions: [tf("1", "Alpha")] }];
+
+function renderMenu(overrides: Partial<React.ComponentProps<typeof QuizMenu>> = {}) {
+  return render(
+    <QuizMenu
+      topics={topics}
+      sources={sources}
+      errors={[]}
+      onShowHistory={vi.fn()}
+      onStartTopics={vi.fn()}
+      onStartPdfs={vi.fn()}
+      {...overrides}
+    />,
+  );
+}
 
 describe("QuizMenu", () => {
-  it("starts with the selected topics and chosen max", async () => {
-    const onStart = vi.fn();
-    render(<QuizMenu topics={topics} errors={[]} onStart={onStart} onShowHistory={vi.fn()} />);
-    await userEvent.click(screen.getByRole("checkbox", { name: /Alpha/ }));
-    const max = screen.getByRole("spinbutton");
-    await userEvent.clear(max);
-    await userEvent.type(max, "1");
-    await userEvent.click(screen.getByRole("button", { name: /start/i }));
-    expect(onStart).toHaveBeenCalledWith(["Alpha"], 1);
+  it("shows the PDF selector by default", () => {
+    renderMenu();
+    expect(screen.getByRole("checkbox", { name: /Demo Quiz/ })).toBeInTheDocument();
   });
 
-  it("disables Start until a topic is selected", () => {
-    render(<QuizMenu topics={topics} errors={[]} onStart={vi.fn()} onShowHistory={vi.fn()} />);
-    expect(screen.getByRole("button", { name: /start/i })).toBeDisabled();
+  it("switches to the topic selector when the By topic tab is clicked", async () => {
+    renderMenu();
+    await userEvent.click(screen.getByRole("tab", { name: /by topic/i }));
+    expect(screen.getByRole("checkbox", { name: /Alpha/ })).toBeInTheDocument();
   });
 
-  it("shows an empty state when there are no topics", () => {
-    render(<QuizMenu topics={[]} errors={[]} onStart={vi.fn()} onShowHistory={vi.fn()} />);
+  it("shows the Past attempts button", () => {
+    renderMenu();
+    expect(screen.getByRole("button", { name: /past attempts/i })).toBeInTheDocument();
+  });
+
+  it("shows an empty state when there are no sources", () => {
+    renderMenu({ sources: [], topics: [] });
     expect(screen.getByText(/drop a quiz/i)).toBeInTheDocument();
   });
 
   it("surfaces load errors", () => {
-    render(<QuizMenu topics={[]} errors={[{ source: "bad.json", message: "boom" }]} onStart={vi.fn()} onShowHistory={vi.fn()} />);
+    renderMenu({ sources: [], topics: [], errors: [{ source: "bad.json", message: "boom" }] });
     expect(screen.getByText(/bad\.json/)).toBeInTheDocument();
-  });
-
-  it("fires onShowHistory when Past attempts is clicked", async () => {
-    const onShowHistory = vi.fn();
-    render(<QuizMenu topics={topics} errors={[]} onStart={vi.fn()} onShowHistory={onShowHistory} />);
-    await userEvent.click(screen.getByRole("button", { name: /past attempts/i }));
-    expect(onShowHistory).toHaveBeenCalled();
-  });
-
-  it("shows Past attempts even when there are no topics", () => {
-    render(<QuizMenu topics={[]} errors={[]} onStart={vi.fn()} onShowHistory={vi.fn()} />);
-    expect(screen.getByRole("button", { name: /past attempts/i })).toBeInTheDocument();
   });
 });

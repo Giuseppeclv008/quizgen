@@ -1,70 +1,63 @@
 import { useState } from "react";
-import type { TopicGroup } from "../../domain/topics";
+import type { TopicGroup, SourceGroup } from "../../domain/topics";
 import type { LoadError } from "../../data/QuizRepository";
+import { TopicSelector } from "./TopicSelector";
+import { PdfSelector } from "./PdfSelector";
 
 export interface QuizMenuProps {
   topics: TopicGroup[];
+  sources: SourceGroup[];
   errors: LoadError[];
-  onStart: (selectedTopics: string[], max: number) => void;
   onShowHistory: () => void;
+  onStartTopics: (selectedTopics: string[], max: number) => void;
+  onStartPdfs: (selectedQuizIds: string[], max: number) => void;
 }
 
-export function QuizMenu({ topics, errors, onStart, onShowHistory }: QuizMenuProps) {
-  const total = topics.reduce((n, t) => n + t.questions.length, 0);
-  const [selected, setSelected] = useState<string[]>([]);
-  const [max, setMax] = useState(total);
-
-  function toggle(topic: string) {
-    setSelected((prev) =>
-      prev.includes(topic) ? prev.filter((t) => t !== topic) : [...prev, topic],
-    );
-  }
-
-  function start() {
-    const clamped = Math.min(Math.max(1, max || 1), total);
-    onStart(selected, clamped);
-  }
+export function QuizMenu({
+  topics,
+  sources,
+  errors,
+  onShowHistory,
+  onStartTopics,
+  onStartPdfs,
+}: QuizMenuProps) {
+  const [tab, setTab] = useState<"pdf" | "topic">("pdf");
 
   return (
     <main className="menu">
       <h1>Quiz Generator</h1>
-      <p className="lede">Pick topics and how many questions to practice.</p>
+      <p className="lede">Pick a source and how many questions to practice.</p>
       <button className="ghost" onClick={onShowHistory}>Past attempts</button>
-      {topics.length === 0 ? (
+      {sources.length === 0 ? (
         <div className="empty">
           <p>No quizzes found.</p>
           <p className="muted">Drop a quiz JSON into <code>src/quizzes/</code> and reload.</p>
         </div>
       ) : (
         <>
-          <ul className="topic-list">
-            {topics.map((t) => (
-              <li key={t.topic}>
-                <label className="topic-row">
-                  <input
-                    type="checkbox"
-                    checked={selected.includes(t.topic)}
-                    onChange={() => toggle(t.topic)}
-                  />
-                  <span className="t-name">{t.topic}</span>
-                  <span className="t-count">{t.questions.length} questions</span>
-                </label>
-              </li>
-            ))}
-          </ul>
-          <label className="max-field">
-            Max questions
-            <input
-              type="number"
-              min={1}
-              max={total}
-              value={max}
-              onChange={(e) => setMax(Number(e.target.value))}
-            />
-          </label>
-          <button className="primary" disabled={selected.length === 0} onClick={start}>
-            Start quiz
-          </button>
+          <div className="tabs" role="tablist">
+            <button
+              role="tab"
+              aria-selected={tab === "pdf"}
+              className={tab === "pdf" ? "tab is-active" : "tab"}
+              onClick={() => setTab("pdf")}
+            >
+              By PDF
+            </button>
+            <button
+              role="tab"
+              aria-selected={tab === "topic"}
+              className={tab === "topic" ? "tab is-active" : "tab"}
+              onClick={() => setTab("topic")}
+            >
+              By topic
+            </button>
+          </div>
+          {tab === "pdf" ? (
+            <PdfSelector sources={sources} onStart={onStartPdfs} />
+          ) : (
+            <TopicSelector topics={topics} onStart={onStartTopics} />
+          )}
         </>
       )}
       {errors.length > 0 && (

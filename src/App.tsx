@@ -1,12 +1,19 @@
 import { useEffect, useMemo, useState } from "react";
 import type { Quiz } from "./domain/schema";
-import { collectTopics, assembleQuiz, type TopicGroup } from "./domain/topics";
+import {
+  collectTopics,
+  collectSources,
+  assembleQuiz,
+  assembleFromSources,
+  type TopicGroup,
+  type SourceGroup,
+} from "./domain/topics";
 import { GlobQuizRepository, type QuizModuleMap } from "./data/GlobQuizRepository";
 import { createAttemptRepository } from "./data/createAttemptRepository";
 import type { LoadError } from "./data/QuizRepository";
-import { HistoryScreen } from "./ui/components/HistoryScreen";
 import { QuizMenu } from "./ui/components/QuizMenu";
 import { QuizRunner } from "./ui/components/QuizRunner";
+import { HistoryScreen } from "./ui/components/HistoryScreen";
 
 export function App() {
   const repository = useMemo(() => {
@@ -16,6 +23,7 @@ export function App() {
   const attemptRepo = useMemo(() => createAttemptRepository(), []);
 
   const [topics, setTopics] = useState<TopicGroup[] | null>(null);
+  const [sources, setSources] = useState<SourceGroup[]>([]);
   const [errors, setErrors] = useState<LoadError[]>([]);
   const [active, setActive] = useState<Quiz | null>(null);
   const [view, setView] = useState<"menu" | "history">("menu");
@@ -25,6 +33,7 @@ export function App() {
     repository.list().then((listing) => {
       if (!alive) return;
       setTopics(collectTopics(listing.quizzes));
+      setSources(collectSources(listing.quizzes));
       setErrors(listing.errors);
     }).catch(() => {
       if (alive) setTopics([]);
@@ -45,9 +54,11 @@ export function App() {
   return (
     <QuizMenu
       topics={topics}
+      sources={sources}
       errors={errors}
-      onStart={(selectedTopics, max) => setActive(assembleQuiz(topics, selectedTopics, max))}
       onShowHistory={() => setView("history")}
+      onStartTopics={(selectedTopics, max) => setActive(assembleQuiz(topics, selectedTopics, max))}
+      onStartPdfs={(selectedQuizIds, max) => setActive(assembleFromSources(sources, selectedQuizIds, max))}
     />
   );
 }
