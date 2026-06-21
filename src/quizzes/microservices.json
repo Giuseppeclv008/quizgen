@@ -1,0 +1,363 @@
+{
+  "id": "microservices-sda",
+  "title": "Microservices — Software Design & Architecture",
+  "source": "MicroService.pdf",
+  "createdAt": "2026-06-21",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "prompt": "Which of these is listed as an advantage of a microservice architecture?",
+      "options": [
+        { "id": "a", "text": "The application is simpler to develop overall" },
+        { "id": "b", "text": "Cross-service transactions become trivial" },
+        { "id": "c", "text": "Services can be deployed independently" },
+        { "id": "d", "text": "Service discovery becomes unnecessary" }
+      ],
+      "correctOptionId": "c",
+      "explanation": "Independent deployability (and independent scalability) is a core μS advantage. Monoliths are actually simpler to develop/deploy/scale as a unit; cross-service transactions get harder (sagas); and RPC-based μS need service discovery."
+    },
+    {
+      "id": "q2",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "prompt": "Select the drawbacks of microservices highlighted in the slides.",
+      "options": [
+        { "id": "a", "text": "Finding the right set of services is hard" },
+        { "id": "b", "text": "Distributed systems add development complexity" },
+        { "id": "c", "text": "Features spanning services need coordination" },
+        { "id": "d", "text": "Code duplication is automatically eliminated" },
+        { "id": "e", "text": "Fault isolation becomes impossible" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Drawbacks: hard to find the right service boundaries, distributed-system complexity, and coordinating features that span services. μS actually improve fault isolation, and they do not magically remove duplication."
+    },
+    {
+      "id": "q3",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "prompt": "Decomposition by business capability groups services around…",
+      "options": [
+        { "id": "a", "text": "how the code is currently structured" },
+        { "id": "b", "text": "what the organization does (not how)" },
+        { "id": "c", "text": "the shared relational database schema" },
+        { "id": "d", "text": "the screens exposed by the user interface" }
+      ],
+      "correctOptionId": "b",
+      "explanation": "A business capability is what an organization does, as opposed to how. It is derived from the organization structure and yields cohesive, loosely coupled services."
+    },
+    {
+      "id": "q4",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "prompt": "\"Classes that change for the same reason should be in the same package\" states the…",
+      "options": [
+        { "id": "a", "text": "Single Responsibility Principle" },
+        { "id": "b", "text": "Dependency Inversion Principle" },
+        { "id": "c", "text": "Common Closure Principle" },
+        { "id": "d", "text": "Interface Segregation Principle" }
+      ],
+      "correctOptionId": "c",
+      "explanation": "The Common Closure Principle: classes that change for the same reason belong together. The slides pair it with the Single Responsibility Principle when decomposing by business capability."
+    },
+    {
+      "id": "q5",
+      "type": "true_false",
+      "difficulty": "easy",
+      "prompt": "In DDD, two value objects with identical values are considered interchangeable.",
+      "correctValue": true,
+      "explanation": "True. A value object represents a collection of values; two with the same values are interchangeable. An entity, by contrast, has a persistent identity, so equal values still mean distinct items."
+    },
+    {
+      "id": "q6",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "prompt": "What distinguishes an Entity from a Value Object in DDD?",
+      "options": [
+        { "id": "a", "text": "An Entity is always immutable once created" },
+        { "id": "b", "text": "An Entity cannot be stored in a database" },
+        { "id": "c", "text": "An Entity is interchangeable when values match" },
+        { "id": "d", "text": "An Entity has a persistent identity" }
+      ],
+      "correctOptionId": "d",
+      "explanation": "An entity has a persistent identity, so two entities with the same field values are still different items. Value objects are the interchangeable-by-value ones. Entities are typically persisted to a DB."
+    },
+    {
+      "id": "q7",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "prompt": "Which DDD class pattern holds business logic that does not belong to a single entity?",
+      "options": [
+        { "id": "a", "text": "Repository" },
+        { "id": "b", "text": "Factory" },
+        { "id": "c", "text": "Service" },
+        { "id": "d", "text": "Value object" }
+      ],
+      "correctOptionId": "c",
+      "explanation": "A Service implements business logic that doesn't fit a single entity. Factory builds objects (hiding the concrete class); Repository provides access to persistent entities; Value object holds values."
+    },
+    {
+      "id": "q8",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "prompt": "What is the role of the Repository pattern?",
+      "options": [
+        { "id": "a", "text": "Construct objects while hiding the concrete class" },
+        { "id": "b", "text": "Provide access to persistent entities" },
+        { "id": "c", "text": "Hold business logic spanning several entities" },
+        { "id": "d", "text": "Represent an immutable collection of values" }
+      ],
+      "correctOptionId": "b",
+      "explanation": "A Repository provides access to persistent entities and hides DB access. Constructing objects is the Factory's job; cross-entity logic is a Service; a collection of values is a Value object."
+    },
+    {
+      "id": "q9",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "prompt": "The \"reference roots only\" aggregate rule requires that…",
+      "options": [
+        { "id": "a", "text": "external code references only the root" },
+        { "id": "b", "text": "every internal object exposes a public setter" },
+        { "id": "c", "text": "aggregates reference each other by pointer" },
+        { "id": "d", "text": "each field is loaded with a separate query" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Only the aggregate root may be referenced from outside, and updates go through the root's methods. This lets the aggregate enforce invariants and serialize its updates."
+    },
+    {
+      "id": "q10",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "prompt": "How should one aggregate reference another aggregate?",
+      "options": [
+        { "id": "a", "text": "Through a direct in-memory object reference" },
+        { "id": "b", "text": "By the other aggregate's primary key" },
+        { "id": "c", "text": "Via a shared foreign-key join table" },
+        { "id": "d", "text": "With a mutable pointer shared across services" }
+      ],
+      "correctOptionId": "b",
+      "explanation": "Inter-aggregate references must use primary keys, not object references (object references between aggregates are a code smell). This keeps aggregates loosely coupled and lets them live in distinct services."
+    },
+    {
+      "id": "q11",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "prompt": "A consequence of the \"one aggregate per transaction\" rule is that…",
+      "options": [
+        { "id": "a", "text": "a transaction stays within a single service" },
+        { "id": "b", "text": "every request updates many aggregates at once" },
+        { "id": "c", "text": "transactions require a two-phase commit" },
+        { "id": "d", "text": "the database must support full ACID isolation" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "If a transaction touches only one aggregate, it stays inside one service — which suits the limited transaction support of many NoSQL databases. Multi-aggregate requests become harder, handled via sagas."
+    },
+    {
+      "id": "q12",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "prompt": "Which are benefits of FINE-grained aggregates?",
+      "options": [
+        { "id": "a", "text": "Better scalability since updates are serialized" },
+        { "id": "b", "text": "Lower risk of update conflicts" },
+        { "id": "c", "text": "Easier decomposition into services" },
+        { "id": "d", "text": "All related entities fit in one transaction" },
+        { "id": "e", "text": "Simpler handling of multi-aggregate requests" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Fine-grained aggregates improve scalability (serialized updates), reduce conflict risk, and decompose into services more easily. Fitting many entities in one transaction and simpler multi-aggregate requests are coarse-grained advantages."
+    },
+    {
+      "id": "q13",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "prompt": "How is a domain event name conventionally formed?",
+      "options": [
+        { "id": "a", "text": "As an imperative command verb" },
+        { "id": "b", "text": "As a past-participle verb" },
+        { "id": "c", "text": "As a present-continuous verb" },
+        { "id": "d", "text": "As a noun with no verb at all" }
+      ],
+      "correctOptionId": "b",
+      "explanation": "Domain events are named with a past-participle verb (e.g. OrderCreated) because they describe something that already happened. They also carry metadata such as event ID and timestamp."
+    },
+    {
+      "id": "q14",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "prompt": "Which is a drawback of synchronous RPC noted in the slides?",
+      "options": [
+        { "id": "a", "text": "It cannot support the simple request/reply style" },
+        { "id": "b", "text": "Reduced availability: both ends must be up" },
+        { "id": "c", "text": "It always requires a message broker" },
+        { "id": "d", "text": "It is unfamiliar to most developers" }
+      ],
+      "correctOptionId": "b",
+      "explanation": "RPC reduces availability because client and service must both be up for the whole interaction. RPC is simple/familiar, needs no broker, and does request/reply well — but struggles with notifications and pub/sub."
+    },
+    {
+      "id": "q15",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "prompt": "How does the Circuit Breaker pattern behave?",
+      "options": [
+        { "id": "a", "text": "It retries the failing call immediately and forever" },
+        { "id": "b", "text": "It fails fast once errors pass a threshold" },
+        { "id": "c", "text": "It queues requests until the service recovers" },
+        { "id": "d", "text": "It load-balances calls across healthy nodes" }
+      ],
+      "correctOptionId": "b",
+      "explanation": "When the error rate crosses a threshold the breaker trips and further calls fail immediately (fail fast). After a timeout it lets a trial call through and, if it succeeds, closes again (Hystrix, Polly)."
+    },
+    {
+      "id": "q16",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "prompt": "In the client-side discovery pattern, who selects the service instance?",
+      "options": [
+        { "id": "a", "text": "The client queries the registry and load-balances" },
+        { "id": "b", "text": "A platform-side router resolves the address through DNS" },
+        { "id": "c", "text": "The service registrar selects it on startup" },
+        { "id": "d", "text": "A third-party broker assigns the instance" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Client-side discovery (application level): the client queries the registry for live instances and applies its own load-balancing. Server-side discovery (platform level) hides this behind a router/DNS."
+    },
+    {
+      "id": "q17",
+      "type": "true_false",
+      "difficulty": "medium",
+      "prompt": "Message brokers usually guarantee at-least-once delivery, so a message may be delivered more than once.",
+      "correctValue": true,
+      "explanation": "True. Delivery is guaranteed at least once but not exactly once, so duplicates can occur. Countermeasures include idempotent messages and message tracking."
+    },
+    {
+      "id": "q18",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "prompt": "How does the transactional outbox keep data and messaging consistent?",
+      "options": [
+        { "id": "a", "text": "It commits the message to the broker before the DB write" },
+        { "id": "b", "text": "It queues the message in the same DB transaction" },
+        { "id": "c", "text": "It uses a distributed two-phase commit" },
+        { "id": "d", "text": "It polls every service for state changes" }
+      ],
+      "correctOptionId": "b",
+      "explanation": "Transactional messaging uses a DB table as a queue, so the application update and the message enqueue commit in one local transaction — avoiding the dual-write problem without a distributed transaction."
+    },
+    {
+      "id": "q19",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "prompt": "\"Database per service\" means that…",
+      "options": [
+        { "id": "a", "text": "all services share one schema and DB" },
+        { "id": "b", "text": "a service's data is private to its API" },
+        { "id": "c", "text": "every service uses the same DB server" },
+        { "id": "d", "text": "services read each other's tables directly" }
+      ],
+      "correctOptionId": "b",
+      "explanation": "Each service's persistent data is private and reachable only via its API (private tables, schema, or DB server per service). A service's transactions involve only its own database."
+    },
+    {
+      "id": "q20",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "prompt": "What is a saga?",
+      "options": [
+        { "id": "a", "text": "A single distributed ACID transaction spanning all services" },
+        { "id": "b", "text": "A sequence of local transactions coordinated by messages" },
+        { "id": "c", "text": "A two-phase commit shared by all services" },
+        { "id": "d", "text": "A global lock held for the whole flow" }
+      ],
+      "correctOptionId": "b",
+      "explanation": "A saga is a sequence of local transactions; each updates its DB and emits a message/event triggering the next. On failure it runs compensating transactions to undo prior steps — an alternative to 2PC."
+    },
+    {
+      "id": "q21",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "prompt": "In a saga, the \"pivot\" transaction is…",
+      "options": [
+        { "id": "a", "text": "the first compensatable step" },
+        { "id": "b", "text": "the go/no-go point of the saga" },
+        { "id": "c", "text": "any step guaranteed to be retriable" },
+        { "id": "d", "text": "the compensating step run on failure" }
+      ],
+      "correctOptionId": "b",
+      "explanation": "The pivot is the go/no-go point: once it succeeds the saga can run to completion. Steps before it are compensatable (can be rolled back); steps after it are retriable (guaranteed to succeed)."
+    },
+    {
+      "id": "q22",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "prompt": "Which of these are saga countermeasures for the lack of isolation?",
+      "options": [
+        { "id": "a", "text": "Semantic lock" },
+        { "id": "b", "text": "Commutative updates" },
+        { "id": "c", "text": "Two-phase commit across services" },
+        { "id": "d", "text": "Reread value" },
+        { "id": "e", "text": "Global serializable isolation" }
+      ],
+      "correctOptionIds": ["a", "b", "d"],
+      "explanation": "Countermeasures include semantic lock, commutative updates, reread value (plus pessimistic view, version file, by value). Two-phase commit and a global serializable level are exactly what sagas avoid."
+    },
+    {
+      "id": "q23",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "prompt": "How does event sourcing persist an aggregate?",
+      "options": [
+        { "id": "a", "text": "As one current-state row via an ORM" },
+        { "id": "b", "text": "As a sequence of state-change events" },
+        { "id": "c", "text": "As a JSON snapshot replaced each update" },
+        { "id": "d", "text": "As a cached copy in the API gateway" }
+      ],
+      "correctOptionId": "b",
+      "explanation": "Event sourcing stores the aggregate as the series of events that changed it; current state is rebuilt by replaying them. It reliably publishes events and preserves history, but querying the event store is harder."
+    },
+    {
+      "id": "q24",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "prompt": "How does CQRS make cross-service queries easy?",
+      "options": [
+        { "id": "a", "text": "It shards the write database by tenant" },
+        { "id": "b", "text": "It keeps a read-only view fed by events" },
+        { "id": "c", "text": "It caches every query inside the client" },
+        { "id": "d", "text": "It runs the queries on the message broker" }
+      ],
+      "correctOptionId": "b",
+      "explanation": "CQRS (Command Query Responsibility Segregation) uses events to maintain a read-only view that replicates data from services, designed to match the queries — at the cost of coping with replication lag."
+    },
+    {
+      "id": "q25",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "prompt": "The API Composition pattern answers a composed query by…",
+      "options": [
+        { "id": "a", "text": "joining tables across all of the service databases" },
+        { "id": "b", "text": "calling each service API and merging results" },
+        { "id": "c", "text": "replicating all data into one big database" },
+        { "id": "d", "text": "asking the client to call each service" }
+      ],
+      "correctOptionId": "b",
+      "explanation": "An API Composer queries each provider service via its API and combines the results (parallelizing where possible). The composer may be a client, an API gateway, or a standalone service."
+    },
+    {
+      "id": "q26",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "prompt": "Which approach migrates a monolith to microservices incrementally?",
+      "options": [
+        { "id": "a", "text": "A big-bang full rewrite" },
+        { "id": "b", "text": "Strangling the monolith" },
+        { "id": "c", "text": "A one-shot lift and shift" },
+        { "id": "d", "text": "Freezing the monolith permanently" }
+      ],
+      "correctOptionId": "b",
+      "explanation": "The Strangler pattern grows a new system around the edges of the old one until the monolith is strangled. Big-bang rewrites are risky — \"the only thing a Big Bang rewrite guarantees is a Big Bang!\" (Fowler)."
+    }
+  ]
+}
