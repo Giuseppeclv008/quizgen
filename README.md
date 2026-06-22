@@ -70,9 +70,33 @@ API server on port 3001, so you only ever browse to `:5173`.
 ### Production note
 
 `npm run build` outputs static assets to `dist/`. In production you must serve
-`dist/` behind a web server/CDN and run `npm run server` (or an equivalent)
-somewhere reachable, routing `/api/*` to it. The `/api` proxy in
-`vite.config.ts` only applies to local development.
+`dist/` behind a web server/CDN. If you want server-side attempt history, also run
+`npm run server` (or an equivalent) somewhere reachable and route `/api/*` to it.
+The `/api` proxy in `vite.config.ts` only applies to local development.
+
+---
+
+## Deploying to GitHub Pages
+
+The repo ships a workflow (`.github/workflows/deploy.yml`) that builds and
+publishes the app to GitHub Pages on every push to `main`.
+
+**One-time setup:** in the GitHub repo go to **Settings → Pages → Build and
+deployment → Source** and choose **GitHub Actions**. The next push to `main`
+(or a manual run from the Actions tab) deploys the site to:
+
+```
+https://giuseppeclv008.github.io/quizgen/
+```
+
+Notes:
+
+- The production build uses `base: "/quizgen/"` (set in `vite.config.ts`) so assets
+  resolve under the repo path.
+- **Persistence on Pages uses the browser's `localStorage`,** because static
+  hosting has no backend. `createAttemptRepository()` uses the SQLite API server
+  only in local development and falls back to `localStorage` in production builds.
+  Attempt history is therefore per-browser on the published site.
 
 ---
 
