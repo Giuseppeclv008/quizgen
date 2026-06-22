@@ -83,20 +83,16 @@ publishes the app to GitHub Pages on every push to `main`.
 
 **One-time setup:** in the GitHub repo go to **Settings → Pages → Build and
 deployment → Source** and choose **GitHub Actions**. The next push to `main`
-(or a manual run from the Actions tab) deploys the site to the custom domain:
+(or a manual run from the Actions tab) deploys the site to:
 
 ```
-https://sdaquizzes.io
+https://giuseppeclv008.github.io/quizgen/
 ```
 
 Notes:
 
-- The custom domain is configured via `public/CNAME` (`sdaquizzes.io`), which is
-  copied into the build output so the domain is preserved on each deploy. Make sure
-  the domain's DNS points at GitHub Pages (A/ALIAS records or a CNAME to
-  `giuseppeclv008.github.io`).
-- The build uses the default `base: "/"` (set in `vite.config.ts`) because a custom
-  domain serves the app from the site root.
+- The production build uses `base: "/quizgen/"` (set in `vite.config.ts`) so assets
+  resolve under the repo path.
 - **Persistence on Pages uses the browser's `localStorage`,** because static
   hosting has no backend. `createAttemptRepository()` uses the SQLite API server
   only in local development and falls back to `localStorage` in production builds.

@@ -2,10 +2,10 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-// Served from the custom domain sdaquizzes.io (see public/CNAME), i.e. at the
-// site root, so the default "/" base is correct for both dev and production.
-export default defineConfig(() => ({
-  base: "/",
+// On GitHub Pages the app is served from https://<user>.github.io/quizgen/,
+// so production assets need the "/quizgen/" base. Dev/test stay at "/".
+export default defineConfig(({ command }) => ({
+  base: command === "build" ? "/quizgen/" : "/",
   plugins: [react()],
   server: {
     proxy: {
