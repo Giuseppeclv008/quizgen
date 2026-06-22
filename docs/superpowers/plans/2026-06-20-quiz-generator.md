@@ -1,6 +1,6 @@
 # Quiz Generator Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Build a local React/TypeScript/Vite web app that loads chat-generated quiz datasets (JSON) and runs them as interactive exam-mode quizzes with grading, explanations, and localStorage history.
 
@@ -34,13 +34,13 @@
 - Consumes: nothing.
 - Produces: a working `npm test` (Vitest + jsdom + jest-dom) and `npm run dev` toolchain that all later tasks depend on.
 
-- [ ] **Step 1: Create the feature branch**
+- [x] **Step 1: Create the feature branch**
 
 ```bash
 git checkout -b quiz-generator
 ```
 
-- [ ] **Step 2: Write `package.json`**
+- [x] **Step 2: Write `package.json`**
 
 ```json
 {
@@ -75,7 +75,7 @@ git checkout -b quiz-generator
 }
 ```
 
-- [ ] **Step 3: Write `tsconfig.json` and `tsconfig.node.json`**
+- [x] **Step 3: Write `tsconfig.json` and `tsconfig.node.json`**
 
 `tsconfig.json`:
 ```json
@@ -117,7 +117,7 @@ git checkout -b quiz-generator
 }
 ```
 
-- [ ] **Step 4: Write `vite.config.ts`** (Vitest config lives here)
+- [x] **Step 4: Write `vite.config.ts`** (Vitest config lives here)
 
 ```ts
 /// <reference types="vitest" />
@@ -134,7 +134,7 @@ export default defineConfig({
 });
 ```
 
-- [ ] **Step 5: Write `index.html`, `src/main.tsx`, `src/app.css`, `src/test/setup.ts`**
+- [x] **Step 5: Write `index.html`, `src/main.tsx`, `src/app.css`, `src/test/setup.ts`**
 
 `index.html`:
 ```html
@@ -177,7 +177,7 @@ button { font: inherit; padding: 0.5rem 1rem; cursor: pointer; }
 import "@testing-library/jest-dom";
 ```
 
-- [ ] **Step 6: Write the failing smoke test**
+- [x] **Step 6: Write the failing smoke test**
 
 `src/test/smoke.test.ts`:
 ```ts
@@ -190,12 +190,12 @@ describe("toolchain", () => {
 });
 ```
 
-- [ ] **Step 7: Install deps and run the test**
+- [x] **Step 7: Install deps and run the test**
 
 Run: `npm install && npm test`
 Expected: smoke test PASSES (1 passed). If `npm install` is offline-blocked, that is an environment issue to resolve before continuing.
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add -A
@@ -217,7 +217,7 @@ git commit -m "chore: scaffold Vite + React + TS + Vitest toolchain" -m "Co-Auth
   - From `schema.ts`: `quizSchema`, `questionSchema`, `optionSchema`, `difficultySchema` and types `Difficulty`, `Option`, `SingleChoiceQuestion`, `MultiSelectQuestion`, `TrueFalseQuestion`, `Question`, `Quiz`, `QuestionType`.
   - From `models.ts`: `Answer`, `QuestionResult`, `DifficultyTally`, `QuizResult`, `Attempt`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 `src/domain/schema.test.ts`:
 ```ts
@@ -271,12 +271,12 @@ describe("quizSchema", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/domain/schema.test.ts`
 Expected: FAIL — cannot find module `./schema`.
 
-- [ ] **Step 3: Write `src/domain/schema.ts`**
+- [x] **Step 3: Write `src/domain/schema.ts`**
 
 > Note: `discriminatedUnion` requires plain `ZodObject` members, so cross-field checks (correctOptionId membership) are done in a `superRefine` on the union, NOT with `.refine()` on each member.
 
@@ -349,7 +349,7 @@ export type Quiz = z.infer<typeof quizSchema>;
 export type QuestionType = Question["type"];
 ```
 
-- [ ] **Step 4: Write `src/domain/models.ts`**
+- [x] **Step 4: Write `src/domain/models.ts`**
 
 ```ts
 import type { Difficulty } from "./schema";
@@ -389,12 +389,12 @@ export interface Attempt {
 }
 ```
 
-- [ ] **Step 5: Run tests to verify they pass**
+- [x] **Step 5: Run tests to verify they pass**
 
 Run: `npx vitest run src/domain/schema.test.ts`
 Expected: PASS (5 passed).
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add -A
@@ -413,7 +413,7 @@ git commit -m "feat: add zod quiz schema and domain models" -m "Co-Authored-By: 
 - Consumes: `Quiz` from `./schema`.
 - Produces: `type Rng = () => number`; `shuffle<T>(arr, rng?): T[]`; `shuffleQuizOptions(quiz: Quiz, rng?): Quiz`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 `src/domain/shuffle.test.ts`:
 ```ts
@@ -461,12 +461,12 @@ describe("shuffleQuizOptions", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/domain/shuffle.test.ts`
 Expected: FAIL — cannot find module `./shuffle`.
 
-- [ ] **Step 3: Write `src/domain/shuffle.ts`**
+- [x] **Step 3: Write `src/domain/shuffle.ts`**
 
 ```ts
 import type { Quiz } from "./schema";
@@ -492,12 +492,12 @@ export function shuffleQuizOptions(quiz: Quiz, rng: Rng = Math.random): Quiz {
 }
 ```
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [x] **Step 4: Run tests to verify they pass**
 
 Run: `npx vitest run src/domain/shuffle.test.ts`
 Expected: PASS (4 passed).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add -A
@@ -520,7 +520,7 @@ git commit -m "feat: add Fisher-Yates option shuffling" -m "Co-Authored-By: Clau
 - Consumes: `Question`, `QuestionType` from `../schema`; `Answer`, `QuestionResult` from `../models`.
 - Produces: `interface Grader { grade(question: Question, answer: Answer | undefined): QuestionResult }`; classes `SingleChoiceGrader`, `MultiSelectGrader`, `TrueFalseGrader`; `graderRegistry: Record<QuestionType, Grader>`; `gradeQuestion(question, answer): QuestionResult`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 `src/domain/grading/grading.test.ts`:
 ```ts
@@ -586,12 +586,12 @@ describe("true_false grading", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/domain/grading/grading.test.ts`
 Expected: FAIL — cannot find module `./graderRegistry`.
 
-- [ ] **Step 3: Write the grader interface and three strategies**
+- [x] **Step 3: Write the grader interface and three strategies**
 
 `src/domain/grading/Grader.ts`:
 ```ts
@@ -659,7 +659,7 @@ export class TrueFalseGrader implements Grader {
 }
 ```
 
-- [ ] **Step 4: Write the registry**
+- [x] **Step 4: Write the registry**
 
 `src/domain/grading/graderRegistry.ts`:
 ```ts
@@ -681,12 +681,12 @@ export function gradeQuestion(question: Question, answer: Answer | undefined): Q
 }
 ```
 
-- [ ] **Step 5: Run tests to verify they pass**
+- [x] **Step 5: Run tests to verify they pass**
 
 Run: `npx vitest run src/domain/grading/grading.test.ts`
 Expected: PASS (all assertions green).
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add -A
@@ -705,7 +705,7 @@ git commit -m "feat: add grading strategies and registry" -m "Co-Authored-By: Cl
 - Consumes: `Quiz`, `Difficulty` from `../schema`; `Answer`, `QuizResult`, `QuestionResult`, `DifficultyTally` from `../models`; `gradeQuestion` from `./graderRegistry`.
 - Produces: `aggregate(quiz: Quiz, perQuestion: QuestionResult[]): QuizResult`; `gradeQuiz(quiz: Quiz, answers: Record<string, Answer | undefined>): QuizResult`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 `src/domain/grading/score.test.ts`:
 ```ts
@@ -753,12 +753,12 @@ describe("gradeQuiz", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/domain/grading/score.test.ts`
 Expected: FAIL — cannot find module `./score`.
 
-- [ ] **Step 3: Write `src/domain/grading/score.ts`**
+- [x] **Step 3: Write `src/domain/grading/score.ts`**
 
 ```ts
 import type { Quiz, Difficulty } from "../schema";
@@ -794,12 +794,12 @@ export function gradeQuiz(quiz: Quiz, answers: Record<string, Answer | undefined
 }
 ```
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [x] **Step 4: Run tests to verify they pass**
 
 Run: `npx vitest run src/domain/grading/score.test.ts`
 Expected: PASS (2 passed).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add -A
@@ -819,7 +819,7 @@ git commit -m "feat: add quiz scoring aggregation" -m "Co-Authored-By: Claude Op
 - Consumes: `Quiz`, `quizSchema` from `../domain/schema`.
 - Produces: `interface LoadError { source: string; message: string }`; `interface QuizListing { quizzes: Quiz[]; errors: LoadError[] }`; `interface QuizRepository { list(): Promise<QuizListing>; get(id: string): Promise<Quiz | undefined> }`; `type QuizModuleMap = Record<string, () => Promise<unknown>>`; `class GlobQuizRepository implements QuizRepository` (constructor takes `QuizModuleMap`).
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 `src/data/GlobQuizRepository.test.ts`:
 ```ts
@@ -858,12 +858,12 @@ describe("GlobQuizRepository", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/data/GlobQuizRepository.test.ts`
 Expected: FAIL — cannot find module `./GlobQuizRepository`.
 
-- [ ] **Step 3: Write the interface**
+- [x] **Step 3: Write the interface**
 
 `src/data/QuizRepository.ts`:
 ```ts
@@ -885,7 +885,7 @@ export interface QuizRepository {
 }
 ```
 
-- [ ] **Step 4: Write the glob-backed implementation**
+- [x] **Step 4: Write the glob-backed implementation**
 
 `src/data/GlobQuizRepository.ts`:
 ```ts
@@ -925,12 +925,12 @@ export class GlobQuizRepository implements QuizRepository {
 }
 ```
 
-- [ ] **Step 5: Run tests to verify they pass**
+- [x] **Step 5: Run tests to verify they pass**
 
 Run: `npx vitest run src/data/GlobQuizRepository.test.ts`
 Expected: PASS (2 passed).
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add -A
@@ -952,7 +952,7 @@ git commit -m "feat: add glob-backed quiz repository with validation" -m "Co-Aut
 - Consumes: `Attempt` from `../domain/models`.
 - Produces: `interface AttemptRepository { save(a: Attempt): void; listByQuiz(quizId: string): Attempt[]; allByQuiz(): Record<string, Attempt[]> }`; `class LocalStorageAttemptRepository` (constructor takes a `Storage`); `class NullAttemptRepository`; `createAttemptRepository(): AttemptRepository`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 `src/data/LocalStorageAttemptRepository.test.ts`:
 ```ts
@@ -995,12 +995,12 @@ describe("LocalStorageAttemptRepository", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/data/LocalStorageAttemptRepository.test.ts`
 Expected: FAIL — cannot find module `./LocalStorageAttemptRepository`.
 
-- [ ] **Step 3: Write the interface and implementations**
+- [x] **Step 3: Write the interface and implementations**
 
 `src/data/AttemptRepository.ts`:
 ```ts
@@ -1069,7 +1069,7 @@ export class NullAttemptRepository implements AttemptRepository {
 }
 ```
 
-- [ ] **Step 4: Write the factory**
+- [x] **Step 4: Write the factory**
 
 `src/data/createAttemptRepository.ts`:
 ```ts
@@ -1089,12 +1089,12 @@ export function createAttemptRepository(): AttemptRepository {
 }
 ```
 
-- [ ] **Step 5: Run tests to verify they pass**
+- [x] **Step 5: Run tests to verify they pass**
 
 Run: `npx vitest run src/data/LocalStorageAttemptRepository.test.ts`
 Expected: PASS (3 passed).
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add -A
@@ -1113,7 +1113,7 @@ git commit -m "feat: add attempt history repository with localStorage and null f
 - Consumes: `Quiz` from `../domain/schema`; `Answer`, `QuizResult` from `../domain/models`; `Rng`, `shuffleQuizOptions` from `../domain/shuffle`; `gradeQuiz` from `../domain/grading/score`.
 - Produces: `interface QuizSessionState { quiz: Quiz; currentIndex: number; answers: Record<string, Answer>; submitted: boolean; result?: QuizResult }`; `type SessionAction`; `initSession(quiz: Quiz, rng?: Rng): QuizSessionState`; `sessionReducer(state, action): QuizSessionState`; `answeredCount(state): number`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 `src/session/QuizSession.test.ts`:
 ```ts
@@ -1175,12 +1175,12 @@ describe("QuizSession", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/session/QuizSession.test.ts`
 Expected: FAIL — cannot find module `./QuizSession`.
 
-- [ ] **Step 3: Write `src/session/QuizSession.ts`**
+- [x] **Step 3: Write `src/session/QuizSession.ts`**
 
 ```ts
 import type { Quiz } from "../domain/schema";
@@ -1238,12 +1238,12 @@ export function answeredCount(state: QuizSessionState): number {
 }
 ```
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [x] **Step 4: Run tests to verify they pass**
 
 Run: `npx vitest run src/session/QuizSession.test.ts`
 Expected: PASS (4 passed).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add -A
@@ -1262,7 +1262,7 @@ git commit -m "feat: add exam-mode session reducer" -m "Co-Authored-By: Claude O
 - Consumes: `Quiz` from `../domain/schema`; `initSession`, `sessionReducer`, `QuizSessionState`, `SessionAction` from `./QuizSession`.
 - Produces: `useQuizSession(quiz: Quiz): { state: QuizSessionState; dispatch: React.Dispatch<SessionAction> }`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 `src/session/useQuizSession.test.ts`:
 ```ts
@@ -1290,12 +1290,12 @@ describe("useQuizSession", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/session/useQuizSession.test.ts`
 Expected: FAIL — cannot find module `./useQuizSession`.
 
-- [ ] **Step 3: Write `src/session/useQuizSession.ts`**
+- [x] **Step 3: Write `src/session/useQuizSession.ts`**
 
 ```ts
 import { useReducer } from "react";
@@ -1311,12 +1311,12 @@ export function useQuizSession(quiz: Quiz): {
 }
 ```
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [x] **Step 4: Run tests to verify they pass**
 
 Run: `npx vitest run src/session/useQuizSession.test.ts`
 Expected: PASS (1 passed).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add -A
@@ -1338,7 +1338,7 @@ git commit -m "feat: add useQuizSession React hook" -m "Co-Authored-By: Claude O
 - Consumes: `Question`, `QuestionType` from `../../domain/schema`; `Answer` from `../../domain/models`.
 - Produces: `interface QuestionViewProps { question: Question; answer: Answer | undefined; disabled?: boolean; onAnswer: (answer: Answer) => void }`; components `SingleChoiceView`, `MultiSelectView`, `TrueFalseView`, `QuestionView`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 `src/ui/components/QuestionView.test.tsx`:
 ```tsx
@@ -1387,12 +1387,12 @@ describe("QuestionView", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/ui/components/QuestionView.test.tsx`
 Expected: FAIL — cannot find module `./QuestionView`.
 
-- [ ] **Step 3: Write the per-type view components**
+- [x] **Step 3: Write the per-type view components**
 
 `src/ui/components/SingleChoiceView.tsx`:
 ```tsx
@@ -1478,7 +1478,7 @@ export function TrueFalseView({ question, answer, disabled, onAnswer }: Question
 }
 ```
 
-- [ ] **Step 4: Write the registry/dispatcher**
+- [x] **Step 4: Write the registry/dispatcher**
 
 `src/ui/components/QuestionView.tsx`:
 ```tsx
@@ -1513,12 +1513,12 @@ export function QuestionView(props: QuestionViewProps) {
 }
 ```
 
-- [ ] **Step 5: Run tests to verify they pass**
+- [x] **Step 5: Run tests to verify they pass**
 
 Run: `npx vitest run src/ui/components/QuestionView.test.tsx`
 Expected: PASS (3 passed).
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add -A
@@ -1537,7 +1537,7 @@ git commit -m "feat: add per-type question views and registry" -m "Co-Authored-B
 - Consumes: `Quiz` from `../../domain/schema`; `Answer`, `QuizResult` from `../../domain/models`.
 - Produces: `interface ResultsProps { quiz: Quiz; answers: Record<string, Answer>; result: QuizResult; onBackToMenu: () => void }`; component `Results`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 `src/ui/components/Results.test.tsx`:
 ```tsx
@@ -1572,12 +1572,12 @@ describe("Results", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/ui/components/Results.test.tsx`
 Expected: FAIL — cannot find module `./Results`.
 
-- [ ] **Step 3: Write `src/ui/components/Results.tsx`**
+- [x] **Step 3: Write `src/ui/components/Results.tsx`**
 
 ```tsx
 import type { Quiz, Question, Difficulty } from "../../domain/schema";
@@ -1644,12 +1644,12 @@ export function Results({ quiz, answers, result, onBackToMenu }: ResultsProps) {
 }
 ```
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [x] **Step 4: Run tests to verify they pass**
 
 Run: `npx vitest run src/ui/components/Results.test.tsx`
 Expected: PASS (1 passed).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add -A
@@ -1668,7 +1668,7 @@ git commit -m "feat: add results review component" -m "Co-Authored-By: Claude Op
 - Consumes: `Attempt` from `../../domain/models`.
 - Produces: `interface HistoryProps { attempts: Attempt[] }`; component `History`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 `src/ui/components/History.test.tsx`:
 ```tsx
@@ -1696,12 +1696,12 @@ describe("History", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/ui/components/History.test.tsx`
 Expected: FAIL — cannot find module `./History`.
 
-- [ ] **Step 3: Write `src/ui/components/History.tsx`**
+- [x] **Step 3: Write `src/ui/components/History.tsx`**
 
 ```tsx
 import type { Attempt } from "../../domain/models";
@@ -1733,12 +1733,12 @@ export function History({ attempts }: HistoryProps) {
 }
 ```
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [x] **Step 4: Run tests to verify they pass**
 
 Run: `npx vitest run src/ui/components/History.test.tsx`
 Expected: PASS (2 passed).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add -A
@@ -1757,7 +1757,7 @@ git commit -m "feat: add attempt history component" -m "Co-Authored-By: Claude O
 - Consumes: `Quiz` from `../../domain/schema`; `Attempt` from `../../domain/models`; `AttemptRepository` from `../../data/AttemptRepository`; `useQuizSession` from `../../session/useQuizSession`; `QuestionView`, `Results`, `History`.
 - Produces: `interface QuizRunnerProps { quiz: Quiz; attemptRepo: AttemptRepository; onExit: () => void }`; component `QuizRunner`. On submit it builds an `Attempt` from the result and calls `attemptRepo.save` exactly once.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 `src/ui/components/QuizRunner.test.tsx`:
 ```tsx
@@ -1793,12 +1793,12 @@ describe("QuizRunner", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/ui/components/QuizRunner.test.tsx`
 Expected: FAIL — cannot find module `./QuizRunner`.
 
-- [ ] **Step 3: Write `src/ui/components/QuizRunner.tsx`**
+- [x] **Step 3: Write `src/ui/components/QuizRunner.tsx`**
 
 ```tsx
 import { useEffect, useRef } from "react";
@@ -1874,12 +1874,12 @@ export function QuizRunner({ quiz, attemptRepo, onExit }: QuizRunnerProps) {
 }
 ```
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [x] **Step 4: Run tests to verify they pass**
 
 Run: `npx vitest run src/ui/components/QuizRunner.test.tsx`
 Expected: PASS (1 passed).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add -A
@@ -1898,7 +1898,7 @@ git commit -m "feat: add exam-flow quiz runner" -m "Co-Authored-By: Claude Opus 
 - Consumes: `Quiz` from `../../domain/schema`; `QuizRepository`, `QuizListing` from `../../data/QuizRepository`.
 - Produces: `interface QuizMenuProps { repository: QuizRepository; onSelect: (quiz: Quiz) => void }`; component `QuizMenu`. Renders a loading state, an empty state, a list of quizzes (title + question count), and any load errors.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 `src/ui/components/QuizMenu.test.tsx`:
 ```tsx
@@ -1942,12 +1942,12 @@ describe("QuizMenu", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/ui/components/QuizMenu.test.tsx`
 Expected: FAIL — cannot find module `./QuizMenu`.
 
-- [ ] **Step 3: Write `src/ui/components/QuizMenu.tsx`**
+- [x] **Step 3: Write `src/ui/components/QuizMenu.tsx`**
 
 ```tsx
 import { useEffect, useState } from "react";
@@ -2007,12 +2007,12 @@ export function QuizMenu({ repository, onSelect }: QuizMenuProps) {
 }
 ```
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [x] **Step 4: Run tests to verify they pass**
 
 Run: `npx vitest run src/ui/components/QuizMenu.test.tsx`
 Expected: PASS (3 passed).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add -A
@@ -2033,7 +2033,7 @@ git commit -m "feat: add quiz menu with empty and error states" -m "Co-Authored-
 - Consumes: `Quiz` from `./domain/schema`; `GlobQuizRepository` from `./data/GlobQuizRepository`; `createAttemptRepository` from `./data/createAttemptRepository`; `QuizMenu`, `QuizRunner`.
 - Produces: component `App` wiring `import.meta.glob("./quizzes/*.json")` into a `GlobQuizRepository`, a process-wide `AttemptRepository`, and menu↔runner navigation.
 
-- [ ] **Step 1: Write the example quiz dataset**
+- [x] **Step 1: Write the example quiz dataset**
 
 `src/quizzes/example.json`:
 ```json
@@ -2083,7 +2083,7 @@ git commit -m "feat: add quiz menu with empty and error states" -m "Co-Authored-
 }
 ```
 
-- [ ] **Step 2: Write the failing test**
+- [x] **Step 2: Write the failing test**
 
 `src/App.test.tsx`:
 ```tsx
@@ -2099,12 +2099,12 @@ describe("App", () => {
 });
 ```
 
-- [ ] **Step 3: Run test to verify it fails**
+- [x] **Step 3: Run test to verify it fails**
 
 Run: `npx vitest run src/App.test.tsx`
 Expected: FAIL — cannot find module `./App`.
 
-- [ ] **Step 4: Write `src/App.tsx`**
+- [x] **Step 4: Write `src/App.tsx`**
 
 ```tsx
 import { useMemo, useState } from "react";
@@ -2129,7 +2129,7 @@ export function App() {
 }
 ```
 
-- [ ] **Step 5: Update `src/main.tsx` to render the app**
+- [x] **Step 5: Update `src/main.tsx` to render the app**
 
 Replace the entire file contents:
 ```tsx
@@ -2145,12 +2145,12 @@ createRoot(document.getElementById("root")!).render(
 );
 ```
 
-- [ ] **Step 6: Run the full test suite and typecheck**
+- [x] **Step 6: Run the full test suite and typecheck**
 
 Run: `npm test && npx tsc --noEmit`
 Expected: all test files PASS, `tsc` reports no errors.
 
-- [ ] **Step 7: Manual verification in the browser**
+- [x] **Step 7: Manual verification in the browser**
 
 Run: `npm run dev`
 Then open the printed URL and confirm:
@@ -2160,7 +2160,7 @@ Then open the printed URL and confirm:
 - Reloading and retaking adds a second row to "Past attempts" (localStorage working).
 Stop the dev server when done (Ctrl+C).
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add -A

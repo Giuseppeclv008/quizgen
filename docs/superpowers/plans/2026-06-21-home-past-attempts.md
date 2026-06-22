@@ -1,6 +1,6 @@
 # Home "Past attempts" Screen Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Add a "Past attempts" button on the home that opens a dedicated, grouped history screen with a Back button.
 
@@ -36,7 +36,7 @@
   ```
   When `showTitle` is true, the table renders a "Quiz" column (header + cell showing `a.quizTitle`) before the Score column. When omitted/false, the table is Date + Score only (unchanged). Empty state ("No past attempts yet.") unchanged.
 
-- [ ] **Step 1: Write the failing tests**
+- [x] **Step 1: Write the failing tests**
 
 Append two tests to `src/ui/components/History.test.tsx` (inside the existing `describe("History", ...)`). The existing fixture `attempts` has one attempt with `quizTitle: "T"`:
 
@@ -53,12 +53,12 @@ it("omits the quiz title column by default", () => {
 });
 ```
 
-- [ ] **Step 2: Run the tests to verify they fail**
+- [x] **Step 2: Run the tests to verify they fail**
 
 Run: `npx vitest run src/ui/components/History.test.tsx`
 Expected: the two new tests FAIL ("Quiz" header not rendered; title "T" not found).
 
-- [ ] **Step 3: Implement the column**
+- [x] **Step 3: Implement the column**
 
 Overwrite `src/ui/components/History.tsx`:
 
@@ -95,12 +95,12 @@ export function History({ attempts, showTitle = false }: HistoryProps) {
 }
 ```
 
-- [ ] **Step 4: Run the tests to verify they pass**
+- [x] **Step 4: Run the tests to verify they pass**
 
 Run: `npx vitest run src/ui/components/History.test.tsx`
 Expected: PASS (all History tests, including the two existing ones).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/ui/components/History.tsx src/ui/components/History.test.tsx
@@ -127,7 +127,7 @@ git commit -m "feat: optional title column in history table"
   ```
   Renders the empty state when `groups` has no keys. Otherwise renders one section per group (heading + `<History showTitle>` table), groups ordered by most recent attempt desc, rows within a group sorted by timestamp desc. A "Back" button always calls `onBack`.
 
-- [ ] **Step 1: Write the failing tests**
+- [x] **Step 1: Write the failing tests**
 
 Create `src/ui/components/HistoryScreen.test.tsx`:
 
@@ -192,12 +192,12 @@ describe("HistoryScreen", () => {
 });
 ```
 
-- [ ] **Step 2: Run the tests to verify they fail**
+- [x] **Step 2: Run the tests to verify they fail**
 
 Run: `npx vitest run src/ui/components/HistoryScreen.test.tsx`
 Expected: FAIL — `HistoryScreen` module does not exist.
 
-- [ ] **Step 3: Implement the component**
+- [x] **Step 3: Implement the component**
 
 Create `src/ui/components/HistoryScreen.tsx`:
 
@@ -246,12 +246,12 @@ export function HistoryScreen({ groups, onBack }: HistoryScreenProps) {
 }
 ```
 
-- [ ] **Step 4: Run the tests to verify they pass**
+- [x] **Step 4: Run the tests to verify they pass**
 
 Run: `npx vitest run src/ui/components/HistoryScreen.test.tsx`
 Expected: PASS (all 5 tests).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/ui/components/HistoryScreen.tsx src/ui/components/HistoryScreen.test.tsx
@@ -269,7 +269,7 @@ git commit -m "feat: grouped past-attempts history screen"
 **Interfaces:**
 - Produces: `QuizMenuProps` gains `onShowHistory: () => void`. A "Past attempts" button (always rendered, including the empty/no-topics state) calls it.
 
-- [ ] **Step 1: Write the failing tests**
+- [x] **Step 1: Write the failing tests**
 
 The existing `QuizMenu.test.tsx` renders `<QuizMenu topics=... errors=... onStart=... />`. Every render now needs `onShowHistory`. Update the existing renders to pass `onShowHistory={vi.fn()}`, then add two tests inside `describe("QuizMenu", ...)`:
 
@@ -289,12 +289,12 @@ it("shows Past attempts even when there are no topics", () => {
 
 For reference, the existing tests in this file use a `topics` fixture of `TopicGroup[]` and import `userEvent`; keep those imports. Update the three existing `render(<QuizMenu ... />)` calls (the onStart/disabled/empty/errors tests) to include `onShowHistory={vi.fn()}` so they typecheck.
 
-- [ ] **Step 2: Run the tests to verify they fail**
+- [x] **Step 2: Run the tests to verify they fail**
 
 Run: `npx vitest run src/ui/components/QuizMenu.test.tsx`
 Expected: FAIL — `onShowHistory` not a prop / no "Past attempts" button.
 
-- [ ] **Step 3: Implement the button**
+- [x] **Step 3: Implement the button**
 
 In `src/ui/components/QuizMenu.tsx`:
 
@@ -318,12 +318,12 @@ Add the button right after the `<p className="lede">…</p>` line (so it shows i
 
 Leave the rest of the component unchanged.
 
-- [ ] **Step 4: Run the tests to verify they pass**
+- [x] **Step 4: Run the tests to verify they pass**
 
 Run: `npx vitest run src/ui/components/QuizMenu.test.tsx`
 Expected: PASS (existing + two new tests).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/ui/components/QuizMenu.tsx src/ui/components/QuizMenu.test.tsx
@@ -341,7 +341,7 @@ git commit -m "feat: add past-attempts button to quiz menu"
 **Interfaces:**
 - Consumes: `QuizMenu` `onShowHistory` (Task 3); `HistoryScreen` (Task 2); `attemptRepo.allByQuiz()`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Append to `src/App.test.tsx` (inside `describe("App", ...)`):
 
@@ -357,12 +357,12 @@ it("opens the past-attempts screen from the menu and returns", async () => {
 
 Ensure `userEvent` is imported at the top of the file (`import userEvent from "@testing-library/user-event";`) — the existing App tests already import it; if not, add it.
 
-- [ ] **Step 2: Run the test to verify it fails**
+- [x] **Step 2: Run the test to verify it fails**
 
 Run: `npx vitest run src/App.test.tsx`
 Expected: FAIL — no "Past attempts" button wired in App yet.
 
-- [ ] **Step 3: Wire App**
+- [x] **Step 3: Wire App**
 
 In `src/App.tsx`:
 
@@ -396,7 +396,7 @@ Replace the render tail (from `if (active)` to the end of the component) with:
   );
 ```
 
-- [ ] **Step 4: Run the test, then the full suite, typecheck, and build**
+- [x] **Step 4: Run the test, then the full suite, typecheck, and build**
 
 Run: `npx vitest run src/App.test.tsx`
 Expected: PASS.
@@ -407,7 +407,7 @@ Expected: no type errors; all tests PASS.
 Run: `npm run build`
 Expected: build succeeds.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/App.tsx src/App.test.tsx
@@ -423,7 +423,7 @@ git commit -m "feat: wire past-attempts screen into app navigation"
 
 **Interfaces:** none (visual only). Uses classes from Tasks 2-3: `.history-screen`, `.history-group`. The `.ghost` button class and `.history` table already exist in `app.css`.
 
-- [ ] **Step 1: Add styles**
+- [x] **Step 1: Add styles**
 
 Append to `src/app.css`, matching the existing design language (reuse spacing already used by other screens/sections):
 
@@ -435,12 +435,12 @@ Append to `src/app.css`, matching the existing design language (reuse spacing al
 
 If `app.css` defines spacing/radius custom properties (e.g. `--r-sm`) used by sibling rules, prefer those tokens over literals where one applies.
 
-- [ ] **Step 2: Verify the build**
+- [x] **Step 2: Verify the build**
 
 Run: `npm run build`
 Expected: build succeeds.
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src/app.css

@@ -1,6 +1,6 @@
 # By-PDF Selection Mode Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Add a tabbed home with a new "By PDF" mode (mix questions across chosen PDF quiz files) alongside the existing "By topic" mode.
 
@@ -35,7 +35,7 @@
   ```
   `collectSources` returns one group per quiz, in input order (`quizId`/`title` from the quiz). `assembleFromSources` filters to selected ids, even-split + redistribute via the shared `pickEvenly`, shuffles final order; title = selected PDF titles joined ", ". The existing `assembleQuiz` keeps its public signature and now delegates to `pickEvenly` (behavior unchanged).
 
-- [ ] **Step 1: Write the failing tests**
+- [x] **Step 1: Write the failing tests**
 
 Append to `src/domain/topics.test.ts` (the file already defines `tf`, `quiz`, `rng0`, and `countByTopic`). First add an import update and a source-quiz helper near the other helpers:
 
@@ -108,12 +108,12 @@ describe("assembleFromSources", () => {
 });
 ```
 
-- [ ] **Step 2: Run the tests to verify they fail**
+- [x] **Step 2: Run the tests to verify they fail**
 
 Run: `npx vitest run src/domain/topics.test.ts`
 Expected: the new `collectSources`/`assembleFromSources` tests FAIL (functions not exported). Existing `collectTopics`/`assembleQuiz` tests still pass.
 
-- [ ] **Step 3: Implement the domain changes**
+- [x] **Step 3: Implement the domain changes**
 
 Overwrite `src/domain/topics.ts`:
 ```ts
@@ -206,12 +206,12 @@ export function assembleFromSources(
 }
 ```
 
-- [ ] **Step 4: Run the tests to verify they pass**
+- [x] **Step 4: Run the tests to verify they pass**
 
 Run: `npx vitest run src/domain/topics.test.ts`
 Expected: PASS — all `collectTopics`, `assembleQuiz`, `collectSources`, `assembleFromSources` tests.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/domain/topics.ts src/domain/topics.test.ts
@@ -237,7 +237,7 @@ git commit -m "feat: add source axis and shared pickEvenly to quiz assembly"
   ```
   Checkbox per topic (name + count), max input (default = total across topics, min 1, max = total), Start button disabled until ≥1 topic selected; `onStart` fires with selected topic names and the clamped max. (This is the current QuizMenu topic UI, extracted.)
 
-- [ ] **Step 1: Write the failing tests**
+- [x] **Step 1: Write the failing tests**
 
 Create `src/ui/components/TopicSelector.test.tsx`:
 ```ts
@@ -275,12 +275,12 @@ describe("TopicSelector", () => {
 });
 ```
 
-- [ ] **Step 2: Run the tests to verify they fail**
+- [x] **Step 2: Run the tests to verify they fail**
 
 Run: `npx vitest run src/ui/components/TopicSelector.test.tsx`
 Expected: FAIL — module does not exist.
 
-- [ ] **Step 3: Implement the component**
+- [x] **Step 3: Implement the component**
 
 Create `src/ui/components/TopicSelector.tsx`:
 ```tsx
@@ -342,12 +342,12 @@ export function TopicSelector({ topics, onStart }: TopicSelectorProps) {
 }
 ```
 
-- [ ] **Step 4: Run the tests to verify they pass**
+- [x] **Step 4: Run the tests to verify they pass**
 
 Run: `npx vitest run src/ui/components/TopicSelector.test.tsx`
 Expected: PASS.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/ui/components/TopicSelector.tsx src/ui/components/TopicSelector.test.tsx
@@ -373,7 +373,7 @@ git commit -m "feat: extract topic selector component"
   ```
   Checkbox per PDF (`title` + question count), max input (default = total questions across all sources, min 1, max = total), Start button disabled until ≥1 PDF selected; `onStart` fires with the selected quiz ids and the clamped max.
 
-- [ ] **Step 1: Write the failing tests**
+- [x] **Step 1: Write the failing tests**
 
 Create `src/ui/components/PdfSelector.test.tsx`:
 ```ts
@@ -418,12 +418,12 @@ describe("PdfSelector", () => {
 });
 ```
 
-- [ ] **Step 2: Run the tests to verify they fail**
+- [x] **Step 2: Run the tests to verify they fail**
 
 Run: `npx vitest run src/ui/components/PdfSelector.test.tsx`
 Expected: FAIL — module does not exist.
 
-- [ ] **Step 3: Implement the component**
+- [x] **Step 3: Implement the component**
 
 Create `src/ui/components/PdfSelector.tsx`:
 ```tsx
@@ -485,12 +485,12 @@ export function PdfSelector({ sources, onStart }: PdfSelectorProps) {
 }
 ```
 
-- [ ] **Step 4: Run the tests to verify they pass**
+- [x] **Step 4: Run the tests to verify they pass**
 
 Run: `npx vitest run src/ui/components/PdfSelector.test.tsx`
 Expected: PASS.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/ui/components/PdfSelector.tsx src/ui/components/PdfSelector.test.tsx
@@ -522,7 +522,7 @@ git commit -m "feat: add pdf selector component"
 
 Note: after this task `src/App.tsx` still passes the OLD QuizMenu props (`topics`/`onStart`), so `npx tsc --noEmit` will fail on App.tsx — EXPECTED, fixed in Task 5. The QuizMenu test must pass.
 
-- [ ] **Step 1: Overwrite the test**
+- [x] **Step 1: Overwrite the test**
 
 Overwrite `src/ui/components/QuizMenu.test.tsx`:
 ```ts
@@ -582,12 +582,12 @@ describe("QuizMenu", () => {
 });
 ```
 
-- [ ] **Step 2: Run the test to verify it fails**
+- [x] **Step 2: Run the test to verify it fails**
 
 Run: `npx vitest run src/ui/components/QuizMenu.test.tsx`
 Expected: FAIL — QuizMenu still has the old props/markup (no tabs, no PdfSelector).
 
-- [ ] **Step 3: Rewrite the component**
+- [x] **Step 3: Rewrite the component**
 
 Overwrite `src/ui/components/QuizMenu.tsx`:
 ```tsx
@@ -670,12 +670,12 @@ export function QuizMenu({
 }
 ```
 
-- [ ] **Step 4: Run the test to verify it passes**
+- [x] **Step 4: Run the test to verify it passes**
 
 Run: `npx vitest run src/ui/components/QuizMenu.test.tsx`
 Expected: PASS.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/ui/components/QuizMenu.tsx src/ui/components/QuizMenu.test.tsx
@@ -693,7 +693,7 @@ git commit -m "feat: tab the quiz menu between pdf and topic modes"
 **Interfaces:**
 - Consumes: `collectTopics`, `collectSources`, `assembleQuiz`, `assembleFromSources` (Task 1); the new `QuizMenu` props (Task 4).
 
-- [ ] **Step 1: Overwrite the App test**
+- [x] **Step 1: Overwrite the App test**
 
 Overwrite `src/App.test.tsx`:
 ```tsx
@@ -733,12 +733,12 @@ describe("App", () => {
 });
 ```
 
-- [ ] **Step 2: Run the test to verify it fails**
+- [x] **Step 2: Run the test to verify it fails**
 
 Run: `npx vitest run src/App.test.tsx`
 Expected: FAIL — App still renders the old single-mode QuizMenu.
 
-- [ ] **Step 3: Wire App**
+- [x] **Step 3: Wire App**
 
 Overwrite `src/App.tsx`:
 ```tsx
@@ -808,7 +808,7 @@ export function App() {
 }
 ```
 
-- [ ] **Step 4: Run the test, then full suite, typecheck, build**
+- [x] **Step 4: Run the test, then full suite, typecheck, build**
 
 Run: `npx vitest run src/App.test.tsx`
 Expected: PASS.
@@ -819,7 +819,7 @@ Expected: no type errors; all tests PASS.
 Run: `npm run build`
 Expected: build succeeds.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/App.tsx src/App.test.tsx
@@ -835,7 +835,7 @@ git commit -m "feat: wire pdf and topic start modes into app"
 
 **Interfaces:** none (visual only). Uses classes from Task 4: `.tabs`, `.tab`, `.tab.is-active`, and `.selector`/`.pdf-list` from Tasks 2-3. `.topic-row`, `.topic-list`, `.max-field` already exist and are reused.
 
-- [ ] **Step 1: Add styles**
+- [x] **Step 1: Add styles**
 
 First READ `src/app.css` to match its conventions and reuse any existing tokens (e.g. `--r-sm`, `--line`, accent color). Then append, adapting the literals below to the existing token names where one applies:
 ```css
@@ -846,12 +846,12 @@ First READ `src/app.css` to match its conventions and reuse any existing tokens 
 ```
 If `--line` or `--r-sm` are not defined in `app.css`, substitute the border color / radius the existing `.topic-row` rule uses.
 
-- [ ] **Step 2: Verify the build**
+- [x] **Step 2: Verify the build**
 
 Run: `npm run build`
 Expected: build succeeds.
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src/app.css

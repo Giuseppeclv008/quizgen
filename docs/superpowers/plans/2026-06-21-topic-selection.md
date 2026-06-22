@@ -1,6 +1,6 @@
 # Topic Selection & Question Cap Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Let the user pick multiple topics across all quizzes and a max question count, then run a combined quiz evenly split across the selected topics.
 
@@ -20,7 +20,7 @@
 
 ### Task 0: Create feature branch
 
-- [ ] **Step 1: Branch off main**
+- [x] **Step 1: Branch off main**
 
 Run:
 ```bash
@@ -40,7 +40,7 @@ Expected: `Switched to a new branch 'feat/topic-selection'`
 **Interfaces:**
 - Produces: `Question` now includes `topic: string` (min length 1); `baseFields` carries `topic: z.string().min(1)`.
 
-- [ ] **Step 1: Add the failing test**
+- [x] **Step 1: Add the failing test**
 
 In `src/domain/schema.test.ts`, add inside `describe("quizSchema", ...)`:
 
@@ -64,12 +64,12 @@ Also add `topic` to each question in the `validQuiz` fixture at the top of the f
   correctValue: true, explanation: "e" },
 ```
 
-- [ ] **Step 2: Run the test to verify it fails**
+- [x] **Step 2: Run the test to verify it fails**
 
 Run: `npx vitest run src/domain/schema.test.ts`
 Expected: the new "rejects a question with no topic" test FAILS (topic not yet required; parse still succeeds).
 
-- [ ] **Step 3: Add the field**
+- [x] **Step 3: Add the field**
 
 In `src/domain/schema.ts`, add `topic` to `baseFields`:
 
@@ -83,7 +83,7 @@ const baseFields = {
 };
 ```
 
-- [ ] **Step 4: Fix all other Question/Quiz fixtures so typecheck passes**
+- [x] **Step 4: Fix all other Question/Quiz fixtures so typecheck passes**
 
 Find every file constructing question literals:
 ```bash
@@ -91,12 +91,12 @@ grep -rln '"single_choice"\|"true_false"\|"multi_select"\|type: "true_false"\|ty
 ```
 For each question literal in those files (test fixtures in e.g. `src/ui/components/*.test.tsx`, `src/session/*.test.ts`, `src/domain/grading/*.test.ts`, `src/data/*.test.ts`, `src/test/smoke.test.ts`), add `topic: "General"` (any non-empty string) right after the `difficulty` field. Do NOT touch the JSON quiz files here — those are Task 2.
 
-- [ ] **Step 5: Run typecheck and full test suite**
+- [x] **Step 5: Run typecheck and full test suite**
 
 Run: `npx tsc --noEmit && npx vitest run`
 Expected: tsc reports no errors; all tests PASS **except** any that load the real JSON quizzes (`GlobQuizRepository.test.ts`, `App.test.tsx`, `smoke.test.ts` if they parse `src/quizzes/*.json`). If those fail because the JSON lacks `topic`, that is expected and fixed in Task 2 — note which failed and proceed.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/domain/schema.ts src/domain/schema.test.ts src
@@ -114,14 +114,14 @@ git commit -m "feat: require topic field on every question"
 **Interfaces:**
 - Produces: both bundled quizzes parse under the new schema; ≥3 distinct topics exist across them.
 
-- [ ] **Step 1: Tag example.json**
+- [x] **Step 1: Tag example.json**
 
 Add a `"topic"` field to each of the three questions:
 - `q1` (planet closest to Sun): `"topic": "Astronomy"`
 - `q2` (noble gases): `"topic": "Chemistry"`
 - `q3` (water boiling point): `"topic": "Physics"`
 
-- [ ] **Step 2: Tag microservices.json**
+- [x] **Step 2: Tag microservices.json**
 
 Add a `"topic"` field to every question in `src/quizzes/microservices.json`. Read each `prompt` and assign the best-fit topic from this fixed list:
 
@@ -134,7 +134,7 @@ Add a `"topic"` field to every question in `src/quizzes/microservices.json`. Rea
 
 Assign each question to exactly one topic. Every question must end up with a non-empty `topic`.
 
-- [ ] **Step 3: Verify both JSON files parse and topics are present**
+- [x] **Step 3: Verify both JSON files parse and topics are present**
 
 Run: `npx vitest run`
 Expected: ALL tests PASS now (including the JSON-loading tests that were allowed to fail in Task 1).
@@ -145,7 +145,7 @@ grep -h '"topic"' src/quizzes/microservices.json | sort -u
 ```
 Expected: at least 3 distinct topic values.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/quizzes/example.json src/quizzes/microservices.json
@@ -169,7 +169,7 @@ git commit -m "feat: tag bundled quizzes with topics"
   ```
   Groups every question across all quizzes by its `topic`, one `TopicGroup` per distinct topic, sorted ascending by `topic`. Question order within a group follows quiz order then in-quiz order.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Create `src/domain/topics.test.ts`:
 
@@ -202,12 +202,12 @@ describe("collectTopics", () => {
 });
 ```
 
-- [ ] **Step 2: Run the test to verify it fails**
+- [x] **Step 2: Run the test to verify it fails**
 
 Run: `npx vitest run src/domain/topics.test.ts`
 Expected: FAIL — `collectTopics` is not defined / module missing.
 
-- [ ] **Step 3: Implement `collectTopics`**
+- [x] **Step 3: Implement `collectTopics`**
 
 Create `src/domain/topics.ts`:
 
@@ -234,12 +234,12 @@ export function collectTopics(quizzes: Quiz[]): TopicGroup[] {
 }
 ```
 
-- [ ] **Step 4: Run the test to verify it passes**
+- [x] **Step 4: Run the test to verify it passes**
 
 Run: `npx vitest run src/domain/topics.test.ts`
 Expected: PASS.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/domain/topics.ts src/domain/topics.test.ts
@@ -267,7 +267,7 @@ git commit -m "feat: collect questions into topic groups"
   ```
   Builds a synthetic `Quiz` from groups whose `topic` is in `selectedTopics`. Allocation is round-robin water-fill: walk selected topics repeatedly granting one slot each pass to any topic with unused questions, until `cap` slots are filled or the pool is exhausted (so leftover slots from small topics flow to larger ones). Within each topic, questions are shuffled with `rng` then sliced to the allotment. The combined list is shuffled with `rng` for final order. Metadata: `id: "combined"`, `source: "combined"`, `createdAt` = `new Date().toISOString().slice(0, 10)`, `title` = the selected topics joined with `", "`.
 
-- [ ] **Step 1: Write the failing tests**
+- [x] **Step 1: Write the failing tests**
 
 Append to `src/domain/topics.test.ts`:
 
@@ -335,12 +335,12 @@ function countByTopic(quiz: { questions: { topic: string }[] }): Record<string, 
 }
 ```
 
-- [ ] **Step 2: Run the tests to verify they fail**
+- [x] **Step 2: Run the tests to verify they fail**
 
 Run: `npx vitest run src/domain/topics.test.ts`
 Expected: the `assembleQuiz` tests FAIL — function not defined.
 
-- [ ] **Step 3: Implement `assembleQuiz`**
+- [x] **Step 3: Implement `assembleQuiz`**
 
 In `src/domain/topics.ts`, update the import and add the function:
 
@@ -388,12 +388,12 @@ export function assembleQuiz(
 }
 ```
 
-- [ ] **Step 4: Run the tests to verify they pass**
+- [x] **Step 4: Run the tests to verify they pass**
 
 Run: `npx vitest run src/domain/topics.test.ts`
 Expected: PASS (all `collectTopics` and `assembleQuiz` tests).
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/domain/topics.ts src/domain/topics.test.ts
@@ -420,7 +420,7 @@ git commit -m "feat: assemble capped quiz evenly split across topics"
   ```
   Presentational only — no data loading. Renders a checkbox per topic (label shows topic name and question count), a number input for max questions (default = total questions across all topics, min 1, max = that total), and a Start button disabled until ≥1 topic is checked. Empty state when `topics` is empty; error list when `errors` is non-empty.
 
-- [ ] **Step 1: Replace the test file**
+- [x] **Step 1: Replace the test file**
 
 Overwrite `src/ui/components/QuizMenu.test.tsx`:
 
@@ -469,12 +469,12 @@ describe("QuizMenu", () => {
 });
 ```
 
-- [ ] **Step 2: Run the test to verify it fails**
+- [x] **Step 2: Run the test to verify it fails**
 
 Run: `npx vitest run src/ui/components/QuizMenu.test.tsx`
 Expected: FAIL — current `QuizMenu` takes `repository`/`onSelect`, not the new props.
 
-- [ ] **Step 3: Rewrite the component**
+- [x] **Step 3: Rewrite the component**
 
 Overwrite `src/ui/components/QuizMenu.tsx`:
 
@@ -563,12 +563,12 @@ export function QuizMenu({ topics, errors, onStart }: QuizMenuProps) {
 }
 ```
 
-- [ ] **Step 4: Run the test to verify it passes**
+- [x] **Step 4: Run the test to verify it passes**
 
 Run: `npx vitest run src/ui/components/QuizMenu.test.tsx`
 Expected: PASS.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/ui/components/QuizMenu.tsx src/ui/components/QuizMenu.test.tsx
@@ -586,7 +586,7 @@ git commit -m "feat: turn quiz menu into a topic selector"
 **Interfaces:**
 - Consumes: `collectTopics`, `assembleQuiz` (Tasks 3-4); the new `QuizMenu` props (Task 5); `QuizRepository.list()` → `QuizListing`.
 
-- [ ] **Step 1: Update the App test**
+- [x] **Step 1: Update the App test**
 
 Overwrite `src/App.test.tsx`:
 
@@ -611,12 +611,12 @@ describe("App", () => {
 });
 ```
 
-- [ ] **Step 2: Run the test to verify it fails**
+- [x] **Step 2: Run the test to verify it fails**
 
 Run: `npx vitest run src/App.test.tsx`
 Expected: FAIL — App still renders the old quiz-card menu.
 
-- [ ] **Step 3: Rewrite App**
+- [x] **Step 3: Rewrite App**
 
 Overwrite `src/App.tsx`:
 
@@ -668,7 +668,7 @@ export function App() {
 }
 ```
 
-- [ ] **Step 4: Run the App test, then the full suite + typecheck**
+- [x] **Step 4: Run the App test, then the full suite + typecheck**
 
 Run: `npx vitest run src/App.test.tsx`
 Expected: PASS.
@@ -676,12 +676,12 @@ Expected: PASS.
 Run: `npx tsc --noEmit && npx vitest run`
 Expected: no type errors; all tests PASS.
 
-- [ ] **Step 5: Build to confirm the production bundle compiles**
+- [x] **Step 5: Build to confirm the production bundle compiles**
 
 Run: `npm run build`
 Expected: build succeeds.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/App.tsx src/App.test.tsx
@@ -697,7 +697,7 @@ git commit -m "feat: derive topics and assemble combined quiz in app"
 
 **Interfaces:** none (visual only). Uses class names from Task 5: `.topic-list`, `.topic-row`, `.t-name`, `.t-count`, `.max-field`.
 
-- [ ] **Step 1: Add styles**
+- [x] **Step 1: Add styles**
 
 Append to `src/app.css`, matching the existing visual language (reuse spacing/colors already defined for `.quiz-list`/`.quiz-card`):
 
@@ -712,12 +712,12 @@ Append to `src/app.css`, matching the existing visual language (reuse spacing/co
 
 If `src/app.css` does not define a `--border` custom property, replace `var(--border, #ddd)` with the literal border color used by `.quiz-card`.
 
-- [ ] **Step 2: Verify the app renders**
+- [x] **Step 2: Verify the app renders**
 
 Run: `npm run build`
 Expected: build succeeds.
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src/app.css
