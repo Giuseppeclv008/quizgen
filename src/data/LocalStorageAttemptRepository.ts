@@ -20,17 +20,17 @@ export class LocalStorageAttemptRepository implements AttemptRepository {
     this.storage.setItem(KEY, JSON.stringify(data));
   }
 
-  save(attempt: Attempt): void {
+  async save(attempt: Attempt): Promise<void> {
     const all = this.readAll();
     (all[attempt.quizId] ??= []).push(attempt);
     this.writeAll(all);
   }
 
-  listByQuiz(quizId: string): Attempt[] {
+  async listByQuiz(quizId: string): Promise<Attempt[]> {
     return this.readAll()[quizId] ?? [];
   }
 
-  allByQuiz(): Record<string, Attempt[]> {
+  async allByQuiz(): Promise<Record<string, Attempt[]>> {
     return this.readAll();
   }
 }

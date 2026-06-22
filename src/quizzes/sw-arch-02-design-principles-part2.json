@@ -1,0 +1,116 @@
+{
+  "id": "sw-arch-02-principles-2",
+  "title": "SW-ARCH 02 — Design Principles (LSP, ISP, DIP)",
+  "source": "SW-ARCH-02 - Design principles-part2.pdf",
+  "createdAt": "2026-06-22",
+  "questions": [
+    {
+      "id": "p2q1",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "LSP",
+      "prompt": "What does the Liskov Substitution Principle require of a subtype?",
+      "options": [
+        { "id": "a", "text": "A subtype can replace its supertype only if it behaves the same way (behavioral subtyping)" },
+        { "id": "b", "text": "A subtype must have fewer methods than its supertype" },
+        { "id": "c", "text": "A subtype must never be instantiated" },
+        { "id": "d", "text": "A subtype must depend on concrete classes" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "LSP: a subtype can replace its supertype only if it behaves the same way — behavioral subtyping means it follows the same rules, not just the same method signatures."
+    },
+    {
+      "id": "p2q2",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "LSP Violation",
+      "prompt": "Why is 'Bird b = new Duck(); b.fly();' used as an LSP violation example?",
+      "options": [
+        { "id": "a", "text": "Most familiar ducks cannot fly, so the substitution produces undefined behavior" },
+        { "id": "b", "text": "Ducks are not birds" },
+        { "id": "c", "text": "fly() is a private method" },
+        { "id": "d", "text": "Birds cannot be referenced by variables" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Most familiar ducks cannot fly, so substituting a Duck where a flying Bird is expected gives undefined behavior — an LSP violation."
+    },
+    {
+      "id": "p2q3",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "ISP",
+      "prompt": "What does the Interface Segregation Principle advise?",
+      "options": [
+        { "id": "a", "text": "Clients should not be forced to depend on operations or interfaces they do not use" },
+        { "id": "b", "text": "All clients should share one large interface" },
+        { "id": "c", "text": "Interfaces should never be split" },
+        { "id": "d", "text": "Clients should depend on concrete classes" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "ISP: clients should not be forced to depend on operations/interfaces they do not use — make fine-grained, client-specific interfaces."
+    },
+    {
+      "id": "p2q4",
+      "type": "true_false",
+      "difficulty": "hard",
+      "topic": "ISP at Architecture Level",
+      "prompt": "In a statically typed language, leaving unused operations in a module can force useless recompilations and redeployments of dependents.",
+      "correctValue": true,
+      "explanation": "ISP at the architectural level: remove useless operations from modules, otherwise they force useless redeployments and failures in unused features may cascade."
+    },
+    {
+      "id": "p2q5",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "DIP",
+      "prompt": "According to the Dependency Inversion Principle, the most flexible systems have source code dependencies that refer only to...",
+      "options": [
+        { "id": "a", "text": "Abstractions, not concretions" },
+        { "id": "b", "text": "Concrete implementations" },
+        { "id": "c", "text": "The main function" },
+        { "id": "d", "text": "Database tables" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "DIP: the most flexible systems are those whose source code dependencies refer only to abstractions, not concretions (as much as possible)."
+    },
+    {
+      "id": "p2q6",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "DIP Rules",
+      "prompt": "Which practical rules does the DIP suggest?",
+      "options": [
+        { "id": "a", "text": "Don't refer to volatile concrete classes" },
+        { "id": "b", "text": "Don't override concrete functions" },
+        { "id": "c", "text": "Never mention the name of anything concrete and volatile" },
+        { "id": "d", "text": "Always depend on the most volatile implementation" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "DIP rules: don't refer to (or from) volatile concrete classes, don't override concrete functions, and never mention the name of anything concrete and volatile."
+    },
+    {
+      "id": "p2q7",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "DIP Reality",
+      "prompt": "DIP violations can be entirely removed from any system in practice.",
+      "correctValue": false,
+      "explanation": "DIP violations cannot be entirely removed — each system has at least one concrete component (e.g. main); violations should be minimized and kept separate."
+    },
+    {
+      "id": "p2q8",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Dependency Inversion",
+      "prompt": "In dependency inversion, in which direction does the flow of control cross the separation line relative to source-code dependencies?",
+      "options": [
+        { "id": "a", "text": "The opposite direction to the source-code dependencies" },
+        { "id": "b", "text": "The same direction as the source-code dependencies" },
+        { "id": "c", "text": "Control never crosses the line" },
+        { "id": "d", "text": "It depends on the database" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "All source-code dependencies point toward the abstract level, while the flow of control crosses the separation line in the opposite direction — the essence of 'dependency inversion'."
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "id": "sw-arch-03-components",
+  "title": "SW-ARCH 03 — Component Principles",
+  "source": "SW-ARCH-03 - Components.pdf",
+  "createdAt": "2026-06-22",
+  "questions": [
+    {
+      "id": "c3q1",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Component Identification",
+      "prompt": "Which approaches are suggested for the initial identification of components?",
+      "options": [
+        { "id": "a", "text": "Best guess (based on core functionalities)" },
+        { "id": "b", "text": "Workflow (based on the happy path)" },
+        { "id": "c", "text": "Actor/action (based on major user actions)" },
+        { "id": "d", "text": "Random assignment" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Three initial identification approaches: best guess, workflow, and actor/action — all refined iteratively."
+    },
+    {
+      "id": "c3q2",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Cohesion Principles",
+      "prompt": "Which are the three component cohesion principles?",
+      "options": [
+        { "id": "a", "text": "Reuse/Release Equivalence Principle (REP)" },
+        { "id": "b", "text": "Common Closure Principle (CCP)" },
+        { "id": "c", "text": "Common Reuse Principle (CRP)" },
+        { "id": "d", "text": "Acyclic Dependencies Principle (ADP)" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Cohesion principles are REP, CCP, and CRP; ADP is a coupling principle."
+    },
+    {
+      "id": "c3q3",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Coupling Principles",
+      "prompt": "What does the Acyclic Dependencies Principle (ADP) require?",
+      "options": [
+        { "id": "a", "text": "The dependency graph of packages must have no cycles" },
+        { "id": "b", "text": "Every package must depend on every other" },
+        { "id": "c", "text": "Packages may form cycles if small" },
+        { "id": "d", "text": "Dependencies must point away from stability" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "ADP: the dependency graph of packages must have no cycles — you cannot return to the origin by following dependencies."
+    },
+    {
+      "id": "c3q4",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Stability Metric",
+      "prompt": "How is instability I computed for a component?",
+      "options": [
+        { "id": "a", "text": "I = Fan-out / (Fan-in + Fan-out)" },
+        { "id": "b", "text": "I = Fan-in / (Fan-in + Fan-out)" },
+        { "id": "c", "text": "I = Fan-in × Fan-out" },
+        { "id": "d", "text": "I = Fan-out − Fan-in" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Instability I = Fan-out / (Fan-in + Fan-out): I=0 is maximally stable, I=1 maximally unstable."
+    },
+    {
+      "id": "c3q5",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Stable Dependencies",
+      "prompt": "The Stable Dependencies Principle says you should depend in the direction of stability, and stability is about the amount of work required to make a change.",
+      "correctValue": true,
+      "explanation": "SDP: depend in the direction of stability. Stability is not change frequency but the effort needed to change something (the cupboard vs. cup analogy)."
+    },
+    {
+      "id": "c3q6",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Abstractness Metric",
+      "prompt": "How is abstractness A of a component measured?",
+      "options": [
+        { "id": "a", "text": "A = (number of abstract classes and interfaces) / (total number of classes)" },
+        { "id": "b", "text": "A = total classes / abstract classes" },
+        { "id": "c", "text": "A = lines of code / classes" },
+        { "id": "d", "text": "A = Fan-in / Fan-out" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A = Na / Nc, where Na is abstract classes/interfaces and Nc is total classes; A=0 means no abstractions, A=1 only abstractions."
+    },
+    {
+      "id": "c3q7",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Main Sequence",
+      "prompt": "The distance D from the main sequence is computed as:",
+      "options": [
+        { "id": "a", "text": "D = |A + I − 1|" },
+        { "id": "b", "text": "D = A + I" },
+        { "id": "c", "text": "D = |A − I|" },
+        { "id": "d", "text": "D = A × I" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "D = |A + I − 1| measures distance from the main sequence; the zones of 'pain' and 'uselessness' lie at the extremes."
+    },
+    {
+      "id": "c3q8",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Conway's Law",
+      "prompt": "What does Conway's Law state?",
+      "options": [
+        { "id": "a", "text": "Organizations produce designs that are copies of their communication structures" },
+        { "id": "b", "text": "Software always grows to fill available memory" },
+        { "id": "c", "text": "Adding developers always speeds delivery" },
+        { "id": "d", "text": "Every system needs a microservices architecture" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Conway's Law: organizations that design systems are constrained to produce designs that copy their communication structures."
+    },
+    {
+      "id": "c3q9",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Architecture Characteristics",
+      "prompt": "Which is an operational architecture characteristic?",
+      "options": [
+        { "id": "a", "text": "Scalability" },
+        { "id": "b", "text": "Maintainability" },
+        { "id": "c", "text": "Testability" },
+        { "id": "d", "text": "Deployability" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Scalability (and elasticity, availability, fault tolerance) are operational characteristics; maintainability, testability, and deployability are engineering characteristics."
+    }
+  ]
+}

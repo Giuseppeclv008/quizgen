@@ -1,0 +1,131 @@
+{
+  "id": "design-patterns",
+  "title": "02 — Software Design Patterns",
+  "source": "02. SwDesignPatterns.pdf",
+  "createdAt": "2026-06-22",
+  "questions": [
+    {
+      "id": "dp1",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Pattern Basics",
+      "prompt": "A software pattern is best described as:",
+      "options": [
+        { "id": "a", "text": "A reusable solution to a known problem in a well-defined context" },
+        { "id": "b", "text": "A finished library you can import" },
+        { "id": "c", "text": "A programming language feature" },
+        { "id": "d", "text": "A type of unit test" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A pattern is a reusable solution to a known problem within a well-defined context, defined by context, problem (forces), and solution."
+    },
+    {
+      "id": "dp2",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "GoF Classification",
+      "prompt": "In the GoF classification, which category does the Singleton pattern belong to?",
+      "options": [
+        { "id": "a", "text": "Creational" },
+        { "id": "b", "text": "Structural" },
+        { "id": "c", "text": "Behavioral" },
+        { "id": "d", "text": "Architectural" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Singleton is a creational pattern, alongside Abstract Factory, Builder, Prototype, and Factory Method."
+    },
+    {
+      "id": "dp3",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Structural Patterns",
+      "prompt": "Which of the following are GoF structural patterns?",
+      "options": [
+        { "id": "a", "text": "Adapter" },
+        { "id": "b", "text": "Decorator" },
+        { "id": "c", "text": "Facade" },
+        { "id": "d", "text": "Observer" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Adapter, Decorator, and Facade are structural patterns; Observer is behavioral."
+    },
+    {
+      "id": "dp4",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Behavioral Patterns",
+      "prompt": "Which pattern embeds each behavioral variation inside an object passed as a parameter to an algorithm?",
+      "options": [
+        { "id": "a", "text": "Strategy" },
+        { "id": "b", "text": "Singleton" },
+        { "id": "c", "text": "Composite" },
+        { "id": "d", "text": "Flyweight" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Strategy embeds each variation in a strategy object implementing a common interface, passed to the algorithm (e.g. java.util.Comparator)."
+    },
+    {
+      "id": "dp5",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Template Method",
+      "prompt": "The Template Method pattern defines the stable core of an algorithm and lets subclasses provide variations at specific points via abstract primitive operations.",
+      "correctValue": true,
+      "explanation": "Template Method keeps a stable algorithm core that invokes abstract primitive operations overridden by subclasses (e.g. the Sorter/StringSorter example)."
+    },
+    {
+      "id": "dp6",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Proxy",
+      "prompt": "Which Proxy variant creates expensive objects only on demand?",
+      "options": [
+        { "id": "a", "text": "Virtual proxy" },
+        { "id": "b", "text": "Remote proxy" },
+        { "id": "c", "text": "Protection proxy" },
+        { "id": "d", "text": "Smart reference" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A virtual proxy creates expensive objects on demand (e.g. slow-loading resources); a remote proxy is a local representative for an object in another address space."
+    },
+    {
+      "id": "dp7",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "MVC",
+      "prompt": "In the MVC pattern, which part should remain as separate as possible from the user interface?",
+      "options": [
+        { "id": "a", "text": "The Model (application logic)" },
+        { "id": "b", "text": "The View" },
+        { "id": "c", "text": "The Controller" },
+        { "id": "d", "text": "The Event handler" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Application logic (the Model) must remain as separate as possible from the user interface (View = layout, Controller = events)."
+    },
+    {
+      "id": "dp8",
+      "type": "true_false",
+      "difficulty": "easy",
+      "topic": "Reuse",
+      "prompt": "Inheritance and composition are both ways to achieve reuse, but composition delegates requests to an included object.",
+      "correctValue": true,
+      "explanation": "With inheritance the reusing class inherits methods directly; with composition it holds an included object and delegates client requests to it."
+    },
+    {
+      "id": "dp9",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Pattern Types",
+      "prompt": "Which type of pattern expresses a fundamental structural organization schema for entire software systems?",
+      "options": [
+        { "id": "a", "text": "Architectural pattern" },
+        { "id": "b", "text": "Design pattern" },
+        { "id": "c", "text": "Idiom" },
+        { "id": "d", "text": "Anti-pattern" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Architectural patterns address system-wide structures; design patterns refine components; idioms are language-specific low-level patterns."
+    }
+  ]
+}

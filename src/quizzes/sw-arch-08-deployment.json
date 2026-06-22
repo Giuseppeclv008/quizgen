@@ -1,0 +1,107 @@
+{
+  "id": "sw-arch-08-deployment",
+  "title": "SW-ARCH 08 — Deployment",
+  "source": "SW-ARCH-08 - Deployment.pdf",
+  "createdAt": "2026-06-22",
+  "questions": [
+    {
+      "id": "dep1",
+      "type": "multi_select",
+      "difficulty": "easy",
+      "topic": "Infrastructure",
+      "prompt": "Which are the listed infrastructure deployment options?",
+      "options": [
+        { "id": "a", "text": "On premise" },
+        { "id": "b", "text": "Hosted" },
+        { "id": "c", "text": "Cloud" },
+        { "id": "d", "text": "Floppy disk" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Infrastructure deployment: on premise (own servers), hosted (third-party centers), and cloud (virtualized)."
+    },
+    {
+      "id": "dep2",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "In-place Upgrade",
+      "prompt": "What is a characteristic of an in-place upgrade?",
+      "options": [
+        { "id": "a", "text": "Installation on top of the current version, requiring downtime" },
+        { "id": "b", "text": "Two parallel environments with a load balancer" },
+        { "id": "c", "text": "Gradual traffic shift node by node" },
+        { "id": "d", "text": "Zero downtime always guaranteed" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "In-place upgrade installs on top of the current version, requires downtime, and preserves existing settings."
+    },
+    {
+      "id": "dep3",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Blue-Green",
+      "prompt": "In blue-green deployment, what is the role of the 'green' environment when 'blue' is in production?",
+      "options": [
+        { "id": "a", "text": "It is idle, used to deploy and test the new version before traffic is switched" },
+        { "id": "b", "text": "It serves all production traffic simultaneously" },
+        { "id": "c", "text": "It is permanently decommissioned" },
+        { "id": "d", "text": "It hosts the database only" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "In blue-green, blue runs the current app while green is idle; the new version is deployed and tested on green, then a load balancer switches all traffic to it."
+    },
+    {
+      "id": "dep4",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Canary",
+      "prompt": "What characterizes a canary deployment?",
+      "options": [
+        { "id": "a", "text": "Only a few nodes get the new version, receiving a minority of requests, then it scales up if healthy" },
+        { "id": "b", "text": "All nodes are upgraded at once" },
+        { "id": "c", "text": "Two complete environments are alternated" },
+        { "id": "d", "text": "The system is taken fully offline" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Canary ('canary in the coal mine'): a few nodes host the new version, the load balancer forwards a minority of requests, and the percentage increases incrementally if no issues."
+    },
+    {
+      "id": "dep5",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Canary vs Rolling",
+      "prompt": "With feature flags, canary exposes changes to a small group of users, whereas rolling exposes changes on a small group of nodes.",
+      "correctValue": true,
+      "explanation": "Canary with feature flags targets a small group of users; rolling with feature flags is the same but exposure is made on nodes, not users."
+    },
+    {
+      "id": "dep6",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Deployment Diagram",
+      "prompt": "What is the goal of a deployment diagram?",
+      "options": [
+        { "id": "a", "text": "To map software systems and containers onto deployment nodes" },
+        { "id": "b", "text": "To show class-level inheritance" },
+        { "id": "c", "text": "To define business rules" },
+        { "id": "d", "text": "To list user stories" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A deployment diagram maps software systems and containers (deployable units) onto deployment nodes, using the C4 model with boundaries per node."
+    },
+    {
+      "id": "dep7",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Deployment Nodes",
+      "prompt": "Which can serve as a 'deployment node'?",
+      "options": [
+        { "id": "a", "text": "Physical infrastructure (e.g. a physical server)" },
+        { "id": "b", "text": "Virtualized infrastructure (e.g. a VM / IaaS)" },
+        { "id": "c", "text": "Containerised infrastructure (e.g. a Docker container)" },
+        { "id": "d", "text": "An execution environment (e.g. a database server)" }
+      ],
+      "correctOptionIds": ["a", "b", "c", "d"],
+      "explanation": "A deployment node can be physical infrastructure, virtualized infrastructure, containerised infrastructure, or an execution environment."
+    }
+  ]
+}

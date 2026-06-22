@@ -1,0 +1,116 @@
+{
+  "id": "sw-arch-01-concept",
+  "title": "SW-ARCH 01 — What is Software Architecture",
+  "source": "SW-ARCH-01 - Concept-intro.pdf",
+  "createdAt": "2026-06-22",
+  "questions": [
+    {
+      "id": "a1q1",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Definition",
+      "prompt": "According to Robert C. Martin, the architecture of a software system is...",
+      "options": [
+        { "id": "a", "text": "The shape given to the system: its division into components, their arrangement, and how they communicate" },
+        { "id": "b", "text": "The choice of programming language only" },
+        { "id": "c", "text": "The user interface design" },
+        { "id": "d", "text": "The database schema" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Martin defines architecture as the shape given to the system: the division into components, their arrangement, and how they communicate, to facilitate development, deployment, operation, and maintenance."
+    },
+    {
+      "id": "a1q2",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Behavior vs Structure",
+      "prompt": "The architecture of a system has very little to do with whether the system works; the value of software behavior differs from the value of software structure.",
+      "correctValue": true,
+      "explanation": "The slides state architecture has little to do with whether the system works: value of sw behavior != value of sw structure."
+    },
+    {
+      "id": "a1q3",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Goals",
+      "prompt": "Which are stated goals of a software architecture?",
+      "options": [
+        { "id": "a", "text": "Keep the system valuable for its users over time" },
+        { "id": "b", "text": "Minimize the lifetime cost of the system" },
+        { "id": "c", "text": "Maximize programmer productivity" },
+        { "id": "d", "text": "Maximize the number of lines of code" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Goals: keep the system valuable over time, minimize lifetime cost, and maximize programmer productivity by making it easy to understand, develop, maintain, deploy, and change."
+    },
+    {
+      "id": "a1q4",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Clean Architecture Layers",
+      "prompt": "In the Clean Architecture, what does an 'Entity' contain?",
+      "options": [
+        { "id": "a", "text": "Critical business rules operating on critical business data" },
+        { "id": "b", "text": "Database connection strings" },
+        { "id": "c", "text": "Web framework configuration" },
+        { "id": "d", "text": "UI presentation code" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "An Entity contains a set of critical business rules operating on critical business data; it holds the most general high-level rules, rarely changed."
+    },
+    {
+      "id": "a1q5",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Dependency Rule",
+      "prompt": "In the Clean Architecture, which way do source code dependencies point?",
+      "options": [
+        { "id": "a", "text": "Only inward, toward higher-level policies" },
+        { "id": "b", "text": "Only outward, toward mechanisms" },
+        { "id": "c", "text": "In both directions equally" },
+        { "id": "d", "text": "Toward the database layer" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The Dependency Rule states source code dependencies point only inward, toward higher-level policies (inner circles change less than outer mechanisms)."
+    },
+    {
+      "id": "a1q6",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Use Cases",
+      "prompt": "What does a use case specify in the Clean Architecture?",
+      "options": [
+        { "id": "a", "text": "Input from users/systems, the output to return, and the processing steps" },
+        { "id": "b", "text": "The exact SQL queries to run" },
+        { "id": "c", "text": "The CSS styling rules" },
+        { "id": "d", "text": "The deployment topology" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A use case describes software behavior: the input to be provided, the output to be returned, and the processing steps; it determines the flow of data to and from entities."
+    },
+    {
+      "id": "a1q7",
+      "type": "true_false",
+      "difficulty": "hard",
+      "topic": "Policy vs Details",
+      "prompt": "In the separation of policy from details, low-level components (like the Database) know about higher-level components, but not vice versa.",
+      "correctValue": true,
+      "explanation": "Low-level components know everything about the higher-level components but not vice versa; the DB component knows about the use-case rules, deferring detail decisions as long as possible."
+    },
+    {
+      "id": "a1q8",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Frameworks and Drivers",
+      "prompt": "Which of these belongs in the outermost 'Frameworks and Drivers' layer?",
+      "options": [
+        { "id": "a", "text": "The database and web framework" },
+        { "id": "b", "text": "Critical business rules" },
+        { "id": "c", "text": "Use case interactors" },
+        { "id": "d", "text": "Entities" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Frameworks and drivers (database, web framework, drivers, I/O devices) are details in the outermost layer where you usually write little code."
+    }
+  ]
+}

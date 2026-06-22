@@ -1,0 +1,152 @@
+{
+  "id": "software-measurement",
+  "title": "Software Measurement",
+  "source": "SoftwareMeasurement.pdf",
+  "createdAt": "2026-06-22",
+  "questions": [
+    {
+      "id": "me1",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Definition",
+      "prompt": "How is measurement defined in the lecture?",
+      "options": [
+        { "id": "a", "text": "The empirical objective assignment of values to entities to characterize a specific attribute" },
+        { "id": "b", "text": "The subjective ranking of software quality" },
+        { "id": "c", "text": "Counting only the lines of code" },
+        { "id": "d", "text": "The estimation of project budget" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Measurement is the process of empirical objective assignment of values to entities in order to characterize a specific attribute thereof."
+    },
+    {
+      "id": "me2",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Measure Types",
+      "prompt": "What distinguishes a base measure from a derived measure?",
+      "options": [
+        { "id": "a", "text": "A base measure is collected directly; a derived measure is computed from other measures" },
+        { "id": "b", "text": "A base measure is always subjective" },
+        { "id": "c", "text": "A derived measure cannot use base measures" },
+        { "id": "d", "text": "They are the same thing" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A base measure is collected directly by interacting with the entity; a derived measure is computed on the basis of other measures (e.g. productivity = LOC/effort)."
+    },
+    {
+      "id": "me3",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Internal vs External",
+      "prompt": "Which is an example of an external measure?",
+      "options": [
+        { "id": "a", "text": "Reliability of an application" },
+        { "id": "b", "text": "Length of source code" },
+        { "id": "c", "text": "Number of modules" },
+        { "id": "d", "text": "Cyclomatic complexity" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "External measures depend on how the entity relates to its environment (e.g. reliability); internal measures depend only on the entity itself (e.g. source code length)."
+    },
+    {
+      "id": "me4",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Scale Types",
+      "prompt": "Which of the following are measurement scale types described by Stevens?",
+      "options": [
+        { "id": "a", "text": "Nominal" },
+        { "id": "b", "text": "Ordinal" },
+        { "id": "c", "text": "Interval and Ratio" },
+        { "id": "d", "text": "Logarithmic" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "The scale types are Nominal, Ordinal, Interval, Ratio, and Absolute, classified by their set of admissible transformations."
+    },
+    {
+      "id": "me5",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Scales",
+      "prompt": "On which scale does the ratio between two values become meaningful because a true zero exists?",
+      "options": [
+        { "id": "a", "text": "Ratio scale" },
+        { "id": "b", "text": "Interval scale" },
+        { "id": "c", "text": "Ordinal scale" },
+        { "id": "d", "text": "Nominal scale" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A ratio scale has a true zero (total lack of the attribute), so ratios are meaningful; admissible transformations are M' = a·M with a>0. On interval scales ratios make no sense."
+    },
+    {
+      "id": "me6",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Meaningful Statements",
+      "prompt": "The statement 'The temperature in Tokyo is twice that in London' is meaningful on the Celsius scale.",
+      "correctValue": false,
+      "explanation": "Temperature in Celsius/Fahrenheit is an interval scale (no true zero), so a 'twice as much' ratio statement is not invariant under admissible transformations — it is not meaningful."
+    },
+    {
+      "id": "me7",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Cyclomatic Complexity",
+      "prompt": "For a typical (non-strongly-connected) control flow graph, how is McCabe's cyclomatic number computed?",
+      "options": [
+        { "id": "a", "text": "V(G) = #E − #N + 2" },
+        { "id": "b", "text": "V(G) = #N − #E + 1" },
+        { "id": "c", "text": "V(G) = #E × #N" },
+        { "id": "d", "text": "V(G) = #E + #N − 2" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "For a strongly connected graph V(G) = #E − #N + 1; a typical CFG isn't strongly connected, so V(G) = #E − #N + 2 (the number of linearly independent paths)."
+    },
+    {
+      "id": "me8",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "CK Metrics",
+      "prompt": "Which are Chidamber & Kemerer (CK) object-oriented design metrics?",
+      "options": [
+        { "id": "a", "text": "Weighted Methods per Class (WMC)" },
+        { "id": "b", "text": "Depth of Inheritance Tree (DIT)" },
+        { "id": "c", "text": "Coupling Between Object classes (CBO)" },
+        { "id": "d", "text": "Lines of Code (LOC)" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "CK metrics include WMC, NOC, DIT, CBO, RFC, and LCOM; LOC is a separate size metric, not part of CK."
+    },
+    {
+      "id": "me9",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Measurement Laws",
+      "prompt": "Which law states 'When a measure becomes a target it ceases to be a good measure'?",
+      "options": [
+        { "id": "a", "text": "Goodhart's law" },
+        { "id": "b", "text": "Campbell's law" },
+        { "id": "c", "text": "Conway's law" },
+        { "id": "d", "text": "Gall's law" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Goodhart's law: when a measure becomes a target it ceases to be a good measure. Campbell's law is the related warning about corruption of social indicators."
+    },
+    {
+      "id": "me10",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "SMART Indicators",
+      "prompt": "In the SMART criteria for indicators, what does the 'M' stand for?",
+      "options": [
+        { "id": "a", "text": "Measurable" },
+        { "id": "b", "text": "Maintainable" },
+        { "id": "c", "text": "Modular" },
+        { "id": "d", "text": "Meaningful" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "SMART indicators are Specific, Measurable, Achievable, Relevant, and Timely."
+    }
+  ]
+}

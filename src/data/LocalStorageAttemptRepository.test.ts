@@ -13,25 +13,25 @@ function makeAttempt(quizId: string, pct: number): Attempt {
 describe("LocalStorageAttemptRepository", () => {
   beforeEach(() => localStorage.clear());
 
-  it("saves and lists attempts per quiz", () => {
+  it("saves and lists attempts per quiz", async () => {
     const repo = new LocalStorageAttemptRepository(localStorage);
-    repo.save(makeAttempt("a", 50));
-    repo.save(makeAttempt("a", 80));
-    repo.save(makeAttempt("b", 10));
-    expect(repo.listByQuiz("a").map((x) => x.pct)).toEqual([50, 80]);
-    expect(repo.listByQuiz("b")).toHaveLength(1);
-    expect(repo.listByQuiz("missing")).toEqual([]);
+    await repo.save(makeAttempt("a", 50));
+    await repo.save(makeAttempt("a", 80));
+    await repo.save(makeAttempt("b", 10));
+    expect((await repo.listByQuiz("a")).map((x) => x.pct)).toEqual([50, 80]);
+    expect(await repo.listByQuiz("b")).toHaveLength(1);
+    expect(await repo.listByQuiz("missing")).toEqual([]);
   });
 
-  it("persists under the quizgen:attempts key", () => {
+  it("persists under the quizgen:attempts key", async () => {
     const repo = new LocalStorageAttemptRepository(localStorage);
-    repo.save(makeAttempt("a", 50));
+    await repo.save(makeAttempt("a", 50));
     expect(localStorage.getItem("quizgen:attempts")).toContain("\"a\"");
   });
 
-  it("tolerates corrupt stored JSON", () => {
+  it("tolerates corrupt stored JSON", async () => {
     localStorage.setItem("quizgen:attempts", "{not json");
     const repo = new LocalStorageAttemptRepository(localStorage);
-    expect(repo.allByQuiz()).toEqual({});
+    expect(await repo.allByQuiz()).toEqual({});
   });
 });

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Quiz } from "../../domain/schema";
 import type { Attempt } from "../../domain/models";
 import type { AttemptRepository } from "../../data/AttemptRepository";
@@ -17,6 +17,7 @@ export interface QuizRunnerProps {
 export function QuizRunner({ quiz, attemptRepo, onExit }: QuizRunnerProps) {
   const { state, dispatch } = useQuizSession(quiz);
   const saved = useRef(false);
+  const [past, setPast] = useState<Attempt[]>([]);
 
   useEffect(() => {
     if (state.submitted && state.result && !saved.current) {
@@ -30,7 +31,10 @@ export function QuizRunner({ quiz, attemptRepo, onExit }: QuizRunnerProps) {
         pct: state.result.pct,
         byDifficulty: state.result.byDifficulty,
       };
-      attemptRepo.save(attempt);
+      attemptRepo
+        .save(attempt)
+        .then(() => attemptRepo.listByQuiz(quiz.id))
+        .then(setPast);
     }
   }, [state.submitted, state.result, quiz, attemptRepo]);
 
@@ -39,7 +43,7 @@ export function QuizRunner({ quiz, attemptRepo, onExit }: QuizRunnerProps) {
       <main className="results-screen">
         <Results quiz={state.quiz} answers={state.answers} result={state.result} onBackToMenu={onExit} />
         <h3>Past attempts</h3>
-        <History attempts={attemptRepo.listByQuiz(quiz.id)} />
+        <History attempts={past} />
       </main>
     );
   }

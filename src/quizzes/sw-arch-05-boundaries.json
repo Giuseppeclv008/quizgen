@@ -1,0 +1,116 @@
+{
+  "id": "sw-arch-05-boundaries",
+  "title": "SW-ARCH 05 — Boundaries & Architectural Styles Intro",
+  "source": "SW-ARCH-05 - Boundaries-intro-arch-styles.pdf",
+  "createdAt": "2026-06-22",
+  "questions": [
+    {
+      "id": "b5q1",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Boundaries",
+      "prompt": "What role do boundaries play in an architecture?",
+      "options": [
+        { "id": "a", "text": "They act as firewalls against the harmful propagation of changes" },
+        { "id": "b", "text": "They increase coupling between components" },
+        { "id": "c", "text": "They define the database schema" },
+        { "id": "d", "text": "They speed up the CPU" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Boundaries act as firewalls against harmful propagation of changes; components on each side change at different rates and for different reasons."
+    },
+    {
+      "id": "b5q2",
+      "type": "true_false",
+      "difficulty": "hard",
+      "topic": "Crossing Boundaries",
+      "prompt": "When crossing boundaries, only data should cross — entity objects and database rows should not be passed across.",
+      "correctValue": true,
+      "explanation": "Only data crosses boundaries, passed in the form most convenient for the inner circle; passing entities or DB rows would violate the Dependency Rule."
+    },
+    {
+      "id": "b5q3",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Database as Detail",
+      "prompt": "From an architectural perspective, the database is...",
+      "options": [
+        { "id": "a", "text": "A detail, not an architectural entity" },
+        { "id": "b", "text": "The most important architectural entity" },
+        { "id": "c", "text": "The same as the data model" },
+        { "id": "d", "text": "A use case" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The database is a detail that does not rise to the level of an architectural element; however the data model (organizational structure of data) is architecturally significant."
+    },
+    {
+      "id": "b5q4",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Packaging Options",
+      "prompt": "Which are listed options for organizing/packaging code?",
+      "options": [
+        { "id": "a", "text": "Package by layer" },
+        { "id": "b", "text": "Package by feature" },
+        { "id": "c", "text": "Ports and adapters" },
+        { "id": "d", "text": "Package by component" }
+      ],
+      "correctOptionIds": ["a", "b", "c", "d"],
+      "explanation": "The four packaging options presented are: package by layer, by feature, ports and adapters, and by component."
+    },
+    {
+      "id": "b5q5",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Humble Object",
+      "prompt": "What is the purpose of the Humble Object pattern in testability?",
+      "options": [
+        { "id": "a", "text": "To separate behaviors hard to test from behaviors easy to test" },
+        { "id": "b", "text": "To remove all tests from the system" },
+        { "id": "c", "text": "To merge the view and the model" },
+        { "id": "d", "text": "To make the database faster" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The Humble Object separates hard-to-test behaviors (kept as simple as possible) from easy-to-test ones, and helps protect architectural boundaries; examples include DB gateways and data mappers."
+    },
+    {
+      "id": "b5q6",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Tests and Architecture",
+      "prompt": "Tests are part of the system's architecture and also adhere to the Dependency Rule.",
+      "correctValue": true,
+      "explanation": "Tests support development, but they are an integral component of the system and part of its architecture design; they also adhere to the Dependency Rule."
+    },
+    {
+      "id": "b5q7",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Layers",
+      "prompt": "What are described as the most basic components of a system?",
+      "options": [
+        { "id": "a", "text": "UI, Logic, and Storage" },
+        { "id": "b", "text": "Controller, Service, Repository" },
+        { "id": "c", "text": "Producer, Filter, Consumer" },
+        { "id": "d", "text": "Client, Broker, Server" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The most basic components of a system are UI, Logic, and Storage (e.g. the word-processor example)."
+    },
+    {
+      "id": "b5q8",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "API Ownership",
+      "prompt": "In the word-processor example, who defines and owns the API between WP Rules and the Language component?",
+      "options": [
+        { "id": "a", "text": "The user (WP Rules), not the implementer (Language)" },
+        { "id": "b", "text": "The implementer (Language), not the user" },
+        { "id": "c", "text": "The database" },
+        { "id": "d", "text": "The operating system" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "WP Rules defines the API that Language implements; the API is defined and owned by the user, not by the implementer."
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import type { Quiz } from "./domain/schema";
+import type { Attempt } from "./domain/models";
 import {
   collectTopics,
   collectSources,
@@ -27,6 +28,7 @@ export function App() {
   const [errors, setErrors] = useState<LoadError[]>([]);
   const [active, setActive] = useState<Quiz | null>(null);
   const [view, setView] = useState<"menu" | "history">("menu");
+  const [groups, setGroups] = useState<Record<string, Attempt[]>>({});
 
   useEffect(() => {
     let alive = true;
@@ -43,12 +45,23 @@ export function App() {
     };
   }, [repository]);
 
+  useEffect(() => {
+    if (view !== "history") return;
+    let alive = true;
+    attemptRepo.allByQuiz().then((g) => {
+      if (alive) setGroups(g);
+    });
+    return () => {
+      alive = false;
+    };
+  }, [view, attemptRepo]);
+
   if (active) {
     return <QuizRunner quiz={active} attemptRepo={attemptRepo} onExit={() => setActive(null)} />;
   }
   if (!topics) return <p className="loading">Loading…</p>;
   if (view === "history") {
-    return <HistoryScreen groups={attemptRepo.allByQuiz()} onBack={() => setView("menu")} />;
+    return <HistoryScreen groups={groups} onBack={() => setView("menu")} />;
   }
 
   return (

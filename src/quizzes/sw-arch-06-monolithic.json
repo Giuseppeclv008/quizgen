@@ -1,0 +1,131 @@
+{
+  "id": "sw-arch-06-monolithic",
+  "title": "SW-ARCH 06 — Monolithic Architectural Styles",
+  "source": "SW-ARCH-06 - Styles-monolithic.pdf",
+  "createdAt": "2026-06-22",
+  "questions": [
+    {
+      "id": "m6q1",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Architectural Quantum",
+      "prompt": "What is an architectural quantum?",
+      "options": [
+        { "id": "a", "text": "The smallest part of the system that runs independently" },
+        { "id": "b", "text": "The largest module in the system" },
+        { "id": "c", "text": "A unit of CPU time" },
+        { "id": "d", "text": "A database transaction" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "An architectural quantum is the smallest part that runs independently, with independent deployment, high functional cohesion, and low external coupling."
+    },
+    {
+      "id": "m6q2",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Monolithic Styles",
+      "prompt": "Which of these are monolithic architectural styles?",
+      "options": [
+        { "id": "a", "text": "Layered architecture" },
+        { "id": "b", "text": "Modular monolith" },
+        { "id": "c", "text": "Pipeline architecture" },
+        { "id": "d", "text": "Microservices" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Monolithic styles: layered, modular monolith, pipeline, and microkernel. Microservices is a distributed style."
+    },
+    {
+      "id": "m6q3",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Layered Architecture",
+      "prompt": "What is the 'sinkhole' anti-pattern risk in layered architecture?",
+      "options": [
+        { "id": "a", "text": "Requests pass through layers doing nothing but forwarding (no real logic)" },
+        { "id": "b", "text": "The database grows too large" },
+        { "id": "c", "text": "Too many microservices are created" },
+        { "id": "d", "text": "Layers are deployed independently" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The sinkhole anti-pattern occurs when requests merely pass through layers without processing; ~20% is manageable, ~80% means changing the style."
+    },
+    {
+      "id": "m6q4",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Open vs Closed Layers",
+      "prompt": "What is the trade-off of using 'open' layers (allowing requests to skip layers)?",
+      "options": [
+        { "id": "a", "text": "More flexibility and performance, but higher coupling risk" },
+        { "id": "b", "text": "More stability and modularity, but slower performance" },
+        { "id": "c", "text": "Independent deployment of each layer" },
+        { "id": "d", "text": "Automatic fault tolerance" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Open layers give flexibility and performance but higher coupling risk; closed layers give stability, modularity, and easier changes."
+    },
+    {
+      "id": "m6q5",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Modular Monolith",
+      "prompt": "A modular monolith is domain-partitioned, with each module encapsulating a business capability, yet deployed as a single unit.",
+      "correctValue": true,
+      "explanation": "Modular monolith: domain-partitioned modules with strong internal boundaries, deployed as one unit (WAR/EAR/assembly), possibly with dedicated repositories."
+    },
+    {
+      "id": "m6q6",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Pipeline Architecture",
+      "prompt": "In pipeline (pipes and filters) architecture, filters are ideally...",
+      "options": [
+        { "id": "a", "text": "Independent and stateless" },
+        { "id": "b", "text": "Tightly coupled and stateful" },
+        { "id": "c", "text": "Always remote services" },
+        { "id": "d", "text": "Shared singletons" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Filters are independent and ideally stateless; pipes connect them unidirectionally. Examples: Bash, Zsh, MapReduce."
+    },
+    {
+      "id": "m6q7",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Pipeline Filter Types",
+      "prompt": "Which are filter types in a pipeline architecture?",
+      "options": [
+        { "id": "a", "text": "Producer (starting point)" },
+        { "id": "b", "text": "Transformer (enhance/compute, map)" },
+        { "id": "c", "text": "Tester (test input against criteria, reduce)" },
+        { "id": "d", "text": "Consumer (termination point with persistence)" }
+      ],
+      "correctOptionIds": ["a", "b", "c", "d"],
+      "explanation": "Pipeline filter roles: producer, transformer (map), tester (reduce), and consumer (persistence/termination)."
+    },
+    {
+      "id": "m6q8",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Microkernel",
+      "prompt": "The microkernel (plug-in) architecture consists of...",
+      "options": [
+        { "id": "a", "text": "A stable core system extended by plug-in components" },
+        { "id": "b", "text": "Many independent microservices with separate databases" },
+        { "id": "c", "text": "A pipeline of stateless filters" },
+        { "id": "d", "text": "A single layer with no extension points" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Microkernel = a core system with stable 'happy path' functionality extended by plug-ins; plug-ins communicate p2p with the core, not each other. Examples: browsers, IDEs, Jira."
+    },
+    {
+      "id": "m6q9",
+      "type": "true_false",
+      "difficulty": "easy",
+      "topic": "Layered Simplicity",
+      "prompt": "Among monolithic styles, the layered architecture is rated very high on simplicity but very low on modularity.",
+      "correctValue": true,
+      "explanation": "Layered architecture has very high simplicity but very low modularity, maintainability, deployability, and evolvability."
+    }
+  ]
+}

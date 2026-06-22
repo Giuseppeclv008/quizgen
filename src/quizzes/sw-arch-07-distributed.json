@@ -1,0 +1,137 @@
+{
+  "id": "sw-arch-07-distributed",
+  "title": "SW-ARCH 07 — Distributed Architectural Styles",
+  "source": "SW-ARCH-07 - Styles-distributed.pdf",
+  "createdAt": "2026-06-22",
+  "questions": [
+    {
+      "id": "d7q1",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Service-based",
+      "prompt": "How is service-based architecture best described?",
+      "options": [
+        { "id": "a", "text": "A distributed macro-layered structure of a UI plus coarse-grained, separately deployed domain services" },
+        { "id": "b", "text": "A single deployment unit of all code" },
+        { "id": "c", "text": "A pipeline of stateless filters" },
+        { "id": "d", "text": "A plug-in core with extensions" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Service-based architecture is a distributed macro-layered structure: separately deployed UI plus coarse-grained domain services, optionally with a monolithic database."
+    },
+    {
+      "id": "d7q2",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Microservices",
+      "prompt": "Which concept is fundamental to microservices architecture?",
+      "options": [
+        { "id": "a", "text": "Bounded context — everything for a domain portion is visible internally but opaque to others" },
+        { "id": "b", "text": "A single shared database for all services" },
+        { "id": "c", "text": "One giant deployment artifact" },
+        { "id": "d", "text": "Stateless pipeline filters" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Microservices take domain partitioning to the extreme, built on the bounded context idea (DDD): internal visibility, opacity to other contexts, driving systematic decoupling."
+    },
+    {
+      "id": "d7q3",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Sidecar Pattern",
+      "prompt": "What is the purpose of the sidecar pattern in microservices?",
+      "options": [
+        { "id": "a", "text": "To handle cross-cutting concerns like monitoring and logging via a service plane" },
+        { "id": "b", "text": "To merge all services into one process" },
+        { "id": "c", "text": "To replace the API layer" },
+        { "id": "d", "text": "To store the shared database" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The sidecar pattern attaches monitoring, logging, and similar concerns alongside each service, forming a service plane for governance."
+    },
+    {
+      "id": "d7q4",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Event-driven",
+      "prompt": "Which are the four primary components of an event-driven architecture?",
+      "options": [
+        { "id": "a", "text": "Initiating event" },
+        { "id": "b", "text": "Event broker" },
+        { "id": "c", "text": "Event processor" },
+        { "id": "d", "text": "Derived events" }
+      ],
+      "correctOptionIds": ["a", "b", "c", "d"],
+      "explanation": "EDA's four primary components are the initiating event, event broker, event processor, and derived events; communication is asynchronous fire-and-forget."
+    },
+    {
+      "id": "d7q5",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Events vs Messages",
+      "prompt": "Which statement correctly contrasts events and messages?",
+      "options": [
+        { "id": "a", "text": "Events react to something already happened and need no answer; messages obey a request and typically require an answer" },
+        { "id": "b", "text": "Events always require an answer; messages never do" },
+        { "id": "c", "text": "Both are strictly one-to-one" },
+        { "id": "d", "text": "Messages are one-to-many; events are one-to-one" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Events react to something already happened (one-to-many, no answer); messages obey a request to be done (one-to-one, typically need an answer)."
+    },
+    {
+      "id": "d7q6",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Space-based",
+      "prompt": "What problem is space-based architecture primarily designed to eliminate?",
+      "options": [
+        { "id": "a", "text": "The database bottleneck under large volumes and load peaks" },
+        { "id": "b", "text": "The need for any caching" },
+        { "id": "c", "text": "The need for a UI" },
+        { "id": "d", "text": "The use of messaging" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Space-based architecture eliminates the database bottleneck via in-memory data grids, distributed data management, and distributed processing units for high volume/load peaks."
+    },
+    {
+      "id": "d7q7",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Microservices Trade-offs",
+      "prompt": "Microservices rate very high on scalability and fault tolerance but low on responsiveness due to many network calls.",
+      "correctValue": true,
+      "explanation": "Microservices: very high scalability/fault tolerance, but low responsiveness because of many network calls (mitigated by caching, replication, choreography)."
+    },
+    {
+      "id": "d7q8",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "SOA Decay",
+      "prompt": "Which reasons are cited for the decay of orchestration-driven service-oriented architecture after the 2010s?",
+      "options": [
+        { "id": "a", "text": "High cost of licenses" },
+        { "id": "b", "text": "Very high coupling" },
+        { "id": "c", "text": "Extreme technical partitioning grinding domain concepts to dust" },
+        { "id": "d", "text": "Lack of any enterprise service bus" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "ODSA decayed due to high license costs, very high coupling, extreme technical partitioning (domains 'ground to dust'), and high maintenance cost."
+    },
+    {
+      "id": "d7q9",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Event Payload",
+      "prompt": "What is a key advantage of a key-based event payload over a data-based one?",
+      "options": [
+        { "id": "a", "text": "The DB remains the single source of truth with minimal contracts and no versioning need" },
+        { "id": "b", "text": "It contains all subscriber data, avoiding any DB access" },
+        { "id": "c", "text": "It removes the need for a database entirely" },
+        { "id": "d", "text": "It guarantees stamp coupling" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Key-based payloads carry just keys/IDs to query the DB later: DB stays single source of truth, minimal contracts and network usage, no versioning — but more DB pressure."
+    }
+  ]
+}

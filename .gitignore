@@ -5,6 +5,10 @@ node_modules/
 dist/
 dist-ssr/
 
+# local attempts database (server)
+server/*.db
+server/*.db-*
+
 # logs
 *.log
 npm-debug.log*

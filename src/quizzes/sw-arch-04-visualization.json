@@ -1,0 +1,116 @@
+{
+  "id": "sw-arch-04-visualization",
+  "title": "SW-ARCH 04 — Visualization (C4 Model)",
+  "source": "SW-ARCH-04 - Visualization.pdf",
+  "createdAt": "2026-06-22",
+  "questions": [
+    {
+      "id": "v4q1",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "C4 Vocabulary",
+      "prompt": "In the C4 model, what is the correct containment hierarchy?",
+      "options": [
+        { "id": "a", "text": "A software system contains containers, which contain components, which are implemented by code" },
+        { "id": "b", "text": "A component contains containers, which contain systems" },
+        { "id": "c", "text": "Code contains components, which contain systems" },
+        { "id": "d", "text": "A container contains software systems" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A software system is made of containers, each containing components, which are implemented by code elements; people use the systems."
+    },
+    {
+      "id": "v4q2",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Container",
+      "prompt": "What defines a 'container' in C4?",
+      "options": [
+        { "id": "a", "text": "A separately deployable boundary in which code runs or data is stored" },
+        { "id": "b", "text": "A grouping of related functionality behind an interface, not separately deployable" },
+        { "id": "c", "text": "A single class or function" },
+        { "id": "d", "text": "A person using the system" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A container is a separately deployable boundary where code executes or data is stored (e.g. an application, database, microservice, mobile app)."
+    },
+    {
+      "id": "v4q3",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Component",
+      "prompt": "In C4, components are separately deployable units.",
+      "correctValue": false,
+      "explanation": "Components are a grouping of related functionality behind a well-defined interface and are NOT separately deployable; containers are."
+    },
+    {
+      "id": "v4q4",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "C4 Levels",
+      "prompt": "Which two C4 diagrams are mandatory?",
+      "options": [
+        { "id": "a", "text": "Context diagram" },
+        { "id": "b", "text": "Container diagram" },
+        { "id": "c", "text": "Component diagram" },
+        { "id": "d", "text": "Code diagram" }
+      ],
+      "correctOptionIds": ["a", "b"],
+      "explanation": "Of the four C4 levels, the Context and Container diagrams are required; Component and Code diagrams are optional."
+    },
+    {
+      "id": "v4q5",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Context Diagram",
+      "prompt": "What is the purpose of the Level 1 Context diagram?",
+      "options": [
+        { "id": "a", "text": "To show what the system is, who uses it, and how it fits into its environment" },
+        { "id": "b", "text": "To show class-level implementation details" },
+        { "id": "c", "text": "To show database indexes" },
+        { "id": "d", "text": "To show the CI/CD pipeline" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The Context diagram answers what the system is, who uses it, and how it fits with the existing environment; it is the starting point for any stakeholder."
+    },
+    {
+      "id": "v4q6",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Container Interactions",
+      "prompt": "When annotating interactions between containers, which information is useful to include?",
+      "options": [
+        { "id": "a", "text": "The purpose of the interaction (e.g. reads/writes data from)" },
+        { "id": "b", "text": "The communication mechanism (e.g. REST, JMS)" },
+        { "id": "c", "text": "The communication style (synchronous, asynchronous, batched)" },
+        { "id": "d", "text": "The developer's name who wrote it" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Useful annotations on container interactions: purpose, communication mechanism, communication style, plus protocols and port numbers."
+    },
+    {
+      "id": "v4q7",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Container Diagram Info",
+      "prompt": "Which extra piece of information must a Container record that a Context-level Software System need not?",
+      "options": [
+        { "id": "a", "text": "The implementation technology" },
+        { "id": "b", "text": "A name" },
+        { "id": "c", "text": "A description" },
+        { "id": "d", "text": "A title" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "For each container you report Name, Technology (implementation technology), and Description — technology is the added detail at the container level."
+    },
+    {
+      "id": "v4q8",
+      "type": "true_false",
+      "difficulty": "easy",
+      "topic": "C4 Summary",
+      "prompt": "The C4 model is a lightweight notation for visualizing the static structure of a software system.",
+      "correctValue": true,
+      "explanation": "C4 is a lightweight notation to visualize the static structure, based on a hierarchical model with four levels and four main element types."
+    }
+  ]
+}

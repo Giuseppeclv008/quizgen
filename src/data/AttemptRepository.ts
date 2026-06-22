@@ -1,7 +1,7 @@
 import type { Attempt } from "../domain/models";
 
 export interface AttemptRepository {
-  save(attempt: Attempt): void;
-  listByQuiz(quizId: string): Attempt[];
-  allByQuiz(): Record<string, Attempt[]>;
+  save(attempt: Attempt): Promise<void>;
+  listByQuiz(quizId: string): Promise<Attempt[]>;
+  allByQuiz(): Promise<Record<string, Attempt[]>>;
 }

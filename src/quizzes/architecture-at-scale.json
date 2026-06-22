@@ -1,0 +1,131 @@
+{
+  "id": "architecture-at-scale",
+  "title": "Software Architecture at Scale (Moretti)",
+  "source": "Software architecture at scale 2026v2.pdf",
+  "createdAt": "2026-06-22",
+  "questions": [
+    {
+      "id": "sc1",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Definition",
+      "prompt": "How does Martin Fowler define software architecture?",
+      "options": [
+        { "id": "a", "text": "Those decisions which are both important and hard to change" },
+        { "id": "b", "text": "The set of all classes in a project" },
+        { "id": "c", "text": "The user interface layout" },
+        { "id": "d", "text": "The CI/CD pipeline configuration" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Fowler: software architecture is those decisions which are both important and hard to change — it is a communication tool for shared understanding."
+    },
+    {
+      "id": "sc2",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "CAP Theorem",
+      "prompt": "The CAP theorem states a distributed data system can simultaneously provide at most how many of consistency, availability, and partition tolerance?",
+      "options": [
+        { "id": "a", "text": "Two of the three" },
+        { "id": "b", "text": "All three" },
+        { "id": "c", "text": "Only one" },
+        { "id": "d", "text": "None under partition" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "CAP (Brewer's) theorem: a distributed data system can simultaneously provide at most two of consistency, availability, and partition tolerance."
+    },
+    {
+      "id": "sc3",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Scalability vs Elasticity",
+      "prompt": "How do scalability and elasticity differ in cloud computing?",
+      "options": [
+        { "id": "a", "text": "Scalability adds resources on a planned/permanent basis; elasticity dynamically scales up/down in real time to match demand" },
+        { "id": "b", "text": "They are exactly the same thing" },
+        { "id": "c", "text": "Elasticity is always permanent; scalability is temporary" },
+        { "id": "d", "text": "Scalability only applies to storage" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Scalability handles increased workload by adding resources on a planned/permanent basis; elasticity is automated real-time scaling up/down to match fluctuating demand."
+    },
+    {
+      "id": "sc4",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "CI/CD",
+      "prompt": "A main goal of CI/CD is to keep the main branch 'green' at all times, promoting small iterative changes and avoiding big merges.",
+      "correctValue": true,
+      "explanation": "CI/CD keeps the main branch green, integrating code often and deploying frequently with small, easy-to-rollback changes; most validations should happen before the merge."
+    },
+    {
+      "id": "sc5",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Technical Debt",
+      "prompt": "Which type of quality does the customer NOT directly see or buy, corresponding to technical debt?",
+      "options": [
+        { "id": "a", "text": "Internal quality" },
+        { "id": "b", "text": "External quality" },
+        { "id": "c", "text": "Functional requirements" },
+        { "id": "d", "text": "User experience" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Internal quality is what the customer doesn't buy or see; neglecting it accumulates technical debt, while external quality is customer-facing."
+    },
+    {
+      "id": "sc6",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Scaling Patterns",
+      "prompt": "Which techniques are recommended to scale the request path?",
+      "options": [
+        { "id": "a", "text": "Cache hot reads to reduce repeated read pressure" },
+        { "id": "b", "text": "Use asynchronous messaging / queue-based load leveling for slow or bursty work" },
+        { "id": "c", "text": "Throttle to preserve SLOs under load" },
+        { "id": "d", "text": "Remove all monitoring" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Scale the request path by caching hot reads, queuing slow work, and throttling to protect the critical path; caching does not replace throttling."
+    },
+    {
+      "id": "sc7",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Sharding",
+      "prompt": "What is 'the first rule of sharding'?",
+      "options": [
+        { "id": "a", "text": "Don't shard until you absolutely have to" },
+        { "id": "b", "text": "Always shard from day one" },
+        { "id": "c", "text": "Shard only the cache" },
+        { "id": "d", "text": "Never use indexing before sharding" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The first rule of sharding is: don't shard until you absolutely have to; prefer tuning, indexing, partitioning, and polyglot persistence first."
+    },
+    {
+      "id": "sc8",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Architecture Change",
+      "prompt": "Which are common drivers that can trigger architectural change?",
+      "options": [
+        { "id": "a", "text": "Business model expansion (market/geography)" },
+        { "id": "b", "text": "Delivery friction" },
+        { "id": "c", "text": "Reliability pain and data/compliance pressure" },
+        { "id": "d", "text": "Having too few lines of code" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Common drivers: business model expansion, delivery friction, reliability pain, data/compliance pressure, and organization scaling."
+    },
+    {
+      "id": "sc9",
+      "type": "true_false",
+      "difficulty": "easy",
+      "topic": "Key Takeaways",
+      "prompt": "A key takeaway is to document architecture decisions using ADRs and prefer iterative, incremental changes over big-bang changes.",
+      "correctValue": true,
+      "explanation": "Takeaways: document with ADRs, prefer iterative/incremental changes (no big bang), let data drive decisions, run workshops, and measure success before/after."
+    }
+  ]
+}

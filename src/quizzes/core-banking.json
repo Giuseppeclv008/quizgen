@@ -1,0 +1,116 @@
+{
+  "id": "core-banking",
+  "title": "Cloud Core Banking Modernization (Reply)",
+  "source": "Core Banking solution - Reply - 1.0.pdf",
+  "createdAt": "2026-06-22",
+  "questions": [
+    {
+      "id": "cb1",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Modernization Strategy",
+      "prompt": "What is the role of the 'abstraction layer' in the core banking modernization journey?",
+      "options": [
+        { "id": "a", "text": "It decouples the legacy system from the applications and ensures business continuity during coexistence" },
+        { "id": "b", "text": "It replaces all microservices with a monolith" },
+        { "id": "c", "text": "It stores customer passwords securely" },
+        { "id": "d", "text": "It renders the mobile UI" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The abstraction layer decouples the legacy mainframe from applications and ensures functional synchronization and business continuity between mainframe and Vault."
+    },
+    {
+      "id": "cb2",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Dual Run",
+      "prompt": "What is the main challenge addressed by the 'dual run' phase?",
+      "options": [
+        { "id": "a", "text": "Ensuring consistency and synchronization between the legacy and new cloud systems" },
+        { "id": "b", "text": "Designing the mobile app icons" },
+        { "id": "c", "text": "Choosing a programming language" },
+        { "id": "d", "text": "Writing marketing material" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Dual run ensures the legacy mainframe and the new Vault system produce identical results for all operations, addressed via a passive pipeline, automated comparison, monitoring and stress testing."
+    },
+    {
+      "id": "cb3",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Technical Solution",
+      "prompt": "Which technologies underpin the new digital bank's transaction processing solution?",
+      "options": [
+        { "id": "a", "text": "Microservices architecture" },
+        { "id": "b", "text": "Apache Flink" },
+        { "id": "c", "text": "Apache Kafka" },
+        { "id": "d", "text": "A single mainframe COBOL program" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "The solution leverages a microservices architecture with Apache Flink and Apache Kafka for transaction processing, data validation, and legacy interfacing."
+    },
+    {
+      "id": "cb4",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Evolution Roadmap",
+      "prompt": "The evolution roadmap is structured into three macro steps: abstraction layer, dual run, and customer migration.",
+      "correctValue": true,
+      "explanation": "The three macro steps are: creating the abstraction layer (decoupling), the dual-run layer (coexistence), and migration of customers (definitive transition)."
+    },
+    {
+      "id": "cb5",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Vault Platform",
+      "prompt": "In the Vault-based platform, what is the basic unit used to handle a product's business logic?",
+      "options": [
+        { "id": "a", "text": "Smart contract" },
+        { "id": "b", "text": "Stored procedure" },
+        { "id": "c", "text": "Batch job" },
+        { "id": "d", "text": "Spreadsheet macro" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Smart contracts are the basic unit of the Vault platform used to handle product business logic."
+    },
+    {
+      "id": "cb6",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Microservices Role",
+      "prompt": "Why are integration microservices placed as a facade in front of Vault?",
+      "options": [
+        { "id": "a", "text": "Data transformation between Vault and other components" },
+        { "id": "b", "text": "Extended functionality not present in Vault" },
+        { "id": "c", "text": "Performance optimization via local cache/DB" },
+        { "id": "d", "text": "To remove the need for any APIs" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "The microservices facade enables data transformation, extended functionality, and performance optimization (local caching to reduce direct Vault requests)."
+    },
+    {
+      "id": "cb7",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Reverse Engineering",
+      "prompt": "In the reverse-engineering analysis, what does 'dependency mapping' involve?",
+      "options": [
+        { "id": "a", "text": "Analyzing interactions among front-end, back-end, database, and third-party systems" },
+        { "id": "b", "text": "Counting lines of code only" },
+        { "id": "c", "text": "Deleting obsolete features immediately" },
+        { "id": "d", "text": "Selecting the cloud provider" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Dependency mapping analyzes interactions among FE, BE, database, and third-party systems and creates a detailed map of integrations highlighting critical points."
+    },
+    {
+      "id": "cb8",
+      "type": "true_false",
+      "difficulty": "easy",
+      "topic": "Coexistence",
+      "prompt": "A dual-run architecture lets the old system keep operating alongside the new system to allow gradual migration and testing.",
+      "correctValue": true,
+      "explanation": "The dual-run architecture keeps the old system running alongside the new one, enabling gradual migration and process testing before full transition."
+    }
+  ]
+}

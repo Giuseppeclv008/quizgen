@@ -1,0 +1,116 @@
+{
+  "id": "design-intro",
+  "title": "01 — Introduction to Software Design",
+  "source": "01. Design Intro.pdf",
+  "createdAt": "2026-06-22",
+  "questions": [
+    {
+      "id": "di1",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Complexity",
+      "prompt": "How does Ousterhout characterise complexity in software design?",
+      "options": [
+        { "id": "a", "text": "Anything related to the structure of a system that makes it hard to understand and modify" },
+        { "id": "b", "text": "The total number of lines of code in the system" },
+        { "id": "c", "text": "The count of external libraries a system depends on" },
+        { "id": "d", "text": "The time taken to compile the system" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Complexity is anything related to the structure of a software system that makes it hard to understand and modify it."
+    },
+    {
+      "id": "di2",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Complexity",
+      "prompt": "Which of the following are listed as symptoms of complexity?",
+      "options": [
+        { "id": "a", "text": "Change amplification" },
+        { "id": "b", "text": "Cognitive load" },
+        { "id": "c", "text": "Unknown unknowns" },
+        { "id": "d", "text": "Faster compilation" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "The three symptoms of complexity are change amplification, cognitive load, and unknown unknowns."
+    },
+    {
+      "id": "di3",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Modules",
+      "prompt": "According to the 'deep modules' principle, modules should have a simple interface and a comparatively more complex implementation.",
+      "correctValue": true,
+      "explanation": "Modules should be deep: the interface (a cost) should be simple while the implementation (a benefit) is ideally much more complex."
+    },
+    {
+      "id": "di4",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Information Hiding",
+      "prompt": "What is 'information leakage' in module design?",
+      "options": [
+        { "id": "a", "text": "When a design decision is reflected in multiple modules, creating dependencies" },
+        { "id": "b", "text": "When sensitive user data is exposed over the network" },
+        { "id": "c", "text": "When comments reveal too much about the implementation" },
+        { "id": "d", "text": "When a module logs its internal state" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Information leakage occurs when a design decision is reflected in multiple modules, which creates dependencies; the wider the interface the more info is leaked."
+    },
+    {
+      "id": "di5",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Strategic vs Tactical",
+      "prompt": "Which mindset focuses on the long-term structure of the system rather than just making code work as soon as possible?",
+      "options": [
+        { "id": "a", "text": "Strategic programming" },
+        { "id": "b", "text": "Tactical programming" },
+        { "id": "c", "text": "Move fast and break things" },
+        { "id": "d", "text": "Temporal decomposition" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Strategic programming invests time in improving the design for the long-term structure; tactical programming focuses on working code as soon as possible."
+    },
+    {
+      "id": "di6",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Errors",
+      "prompt": "One strategy for handling errors is to 'define errors out of existence' by redefining a method's behaviour so no error is required.",
+      "correctValue": true,
+      "explanation": "Defining errors out of existence means redefining behaviour so that no error condition arises, e.g. avoiding unnecessary exceptions like substring's IndexOutOfBoundsException."
+    },
+    {
+      "id": "di7",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Dependencies",
+      "prompt": "Which of these are dependency dimensions discussed in the lecture?",
+      "options": [
+        { "id": "a", "text": "Structural (code-level) dependencies" },
+        { "id": "b", "text": "Runtime / distribution dependencies" },
+        { "id": "c", "text": "Data-level dependencies" },
+        { "id": "d", "text": "Behavioral dependencies" }
+      ],
+      "correctOptionIds": ["a", "b", "c", "d"],
+      "explanation": "Four dependency dimensions are presented: structural, runtime/distribution, data-level, and behavioral."
+    },
+    {
+      "id": "di8",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Gall's Law",
+      "prompt": "According to Gall's Law, a complex system that works...",
+      "options": [
+        { "id": "a", "text": "Is invariably found to have evolved from a simple system that worked" },
+        { "id": "b", "text": "Must always be designed completely from scratch" },
+        { "id": "c", "text": "Cannot be maintained over time" },
+        { "id": "d", "text": "Is always simpler than it appears" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Gall's Law: a complex system that works has invariably evolved from a simple system that worked; one designed from scratch never works."
+    }
+  ]
+}

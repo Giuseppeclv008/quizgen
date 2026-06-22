@@ -2,11 +2,11 @@ import type { Attempt } from "../domain/models";
 import type { AttemptRepository } from "./AttemptRepository";
 
 export class NullAttemptRepository implements AttemptRepository {
-  save(_attempt: Attempt): void {}
-  listByQuiz(_quizId: string): Attempt[] {
+  async save(_attempt: Attempt): Promise<void> {}
+  async listByQuiz(_quizId: string): Promise<Attempt[]> {
     return [];
   }
-  allByQuiz(): Record<string, Attempt[]> {
+  async allByQuiz(): Promise<Record<string, Attempt[]>> {
     return {};
   }
 }

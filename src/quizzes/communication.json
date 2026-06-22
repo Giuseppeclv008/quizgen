@@ -1,0 +1,116 @@
+{
+  "id": "communication",
+  "title": "Communication & Messaging",
+  "source": "Communication.pdf",
+  "createdAt": "2026-06-22",
+  "questions": [
+    {
+      "id": "co1",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Distributed Fallacies",
+      "prompt": "Which of these are among the classic fallacies of distributed computing?",
+      "options": [
+        { "id": "a", "text": "The network is reliable" },
+        { "id": "b", "text": "Latency is zero" },
+        { "id": "c", "text": "Bandwidth is infinite" },
+        { "id": "d", "text": "Code compiles instantly" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "The eight fallacies include: network is reliable, latency is zero, bandwidth is infinite, network is secure, topology doesn't change, one administrator, transport cost is zero, network is homogeneous."
+    },
+    {
+      "id": "co2",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Communication Styles",
+      "prompt": "In synchronous request/response communication, what does the client do while waiting?",
+      "options": [
+        { "id": "a", "text": "It blocks while waiting for the response" },
+        { "id": "b", "text": "It continues processing other work" },
+        { "id": "c", "text": "It publishes an event" },
+        { "id": "d", "text": "It polls a message broker" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "In request/response the client makes a request and blocks while waiting; asynchronous request/response does not block."
+    },
+    {
+      "id": "co3",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Message Types",
+      "prompt": "A message that indicates something notable has occurred, often representing a domain state change, is a:",
+      "options": [
+        { "id": "a", "text": "Event" },
+        { "id": "b", "text": "Command" },
+        { "id": "c", "text": "Document" },
+        { "id": "d", "text": "Header" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "An event indicates something notable happened (often a domain event); a command specifies an operation to invoke; a document contains only data."
+    },
+    {
+      "id": "co4",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Channels",
+      "prompt": "Which channel type delivers each message to ALL attached consumers?",
+      "options": [
+        { "id": "a", "text": "Publish-subscribe channel" },
+        { "id": "b", "text": "Point-to-point channel" },
+        { "id": "c", "text": "Command channel" },
+        { "id": "d", "text": "Return-address channel" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Publish-subscribe channels deliver each message to all attached consumers (one-to-many); point-to-point delivers to exactly one consumer."
+    },
+    {
+      "id": "co5",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Broker-based Messaging",
+      "prompt": "A drawback of broker-based messaging is that the broker can become a performance bottleneck and a single point of failure.",
+      "correctValue": true,
+      "explanation": "Broker-based messaging gives loose coupling but introduces a potential bottleneck, single point of failure, and additional complexity."
+    },
+    {
+      "id": "co6",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Coordination",
+      "prompt": "In which coordination approach does each local transaction publish domain events that trigger transactions in other services?",
+      "options": [
+        { "id": "a", "text": "Choreography" },
+        { "id": "b", "text": "Orchestration" },
+        { "id": "c", "text": "Two-phase commit" },
+        { "id": "d", "text": "Direct messaging" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "In choreography each local transaction publishes events that trigger others; in orchestration a central orchestrator tells participants what to execute."
+    },
+    {
+      "id": "co7",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Coordination",
+      "prompt": "A benefit of orchestration is that transaction logic is gathered in a single place rather than scattered across services.",
+      "correctValue": true,
+      "explanation": "Orchestration gathers transaction logic in one place (the orchestrator), giving simpler dependencies and reduced coupling, unlike choreography where logic is scattered."
+    },
+    {
+      "id": "co8",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Direct Messaging",
+      "prompt": "Which is an advantage of direct (brokerless) messaging such as ZeroMQ?",
+      "options": [
+        { "id": "a", "text": "Lighter traffic load, less latency, and no centralized point of failure" },
+        { "id": "b", "text": "Guaranteed delivery without discovery" },
+        { "id": "c", "text": "Services need not be available at the same time" },
+        { "id": "d", "text": "Built-in message persistence" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Brokerless messaging offers lighter load, less latency, no central point of failure, and simplicity, but requires discovery and reduces availability."
+    }
+  ]
+}

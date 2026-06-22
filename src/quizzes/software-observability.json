@@ -1,0 +1,137 @@
+{
+  "id": "software-observability",
+  "title": "Software Observability",
+  "source": "SoftwareObservability.pdf",
+  "createdAt": "2026-06-22",
+  "questions": [
+    {
+      "id": "ob1",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Definition",
+      "prompt": "What is observability?",
+      "options": [
+        { "id": "a", "text": "The ability to understand the internal state of a system by examining its outputs" },
+        { "id": "b", "text": "The ability to deploy software faster" },
+        { "id": "c", "text": "The number of unit tests in a system" },
+        { "id": "d", "text": "The encryption of telemetry data" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Observability is the ability to understand the internal state of a system by examining its outputs (telemetry: traces, metrics, logs)."
+    },
+    {
+      "id": "ob2",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Telemetry Signals",
+      "prompt": "Distributed tracing is based on which three main signal types?",
+      "options": [
+        { "id": "a", "text": "Logs" },
+        { "id": "b", "text": "Spans" },
+        { "id": "c", "text": "Traces" },
+        { "id": "d", "text": "Snapshots" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Distributed tracing is based on three signals: logs, spans, and traces."
+    },
+    {
+      "id": "ob3",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Span",
+      "prompt": "What does a span represent?",
+      "options": [
+        { "id": "a", "text": "A single unit of work or operation, with name, timing, and attributes" },
+        { "id": "b", "text": "The entire request path across all services" },
+        { "id": "c", "text": "A timestamped log message only" },
+        { "id": "d", "text": "A CPU sample" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A span represents a single unit of work/operation triggered by a request, containing a name, time-related data, log messages, and attributes."
+    },
+    {
+      "id": "ob4",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Trace",
+      "prompt": "What is the first span of a trace called?",
+      "options": [
+        { "id": "a", "text": "The root span" },
+        { "id": "b", "text": "The leaf span" },
+        { "id": "c", "text": "The client span" },
+        { "id": "d", "text": "The consumer span" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A trace is made of one or more spans; the first one is the root span, representing the request from start to finish."
+    },
+    {
+      "id": "ob5",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Metric Kind",
+      "prompt": "Which metric instrument kind accumulates over time but can also go down again (e.g. queue length)?",
+      "options": [
+        { "id": "a", "text": "UpDownCounter" },
+        { "id": "b", "text": "Counter" },
+        { "id": "c", "text": "Gauge" },
+        { "id": "d", "text": "Histogram" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "An UpDownCounter accumulates but can decrease (e.g. queue length); a Counter only goes up, a Gauge reads a current value, a Histogram aggregates client-side (e.g. latencies)."
+    },
+    {
+      "id": "ob6",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Service Levels",
+      "prompt": "Which statements about SLI and SLO are correct?",
+      "options": [
+        { "id": "a", "text": "An SLI measures the behavior of the system, often capturing the user perspective" },
+        { "id": "b", "text": "An SLO attaches business value to one or more SLIs" },
+        { "id": "c", "text": "An SLI is a contract penalty clause" },
+        { "id": "d", "text": "An SLO is a type of log format" }
+      ],
+      "correctOptionIds": ["a", "b"],
+      "explanation": "An SLI (Service Level Indicator) measures system behavior, often from the user perspective; an SLO (Service Level Objective) attaches business value to SLIs."
+    },
+    {
+      "id": "ob7",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Profiling",
+      "prompt": "What is the difference between sampling and tracing in profiling?",
+      "options": [
+        { "id": "a", "text": "Sampling periodically interrupts the program with low overhead; tracing instruments calls with high detail but higher overhead" },
+        { "id": "b", "text": "Sampling is more precise but slower than tracing" },
+        { "id": "c", "text": "Tracing has lower overhead than sampling" },
+        { "id": "d", "text": "They are identical techniques" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Sampling periodically interrupts and records the CPU state (low overhead, statistically accurate); tracing/instrumentation records function calls with high detail but higher overhead."
+    },
+    {
+      "id": "ob8",
+      "type": "true_false",
+      "difficulty": "hard",
+      "topic": "Flamegraph",
+      "prompt": "In a flamegraph, the width of a function box represents how frequently that function was present in the collected samples.",
+      "correctValue": true,
+      "explanation": "Flamegraph: the y-axis is stack depth, the x-axis spans the sample collection (alphabetical, not time), and box width is the frequency of that function in samples."
+    },
+    {
+      "id": "ob9",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "OpenTelemetry",
+      "prompt": "OpenTelemetry is best described as:",
+      "options": [
+        { "id": "a", "text": "An open-source, vendor- and tool-agnostic observability framework for generating, exporting, and collecting telemetry" },
+        { "id": "b", "text": "A proprietary database engine" },
+        { "id": "c", "text": "A programming language" },
+        { "id": "d", "text": "A cloud provider" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "OpenTelemetry is an open-source, vendor- and tool-agnostic observability framework for the generation, export, and collection of traces, metrics, and logs."
+    }
+  ]
+}

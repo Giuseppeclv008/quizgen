@@ -1,0 +1,116 @@
+{
+  "id": "nasa-artemis",
+  "title": "NASA Artemis II Fault-Tolerant Computer",
+  "source": "How NASA Built Artemis Fault-Tolerant Computer.pdf",
+  "createdAt": "2026-06-22",
+  "questions": [
+    {
+      "id": "na1",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Fail-Silent Design",
+      "prompt": "What does a 'fail-silent' computer do when it detects an erroneous calculation?",
+      "options": [
+        { "id": "a", "text": "It stays silent rather than transmitting the wrong answer" },
+        { "id": "b", "text": "It transmits the wrong answer with a warning flag" },
+        { "id": "c", "text": "It reboots the entire spacecraft" },
+        { "id": "d", "text": "It averages its result with the others" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A faulty computer fails silent rather than transmitting the wrong answer; self-checking pairs detect errors immediately."
+    },
+    {
+      "id": "na2",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Redundancy Architecture",
+      "prompt": "How many CPUs effectively run the Orion flight software in parallel?",
+      "options": [
+        { "id": "a", "text": "Eight" },
+        { "id": "b", "text": "Three" },
+        { "id": "c", "text": "Four" },
+        { "id": "d", "text": "Two" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Two Vehicle Management Computers each contain two Flight Control Modules (four FCMs), and each FCM is a self-checking pair of processors — eight CPUs total."
+    },
+    {
+      "id": "na3",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Source Selection",
+      "prompt": "Instead of a triplex majority 'voting' mechanism, how does Orion select an output among healthy channels?",
+      "options": [
+        { "id": "a", "text": "A priority-ordered source selection algorithm picking the first available FCM" },
+        { "id": "b", "text": "A random choice among the FCMs" },
+        { "id": "c", "text": "Always the slowest responding FCM" },
+        { "id": "d", "text": "A blockchain consensus protocol" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Orion uses a priority-ordered source selection algorithm among healthy (non-silenced) channels, picking the first available FCM in the priority list."
+    },
+    {
+      "id": "na4",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Determinism",
+      "prompt": "Orion uses a time-triggered Ethernet network with an ARINC653-compliant scheduler, dividing flight software execution into major and minor frames.",
+      "correctValue": true,
+      "explanation": "A strictly deterministic, time-triggered Ethernet architecture with major/minor frames and an ARINC653 scheduler ensures each FCM sees the same inputs and produces the same outputs."
+    },
+    {
+      "id": "na5",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Hardware Reinforcement",
+      "prompt": "Which hardware-level fault tolerance measures does Orion employ?",
+      "options": [
+        { "id": "a", "text": "Triple-modular-redundant memory that self-corrects single-bit errors on every read" },
+        { "id": "b", "text": "Network interface cards with two lanes constantly compared" },
+        { "id": "c", "text": "A triple-redundant network with three separate planes" },
+        { "id": "d", "text": "A single shared clock with no recalibration" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Orion uses TMR self-correcting memory, dual-lane compared NICs, and a triple-redundant network with three planes; clocks are recalibrated every second to network 'true' time."
+    },
+    {
+      "id": "na6",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Backup Flight Software",
+      "prompt": "The Backup Flight Software (BFS) is an example of which principle?",
+      "options": [
+        { "id": "a", "text": "Dissimilar redundancy" },
+        { "id": "b", "text": "Identical redundancy" },
+        { "id": "c", "text": "Single point of failure" },
+        { "id": "d", "text": "Eventual consistency" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The BFS is a prime example of dissimilar redundancy: different hardware, different OS, and independently developed simplified software to avoid common-mode failures."
+    },
+    {
+      "id": "na7",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Resilience",
+      "prompt": "According to the article, Orion can lose three FCMs in 22 seconds and still ride through safely on the last FCM.",
+      "correctValue": true,
+      "explanation": "Uitenbroek states they can lose three FCMs in 22 seconds and still ride through safely on the last FCM; silenced FCMs can reset, re-synchronize, and rejoin."
+    },
+    {
+      "id": "na8",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Verification",
+      "prompt": "Which modern verification technique does NASA use to emulate flight timelines with injected hardware failures?",
+      "options": [
+        { "id": "a", "text": "Large-scale fault injection on high-performance supercomputers" },
+        { "id": "b", "text": "Manual code reviews only" },
+        { "id": "c", "text": "Skipping testing to save time" },
+        { "id": "d", "text": "User acceptance testing in orbit" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "NASA uses full-environment simulations, Monte Carlo stress testing, and large-scale fault injection on supercomputers to verify the software can fail silent and recover."
+    }
+  ]
+}

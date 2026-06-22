@@ -1,0 +1,101 @@
+{
+  "id": "sw-arch-02-principles-1",
+  "title": "SW-ARCH 02 — Design Principles (SOLID, part 1)",
+  "source": "SW-ARCH-02 - Design principles-part1.pdf",
+  "createdAt": "2026-06-22",
+  "questions": [
+    {
+      "id": "p1q1",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "SOLID Overview",
+      "prompt": "What do the SOLID principles aim to produce?",
+      "options": [
+        { "id": "a", "text": "Mid-level software structures that are easy to understand, change comfortably, and are reusable" },
+        { "id": "b", "text": "The fastest possible runtime performance" },
+        { "id": "c", "text": "The smallest possible binary size" },
+        { "id": "d", "text": "A single monolithic class" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "SOLID aims to create mid-level structures (modules) that are easy to understand, allow comfortable changes, and are the basis of reusable components."
+    },
+    {
+      "id": "p1q2",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "SRP",
+      "prompt": "Which rephrasing best captures the Single Responsibility Principle?",
+      "options": [
+        { "id": "a", "text": "A module should be responsible to one, and only one, actor" },
+        { "id": "b", "text": "A module should have only one method" },
+        { "id": "c", "text": "A module should never be changed" },
+        { "id": "d", "text": "A module should depend on every other module" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "SRP: 'a module should have one, and only one, reason to change', rephrased as 'responsible to one, and only one, actor'."
+    },
+    {
+      "id": "p1q3",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "SRP Symptoms",
+      "prompt": "Which problems are symptoms of violating the SRP?",
+      "options": [
+        { "id": "a", "text": "Accidental impact: a change for one actor breaks another" },
+        { "id": "b", "text": "Merge collisions from different actors changing the same class" },
+        { "id": "c", "text": "Shared algorithms affecting multiple actors" },
+        { "id": "d", "text": "Faster compilation times" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "SRP violation symptoms include accidental impact and merge collisions when code serving different actors is coupled (e.g. a shared ComputeAverage)."
+    },
+    {
+      "id": "p1q4",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "OCP",
+      "prompt": "The Open-Closed Principle states a software artifact should be...",
+      "options": [
+        { "id": "a", "text": "Open for extension but closed for modification" },
+        { "id": "b", "text": "Open for modification but closed for extension" },
+        { "id": "c", "text": "Closed to all changes forever" },
+        { "id": "d", "text": "Open to everyone on the team" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "OCP (Bertrand Meyer): a software artifact should be open for extension but closed for modification — its behavior extendible without modifying the artifact."
+    },
+    {
+      "id": "p1q5",
+      "type": "true_false",
+      "difficulty": "hard",
+      "topic": "Higher-level Implications",
+      "prompt": "At the component level, the SRP corresponds to the Common Closure Principle and at the architectural level to the Axis of Change.",
+      "correctValue": true,
+      "explanation": "SRP becomes the Common Closure Principle at the component level and the Axis of Change at the architectural level for creating architectural boundaries."
+    },
+    {
+      "id": "p1q6",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "OCP Goal",
+      "prompt": "How does OCP help the architect protect the system?",
+      "options": [
+        { "id": "a", "text": "By arranging components in a dependency hierarchy that protects higher-level components from changes in lower-level ones" },
+        { "id": "b", "text": "By forbidding all new features" },
+        { "id": "c", "text": "By merging all components into one" },
+        { "id": "d", "text": "By removing all interfaces" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Using OCP the architect divides the system into components arranged in a dependency hierarchy that protects higher-level components from changes in lower-level ones."
+    },
+    {
+      "id": "p1q7",
+      "type": "true_false",
+      "difficulty": "easy",
+      "topic": "SRP Action",
+      "prompt": "The recommended action for SRP is to separate the code that different actors depend on.",
+      "correctValue": true,
+      "explanation": "The action for SRP is to separate the code that different actors depend on, e.g. by separating data from functions or using the Façade pattern."
+    }
+  ]
+}
