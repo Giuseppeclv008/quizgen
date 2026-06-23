@@ -195,6 +195,81 @@
       ],
       "correctOptionId": "a",
       "explanation": "GitHub Copilot is cited as a potential GenAI accelerator for daily developer support, from feature implementation through code testing."
+    },
+    {
+      "id": "cb15",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Reply",
+      "prompt": "What kind of group is Reply, as described in the deck?",
+      "options": [
+        { "id": "a", "text": "A group (founded 1996) specialized in Consulting, System Integration, and Digital Services" },
+        { "id": "b", "text": "A hardware manufacturer" },
+        { "id": "c", "text": "A retail bank" },
+        { "id": "d", "text": "A telecom operator" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Reply, founded in 1996, is a group specialized in Consulting, System Integration, and Digital Services, with a focus on designing and implementing innovative solutions."
+    },
+    {
+      "id": "cb16",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Delivery Approach",
+      "prompt": "Which phases make up the AI-enhanced end-to-end delivery approach?",
+      "options": [
+        { "id": "a", "text": "Analysis and Test Case Definition" },
+        { "id": "b", "text": "Development" },
+        { "id": "c", "text": "Certification, and Release and Monitoring" },
+        { "id": "d", "text": "Marketing and Sales" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "The delivery approach runs Analysis → Test Case Definition → Development → Certification → Release and Monitoring, under overall project governance, with GenAI accelerators."
+    },
+    {
+      "id": "cb17",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Dual Run",
+      "prompt": "Which are key pillars of the dual-run solution?",
+      "options": [
+        { "id": "a", "text": "A passive pipeline that duplicates accounts, balances, and transactions with no external impact" },
+        { "id": "b", "text": "A recording pipeline duplicating transactions from the abstraction layer" },
+        { "id": "c", "text": "A dedicated reconciliation tool comparing production and passive pipeline outputs" },
+        { "id": "d", "text": "Immediately deleting the legacy mainframe" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Dual-run pillars: a passive (no-impact) pipeline, a recording pipeline duplicating abstraction-layer transactions, and a reconciliation tool comparing production vs passive outputs."
+    },
+    {
+      "id": "cb18",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Migration",
+      "prompt": "What is the first step of the migration workflow (CWE)?",
+      "options": [
+        { "id": "a", "text": "Mainframe extract — extracting balances, accounting entries with future dates, and availability blocks" },
+        { "id": "b", "text": "Rollout of all accounts at once" },
+        { "id": "c", "text": "Deleting the legacy data lake" },
+        { "id": "d", "text": "Writing the marketing plan" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The migration begins with a mainframe extract (balances, future-dated accounting entries, availability blocks), followed by transcoding, load into core, bucket unloads, and reconciliation."
+    },
+    {
+      "id": "cb19",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "New Digital Bank",
+      "prompt": "Which figures describe the new digital bank at the time of the deck?",
+      "options": [
+        { "id": "a", "text": "More than 500k customers, ~30k accounts opened per month, over 400k daily transactions" },
+        { "id": "b", "text": "Fewer than 1,000 customers total" },
+        { "id": "c", "text": "No transactions yet" },
+        { "id": "d", "text": "14 million customers and 3k branches" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The new digital bank had 500k+ customers, ~30k accounts opened per month, and over 400k daily transactions (the 14M-customer figure refers to the later group-wide modernization)."
     }
   ]
 }

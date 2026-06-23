@@ -231,6 +231,66 @@
       ],
       "correctOptionIds": ["a", "b", "c"],
       "explanation": "Profile types include On-CPU, stall cycles, Memory, I/O, and Off-CPU (time a thread is blocked, e.g. waiting on I/O or locks)."
+    },
+    {
+      "id": "ob17",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Metric Instrument",
+      "prompt": "Which fields describe a metric instrument?",
+      "options": [
+        { "id": "a", "text": "Name" },
+        { "id": "b", "text": "Kind" },
+        { "id": "c", "text": "Unit and Description" },
+        { "id": "d", "text": "Trace-id" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "A metric instrument captures a measurement and is described by its Name, Kind, Unit, and Description."
+    },
+    {
+      "id": "ob18",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Telemetry",
+      "prompt": "What does telemetry data (traces, metrics, logs) allow you to do?",
+      "options": [
+        { "id": "a", "text": "Detect possible problems" },
+        { "id": "b", "text": "Troubleshoot and handle novel problems (unknown unknowns)" },
+        { "id": "c", "text": "Understand the motivation for system behavior (why is this happening?)" },
+        { "id": "d", "text": "Guarantee the system never fails" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Telemetry lets you detect problems, troubleshoot novel ones (unknown unknowns), and understand why the system behaves as it does."
+    },
+    {
+      "id": "ob19",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Java Flight Recorder",
+      "prompt": "How do JFR's two predefined settings differ?",
+      "options": [
+        { "id": "a", "text": "'default' has very low overhead and no execution sampling; 'profile' adds execution sampling and allocation profiling at higher overhead" },
+        { "id": "b", "text": "'default' adds allocation profiling; 'profile' disables all events" },
+        { "id": "c", "text": "Both settings have identical overhead" },
+        { "id": "d", "text": "'profile' has lower overhead than 'default'" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "JFR 'default' focuses on GC/locks/I/O/JVM internals with very low overhead (no jdk.ExecutionSample); 'profile' enables execution sampling and allocation profiling (~1–2% overhead), suitable for flamegraphs."
+    },
+    {
+      "id": "ob20",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Trace",
+      "prompt": "How is a distributed trace visualized over time?",
+      "options": [
+        { "id": "a", "text": "As a waterfall diagram of its spans" },
+        { "id": "b", "text": "As a flamegraph of stack samples" },
+        { "id": "c", "text": "As an entity-relationship diagram" },
+        { "id": "d", "text": "As a histogram of latencies" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A distributed trace's spans are commonly shown as a waterfall diagram; flamegraphs instead represent stack samples for profiling."
     }
   ]
 }

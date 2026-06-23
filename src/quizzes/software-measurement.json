@@ -246,6 +246,81 @@
       ],
       "correctOptionId": "a",
       "explanation": "An ordinal scale preserves order, so its admissible transformations are all monotonic increasing functions; meaningful statistics include the median and quantiles."
+    },
+    {
+      "id": "me18",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Measurement Theory",
+      "prompt": "Which two problems does measurement theory formally address?",
+      "options": [
+        { "id": "a", "text": "The representation problem (axioms/conditions under which measurement is possible)" },
+        { "id": "b", "text": "The uniqueness problem (how unique the measure or scale is)" },
+        { "id": "c", "text": "The compilation problem" },
+        { "id": "d", "text": "The deployment problem" }
+      ],
+      "correctOptionIds": ["a", "b"],
+      "explanation": "Measurement theory (Stevens, 1946) addresses the representation problem (prescriptive conditions for measurement) and the uniqueness problem (descriptive: how unique the scale is)."
+    },
+    {
+      "id": "me19",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Interval Scale",
+      "prompt": "Which operations are meaningful on an interval scale?",
+      "options": [
+        { "id": "a", "text": "Addition and subtraction make sense, but the ratio does not (admissible transformations are affine: M' = a·M + b)" },
+        { "id": "b", "text": "Ratios are meaningful because there is a true zero" },
+        { "id": "c", "text": "Only counting is allowed" },
+        { "id": "d", "text": "Only ordering is allowed" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Interval scales preserve order and differences, so addition/subtraction make sense but ratios do not; admissible transformations are affine (M' = a·M + b), e.g. temperature/relative time."
+    },
+    {
+      "id": "me20",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Absolute Scale",
+      "prompt": "What characterizes an absolute scale?",
+      "options": [
+        { "id": "a", "text": "Measurement by counting items, with only one possible mapping (M' = M)" },
+        { "id": "b", "text": "Any monotonic transformation is admissible" },
+        { "id": "c", "text": "Affine transformations are admissible" },
+        { "id": "d", "text": "It has no true zero" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "An absolute scale measures by counting items; only one mapping is possible (M' = M) and all arithmetic is meaningful (e.g. number of full-time developers)."
+    },
+    {
+      "id": "me21",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Functional Size",
+      "prompt": "In COSMIC Function Points, which are the four data movement types?",
+      "options": [
+        { "id": "a", "text": "Entry (data from user to system)" },
+        { "id": "b", "text": "Exit (data from system to user)" },
+        { "id": "c", "text": "Read and Write (between system and persistent storage)" },
+        { "id": "d", "text": "Compile and Deploy" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "COSMIC FP data movements are Entry, Exit, Read, and Write; each functional process is started by its triggering Entry data movement."
+    },
+    {
+      "id": "me22",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Design Metrics - CK",
+      "prompt": "What does the CK metric 'Response For a Class' (RFC) count?",
+      "options": [
+        { "id": "a", "text": "The methods in the class plus the remote methods directly called by them" },
+        { "id": "b", "text": "The number of immediate subclasses" },
+        { "id": "c", "text": "The maximum inheritance depth to the root" },
+        { "id": "d", "text": "The pairs of methods sharing attributes" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "RFC is the sum of the class's methods plus the remote methods directly called by them; NOC counts subclasses, DIT is inheritance depth, and LCOM relates to method/attribute sharing."
     }
   ]
 }

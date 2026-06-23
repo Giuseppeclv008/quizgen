@@ -231,6 +231,81 @@
       ],
       "correctOptionId": "a",
       "explanation": "A data-based payload includes all info for subscribers (avoiding DB pressure) and aids consistency, but creates stamp coupling and requires data/contract versioning."
+    },
+    {
+      "id": "d7q17",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Service-oriented (ODSA)",
+      "prompt": "Which service layers make up the orchestration-driven service-oriented architecture?",
+      "options": [
+        { "id": "a", "text": "Business services (only I/O schemas, no logic)" },
+        { "id": "b", "text": "Enterprise services (reusable building blocks)" },
+        { "id": "c", "text": "Application services (one-off, single implementation) and infrastructure services" },
+        { "id": "d", "text": "Plug-in services registered at runtime" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "ODSA layers: business services (signatures only), enterprise services (reusable blocks), application services (one-off), and infrastructure services (monitoring, auth, logging)."
+    },
+    {
+      "id": "d7q18",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Service-oriented (ODSA)",
+      "prompt": "What is the role of the Enterprise Service Bus in ODSA, and what is its risk?",
+      "options": [
+        { "id": "a", "text": "It handles transaction coordination and message transformation, but can grow to 'eat' the whole architecture" },
+        { "id": "b", "text": "It only renders the UI" },
+        { "id": "c", "text": "It stores all business data permanently" },
+        { "id": "d", "text": "It has no effect on coupling" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The ESB does transaction coordination and message transformation (even for internal calls) but can 'eat' the whole architecture, contributing to ODSA's very high coupling."
+    },
+    {
+      "id": "d7q19",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Space-based",
+      "prompt": "Which factors influence the cache collision rate in a space-based architecture?",
+      "options": [
+        { "id": "a", "text": "Number of processing-unit instances holding the same cache (N)" },
+        { "id": "b", "text": "Cache update rate (UR)" },
+        { "id": "c", "text": "Cache size (S) and replication latency (RL)" },
+        { "id": "d", "text": "The programming language used" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Collision rate depends on N (instances), UR (update rate), S (cache size), and RL (replication latency); collisions occur when the update rate exceeds replication latency."
+    },
+    {
+      "id": "d7q20",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Space-based",
+      "prompt": "How do replicated and distributed caching compare?",
+      "options": [
+        { "id": "a", "text": "Replicated optimizes performance (small, mostly static, low update rate); distributed optimizes consistency (large, highly dynamic, high update rate)" },
+        { "id": "b", "text": "Replicated optimizes consistency; distributed optimizes performance" },
+        { "id": "c", "text": "They are identical" },
+        { "id": "d", "text": "Distributed caching has higher fault tolerance" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Replicated caching optimizes performance with small, mostly static data and low update frequency (high fault tolerance); distributed caching optimizes consistency for large, highly dynamic data."
+    },
+    {
+      "id": "d7q21",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Event-driven",
+      "prompt": "When is an event-driven architecture a good choice?",
+      "options": [
+        { "id": "a", "text": "For complex workflows with many scenarios, reactive systems, and real-time processing" },
+        { "id": "b", "text": "When high synchronous communication is required" },
+        { "id": "c", "text": "When static coupling via contracts must increase" },
+        { "id": "d", "text": "For simple, strictly sequential batch jobs only" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "EDA suits complex workflows with thousands of scenarios, dynamic content, reactive systems, and real-time processing; it is a poor fit when synchronous communication is heavily needed."
     }
   ]
 }

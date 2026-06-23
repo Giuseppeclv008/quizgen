@@ -225,6 +225,75 @@
       "prompt": "Following the SDP, the instability metric I should decrease in the direction of dependency.",
       "correctValue": true,
       "explanation": "Per SDP, a component's I should be larger than that of the components it depends on — I decreases in the direction of dependency."
+    },
+    {
+      "id": "c3q17",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Cohesion Principles",
+      "prompt": "What tension exists between the cohesion principles?",
+      "options": [
+        { "id": "a", "text": "REP and CCP push toward larger components (avoid too many releases/changes), while CRP pushes toward smaller ones (easier reuse)" },
+        { "id": "b", "text": "They never conflict" },
+        { "id": "c", "text": "All three push toward a single component" },
+        { "id": "d", "text": "CRP forces too many releases" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "REP and CCP are inclusive (group classes together), while CRP is exclusive (split to ease reuse); balancing them shifts with project maturity."
+    },
+    {
+      "id": "c3q18",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Architecture Characteristics",
+      "prompt": "What does the Architecture Characteristics Worksheet advise about selecting characteristics?",
+      "options": [
+        { "id": "a", "text": "Identify no more than 7 driving characteristics and pick the top 3" },
+        { "id": "b", "text": "Select every possible characteristic" },
+        { "id": "c", "text": "Pick exactly one characteristic" },
+        { "id": "d", "text": "Ignore implicit characteristics entirely" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The worksheet advises identifying no more than 7 driving characteristics and picking the top 3; implicit characteristics can become driving if critical."
+    },
+    {
+      "id": "c3q19",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Architecture Characteristics",
+      "prompt": "Which is an example of a COMPOSITE architecture characteristic?",
+      "options": [
+        { "id": "a", "text": "Agility (a composite of maintainability, testability, and deployability)" },
+        { "id": "b", "text": "Performance" },
+        { "id": "c", "text": "Scalability" },
+        { "id": "d", "text": "Availability" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Composite characteristics combine others — e.g. agility = maintainability + testability + deployability; reliability combines availability, data integrity/consistency, fault tolerance, etc."
+    },
+    {
+      "id": "c3q20",
+      "type": "true_false",
+      "difficulty": "hard",
+      "topic": "Stable Dependencies",
+      "prompt": "An SDP violation can be refactored using the DIP, since abstract components are very stable and make ideal targets for less stable components to depend on.",
+      "correctValue": true,
+      "explanation": "When a stable component must depend on a flexible one, DIP introduces an abstract component (very stable) that the less stable components depend on, restoring proper stability direction."
+    },
+    {
+      "id": "c3q21",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Coupling Principles",
+      "prompt": "Which classic team-development problems motivated the Acyclic Dependencies Principle?",
+      "options": [
+        { "id": "a", "text": "The 'morning after syndrome' and the weekly build" },
+        { "id": "b", "text": "The sinkhole anti-pattern" },
+        { "id": "c", "text": "The swarm of gnats anti-pattern" },
+        { "id": "d", "text": "Goodhart's law" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "ADP has historical roots in the 'morning after syndrome' and the weekly build; the solution is to partition the environment into releasable components with no dependency cycles."
     }
   ]
 }

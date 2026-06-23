@@ -219,6 +219,96 @@
       "prompt": "A fluent interface uses extensive method chaining to improve readability, often forming a domain-specific language.",
       "correctValue": true,
       "explanation": "Fluent interfaces rely on method chaining to read like prose and create a DSL-like API; Java Stream and Optional are examples."
+    },
+    {
+      "id": "dp17",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Creational Patterns",
+      "prompt": "Which creational pattern is used when a complex object must be created through a complex, step-by-step interaction, with different variations possible?",
+      "options": [
+        { "id": "a", "text": "Builder" },
+        { "id": "b", "text": "Singleton" },
+        { "id": "c", "text": "Adapter" },
+        { "id": "d", "text": "Observer" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Builder is used when creating a complex object entails complex interaction and different variations of the target object might be produced (often with a fluent builder)."
+    },
+    {
+      "id": "dp18",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Creational Patterns",
+      "prompt": "What problem does the Abstract Factory pattern address?",
+      "options": [
+        { "id": "a", "text": "A client should not know which variant of a family of related classes it is creating/using" },
+        { "id": "b", "text": "An object needs exactly one instance" },
+        { "id": "c", "text": "An interface is not the one expected by a client" },
+        { "id": "d", "text": "Behaviour must be added to objects dynamically" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Abstract Factory handles a family of related classes with different implementations so the client doesn't know which variant it is creating or using."
+    },
+    {
+      "id": "dp19",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Behavioral Patterns",
+      "prompt": "Which are consequences of the Visitor pattern?",
+      "options": [
+        { "id": "a", "text": "Adding new operations is very easy" },
+        { "id": "b", "text": "It can visit class hierarchies and accumulate state" },
+        { "id": "c", "text": "Adding new concrete elements is difficult" },
+        { "id": "d", "text": "It strengthens encapsulation" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Visitor makes adding operations easy, can visit hierarchies and accumulate state, but makes adding new concrete elements difficult and breaks encapsulation."
+    },
+    {
+      "id": "dp20",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Idioms",
+      "prompt": "What characterizes duck typing in a dynamically typed language?",
+      "options": [
+        { "id": "a", "text": "You just add a method to a class and can call it, with no compile-time type checking" },
+        { "id": "b", "text": "You must define interfaces and classes before calling a method" },
+        { "id": "c", "text": "All types are checked at compile time" },
+        { "id": "d", "text": "Methods cannot be added after class definition" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "With duck typing you simply add a method and call it — no interfaces or compile-time type checking, unlike strongly typed languages."
+    },
+    {
+      "id": "dp21",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Idioms",
+      "prompt": "Following the Java Bean convention, how are accessors for a property 'Prop' defined?",
+      "options": [
+        { "id": "a", "text": "Getter getProp() and (optional) setter setProp(T value)" },
+        { "id": "b", "text": "Only a public field named prop" },
+        { "id": "c", "text": "A method prop() returning a map" },
+        { "id": "d", "text": "An interface HasProp with no methods" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The Java Bean convention defines a getter getProp() and an optional setter setProp(T value) for a property Prop."
+    },
+    {
+      "id": "dp22",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Creational Patterns",
+      "prompt": "Which pattern creates objects from a palette of similar classes to avoid a complex class hierarchy differentiated by minor parameters?",
+      "options": [
+        { "id": "a", "text": "Prototype" },
+        { "id": "b", "text": "Facade" },
+        { "id": "c", "text": "Strategy" },
+        { "id": "d", "text": "Decorator" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Prototype creates objects from a palette of similar classes, avoiding a complex hierarchy whose classes differ only by minor parameters."
     }
   ]
 }

@@ -195,6 +195,60 @@
       ],
       "correctOptionIds": ["a", "b", "c"],
       "explanation": "Humble Object examples include database gateways, data mappers (ORMs), and service listeners — hard-to-test boundary code kept as simple as possible."
+    },
+    {
+      "id": "b5q15",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Boundaries Example",
+      "prompt": "In the university badge-access example, how are the magnetic and NFC card readers treated architecturally?",
+      "options": [
+        { "id": "a", "text": "As low-level details behind a Reader interface, so the Identity Checker (policy) doesn't depend on them" },
+        { "id": "b", "text": "As the high-level policy of the system" },
+        { "id": "c", "text": "As entities containing critical business rules" },
+        { "id": "d", "text": "As part of the database" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Card readers (magnetic, NFC) are low-level details placed behind a Reader interface; the Identity Checker holds policy and depends on the abstraction, not the concrete readers."
+    },
+    {
+      "id": "b5q16",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Layers and Boundaries",
+      "prompt": "In the word-processor evolution, how does WP Rules interact with the Language component once language support is isolated?",
+      "options": [
+        { "id": "a", "text": "Through an API that WP Rules defines and Language implements" },
+        { "id": "b", "text": "Through an API that Language defines and WP Rules implements" },
+        { "id": "c", "text": "By sharing a global database directly" },
+        { "id": "d", "text": "They are merged into one component" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "WP Rules communicates with the abstract Language component through an API that WP Rules defines and Language implements — the API is owned by the user."
+    },
+    {
+      "id": "b5q17",
+      "type": "true_false",
+      "difficulty": "hard",
+      "topic": "Layers and Boundaries",
+      "prompt": "In the collaboration scenario, the Collaborator Management implementation offers a micro-service API to all the connected Text Management components.",
+      "correctValue": true,
+      "explanation": "Collaborator Management offers a micro-service API to the connected Text Management components, forming an architectural boundary across the network."
+    },
+    {
+      "id": "b5q18",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Package by Component",
+      "prompt": "What characterizes the 'package by component' option?",
+      "options": [
+        { "id": "a", "text": "A service-centric view where everything needed for orders lives in the OrdersComponent, with separation of concerns kept inside it" },
+        { "id": "b", "text": "Code grouped strictly by technical layer" },
+        { "id": "c", "text": "No separation of concerns at all" },
+        { "id": "d", "text": "The database as the innermost element" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Package by component is a service-centric view: everything for orders is in the OrdersComponent, with separation of concerns maintained inside each component."
     }
   ]
 }

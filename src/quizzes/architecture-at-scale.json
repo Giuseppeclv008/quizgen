@@ -225,6 +225,81 @@
       ],
       "correctOptionId": "a",
       "explanation": "The SaaS model (MRR, freemium) leans on modular architecture, feature composition, feature toggling, dynamic feature sets, and regional customizations to enable upsell/cross-sell."
+    },
+    {
+      "id": "sc17",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Conway's Law",
+      "prompt": "How does the deck summarise Conway's Law in practice?",
+      "options": [
+        { "id": "a", "text": "The structure of the design reflects how people communicate and are organised" },
+        { "id": "b", "text": "Software always expands to fill available memory" },
+        { "id": "c", "text": "More developers always means faster delivery" },
+        { "id": "d", "text": "Every system eventually becomes a monolith" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Conway's Law: organisations are constrained to produce designs that copy their communication structures — the design reflects how teams communicate and work together."
+    },
+    {
+      "id": "sc18",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Testing",
+      "prompt": "According to the test automation pyramid, how do unit tests compare with UI tests?",
+      "options": [
+        { "id": "a", "text": "Unit tests are stable, quick to run, and easy to build; UI tests are less stable, time-consuming, and resource-intensive" },
+        { "id": "b", "text": "UI tests are the cheapest and most stable" },
+        { "id": "c", "text": "Unit tests are the slowest layer" },
+        { "id": "d", "text": "Both layers cost the same" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "In the test automation pyramid, unit tests are stable, quick, and easy to build, while UI tests are less stable, time-consuming, resource-intensive, and harder to build."
+    },
+    {
+      "id": "sc19",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Personas",
+      "prompt": "In the persona example, which description fits 'Tom'?",
+      "options": [
+        { "id": "a", "text": "Seasonal usage, heavy on data reads, performance-focused, unstructured queries, few users" },
+        { "id": "b", "text": "Continuous usage, data-driven and structured, integration/process focused" },
+        { "id": "c", "text": "Less frequent access, heavy on data input/writes, UX-focused" },
+        { "id": "d", "text": "No data access at all" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Tom: seasonal usage, heavy on data reads, performance-focused, unstructured queries, few users; Jim is write/UX-heavy and Sarah is continuous, data-driven, integration-focused."
+    },
+    {
+      "id": "sc20",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Scaling Patterns",
+      "prompt": "How does Microsoft's guidance describe throttling relative to caching?",
+      "options": [
+        { "id": "a", "text": "Throttling is a self-preservation control loop, and caching does not replace throttling" },
+        { "id": "b", "text": "Caching fully replaces the need for throttling" },
+        { "id": "c", "text": "Throttling and caching are the same mechanism" },
+        { "id": "d", "text": "Throttling should be avoided under load" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Throttling is explicitly a self-preservation control loop to preserve SLOs under load; caching reduces read pressure but does not replace throttling."
+    },
+    {
+      "id": "sc21",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "DORA Metrics",
+      "prompt": "Where do the DORA metrics referenced in the deck originate?",
+      "options": [
+        { "id": "a", "text": "The 2019 Accelerate State of DevOps report (Google Cloud / Nicole Forsgren)" },
+        { "id": "b", "text": "The C4 model documentation" },
+        { "id": "c", "text": "ISO/IEC 15939" },
+        { "id": "d", "text": "The Gang of Four book" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The DORA metrics are cited from the 2019 Accelerate State of DevOps report (Google Cloud, Nicole Forsgren) on elite performance, productivity, and scaling."
     }
   ]
 }

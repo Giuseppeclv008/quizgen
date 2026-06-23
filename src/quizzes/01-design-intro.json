@@ -204,6 +204,75 @@
       ],
       "correctOptionIds": ["a", "b", "c"],
       "explanation": "Structural dependencies are implementation, construction, and compile-time; spatial dependency is a runtime/distribution dependency."
+    },
+    {
+      "id": "di16",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Dependencies",
+      "prompt": "Which of these are runtime / distribution dependencies?",
+      "options": [
+        { "id": "a", "text": "Spatial dependency (on another component's location, e.g. hard-coded URLs)" },
+        { "id": "b", "text": "Temporal dependency (another must be available at the same time, e.g. remote calls)" },
+        { "id": "c", "text": "Synchronization dependency (must wait for another to finish, e.g. sync request/response)" },
+        { "id": "d", "text": "Compile-time dependency" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Runtime/distribution dependencies are spatial, temporal, and synchronization; compile-time is a structural dependency."
+    },
+    {
+      "id": "di17",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Modules",
+      "prompt": "The principle 'do one task completely' means each method should do one thing and do it completely.",
+      "correctValue": true,
+      "explanation": "Each method should do one thing and do it completely; mixing partial responsibilities across callers is to be avoided."
+    },
+    {
+      "id": "di18",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Modules",
+      "prompt": "When should methods/code be brought together rather than separated?",
+      "options": [
+        { "id": "a", "text": "When information is shared" },
+        { "id": "b", "text": "When it will simplify the interface" },
+        { "id": "c", "text": "To eliminate duplication (code clones)" },
+        { "id": "d", "text": "To mix general-purpose and special-purpose code" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Bring code together when info is shared, when it simplifies the interface, or to eliminate duplication; keep general-purpose separate from specific-purpose (a special-general mixture is a red flag)."
+    },
+    {
+      "id": "di19",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Dependencies",
+      "prompt": "Which of these are data-level dependencies?",
+      "options": [
+        { "id": "a", "text": "Data dependency (one component depends on another's internal data model, e.g. a shared database)" },
+        { "id": "b", "text": "Schema dependency (services depend on the same DB schema or representation structure)" },
+        { "id": "c", "text": "Control flow dependency" },
+        { "id": "d", "text": "Transactional dependency" }
+      ],
+      "correctOptionIds": ["a", "b"],
+      "explanation": "Data-level dependencies are data dependency (shared internal data model) and schema dependency (shared DB/XML/JSON/binary schema); control-flow and transactional are behavioral dependencies."
+    },
+    {
+      "id": "di20",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Complexity",
+      "prompt": "What does 'cognitive load' refer to as a symptom of complexity?",
+      "options": [
+        { "id": "a", "text": "How much information is required to perform a task — sometimes more lines of code are better because they are easier to understand" },
+        { "id": "b", "text": "The number of CPU cycles a function uses" },
+        { "id": "c", "text": "The count of files in the repository" },
+        { "id": "d", "text": "The time to compile the project" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Cognitive load is how much information is required to perform a task; sometimes more lines of code are better because they are easier to understand."
     }
   ]
 }
