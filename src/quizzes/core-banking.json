@@ -111,6 +111,90 @@
       "prompt": "A dual-run architecture lets the old system keep operating alongside the new system to allow gradual migration and testing.",
       "correctValue": true,
       "explanation": "The dual-run architecture keeps the old system running alongside the new one, enabling gradual migration and process testing before full transition."
+    },
+    {
+      "id": "cb9",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Copy Banking",
+      "prompt": "What does the 'Copy Banking' component do in the abstraction layer?",
+      "options": [
+        { "id": "a", "text": "Subscribes to the results topics and replicates core entities into an external database" },
+        { "id": "b", "text": "Renders the mobile banking UI" },
+        { "id": "c", "text": "Encrypts all customer passwords" },
+        { "id": "d", "text": "Replaces the Kafka broker" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Copy Banking subscribes to results topics and replicates core entities in an external DB, eliminating direct API calls, enabling custom indexes, and allowing per-channel entity shaping."
+    },
+    {
+      "id": "cb10",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Kafka Integration",
+      "prompt": "In the update flow, how do microservices interact with the core through Kafka?",
+      "options": [
+        { "id": "a", "text": "They publish requests to specific Kafka topics; the core processes them and publishes responses to a dedicated results topic each channel subscribes to" },
+        { "id": "b", "text": "They call the mainframe directly via SOAP only" },
+        { "id": "c", "text": "They write directly into the mainframe database" },
+        { "id": "d", "text": "They poll a shared file system" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Microservices publish requests to Kafka topics; the core processes them and publishes responses to a dedicated results topic that the calling channel subscribes to."
+    },
+    {
+      "id": "cb11",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Conclusions",
+      "prompt": "Which priorities are highlighted in the project's conclusions?",
+      "options": [
+        { "id": "a", "text": "Optimization of the service (reducing MIPS consumption and costs)" },
+        { "id": "b", "text": "Cutting-edge tech with AI embedded across SDLC phases" },
+        { "id": "c", "text": "Integrating additional functionalities (high-interest topics)" },
+        { "id": "d", "text": "Removing all automated testing" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "The conclusions point to optimizing the service (lower MIPS/cost), cutting-edge tech (AI across the SDLC), and expanding high-interest functionalities."
+    },
+    {
+      "id": "cb12",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Scale",
+      "prompt": "The group-wide core banking modernization involved 40+ Reply resources and migrating over 100 existing products from the legacy system to Vault.",
+      "correctValue": true,
+      "explanation": "The modernization project involved 40+ Reply resources, a bank with 14M+ customers and 3k+ branches, and migration of over 100 products to Vault."
+    },
+    {
+      "id": "cb13",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Reverse Engineering",
+      "prompt": "During the analysis phase, what is the goal of 'code decomposition'?",
+      "options": [
+        { "id": "a", "text": "Break the system into modules/components to identify key logic and critical issues" },
+        { "id": "b", "text": "Delete the legacy source code immediately" },
+        { "id": "c", "text": "Pick the cloud provider" },
+        { "id": "d", "text": "Write the marketing brief" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Code decomposition breaks the system into modules/components to identify key logic, assess complexity, analyze functional flows, and highlight reusable or obsolete functionality."
+    },
+    {
+      "id": "cb14",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "GenAI Accelerators",
+      "prompt": "Which GenAI-based accelerator is cited for daily developer support, from feature implementation to code testing?",
+      "options": [
+        { "id": "a", "text": "GitHub Copilot" },
+        { "id": "b", "text": "Apache Kafka" },
+        { "id": "c", "text": "Thought Machine Vault" },
+        { "id": "d", "text": "Apache Flink" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "GitHub Copilot is cited as a potential GenAI accelerator for daily developer support, from feature implementation through code testing."
     }
   ]
 }

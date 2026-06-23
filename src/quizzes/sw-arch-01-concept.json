@@ -111,6 +111,84 @@
       ],
       "correctOptionId": "a",
       "explanation": "Frameworks and drivers (database, web framework, drivers, I/O devices) are details in the outermost layer where you usually write little code."
+    },
+    {
+      "id": "a1q9",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Interface Adapters",
+      "prompt": "What is the goal of the interface adapters layer?",
+      "options": [
+        { "id": "a", "text": "To shape data into a form convenient for higher levels or external systems, and vice versa" },
+        { "id": "b", "text": "To hold the critical business rules" },
+        { "id": "c", "text": "To store the database files" },
+        { "id": "d", "text": "To define the use cases" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Interface adapters (e.g. GUI presenters, DB controllers) shape data conveniently for higher levels or external systems, and do the same in the opposite direction."
+    },
+    {
+      "id": "a1q10",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Dependency Rule",
+      "prompt": "In the Clean Architecture circles, how do outer and inner circles differ?",
+      "options": [
+        { "id": "a", "text": "Outer circles are mechanisms that change often; inner circles are policies that change less frequently" },
+        { "id": "b", "text": "Outer circles are policies; inner circles are mechanisms" },
+        { "id": "c", "text": "Both change at the same rate" },
+        { "id": "d", "text": "Inner circles depend on outer circles" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Outer circles are mechanisms (change often); inner circles are policies (change less frequently), and source-code dependencies point inward."
+    },
+    {
+      "id": "a1q11",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Independence and Decoupling",
+      "prompt": "Which are given as examples of decoupling layers?",
+      "options": [
+        { "id": "a", "text": "Horizontal layers such as Database and UI" },
+        { "id": "b", "text": "Vertical layers such as services and use cases" },
+        { "id": "c", "text": "Source code units" },
+        { "id": "d", "text": "CPU cache lines" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Layers allow independent development/deployment/maintenance: horizontal layers (Database, UI) and vertical layers (source code units, services, use cases)."
+    },
+    {
+      "id": "a1q12",
+      "type": "true_false",
+      "difficulty": "hard",
+      "topic": "Policy vs Details",
+      "prompt": "The Database component contains code that translates BusinessRules calls into the database's query language, and that translation code knows about the BusinessRules.",
+      "correctValue": true,
+      "explanation": "The DB component's translation code knows about the BusinessRules (not vice versa), so business rules can be adapted to any kind of DB."
+    },
+    {
+      "id": "a1q13",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Policy vs Details",
+      "prompt": "A guiding idea is to decouple policy from details and defer decisions on details for as long as possible.",
+      "correctValue": true,
+      "explanation": "Separation of policy from details means deferring detail decisions as long as possible so the system stays flexible."
+    },
+    {
+      "id": "a1q14",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Use Cases",
+      "prompt": "When does software at the use-case level change?",
+      "options": [
+        { "id": "a", "text": "Whenever a change to any element of a use case is required" },
+        { "id": "b", "text": "Only when the database engine changes" },
+        { "id": "c", "text": "Never, once written" },
+        { "id": "d", "text": "Only when the UI framework changes" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Use-case software changes whenever a change to any element of a use case is required; it determines the flow of data to and from the entities."
     }
   ]
 }

@@ -132,6 +132,105 @@
       ],
       "correctOptionId": "a",
       "explanation": "OpenTelemetry is an open-source, vendor- and tool-agnostic observability framework for the generation, export, and collection of traces, metrics, and logs."
+    },
+    {
+      "id": "ob10",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Span Kind",
+      "prompt": "Which of these are valid OpenTelemetry span kinds?",
+      "options": [
+        { "id": "a", "text": "Client and Server" },
+        { "id": "b", "text": "Internal" },
+        { "id": "c", "text": "Producer and Consumer" },
+        { "id": "d", "text": "Gauge" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Span kinds are Client, Server, Internal, Producer, and Consumer; Gauge is a metric instrument kind, not a span kind."
+    },
+    {
+      "id": "ob11",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Log Format",
+      "prompt": "What characterizes a structured log?",
+      "options": [
+        { "id": "a", "text": "It follows a consistent schema or typed fields (e.g. JSON)" },
+        { "id": "b", "text": "It has no consistent structure and is hard to parse" },
+        { "id": "c", "text": "It contains only a timestamp" },
+        { "id": "d", "text": "It is always binary and unreadable" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Structured logs use a consistent schema or typed fields (e.g. JSON); unstructured logs lack consistent structure, and semistructured logs mix key/value pairs without a stable schema."
+    },
+    {
+      "id": "ob12",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Context Propagation",
+      "prompt": "Which standard HTTP header field carries trace context between components?",
+      "options": [
+        { "id": "a", "text": "traceparent (version, trace-id, parent-id, trace-flags)" },
+        { "id": "b", "text": "Authorization" },
+        { "id": "c", "text": "Content-Type" },
+        { "id": "d", "text": "User-Agent" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The standard traceparent HTTP header carries version, trace-id, parent-id, and trace-flags so all spans of one trace can be related."
+    },
+    {
+      "id": "ob13",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Metric Kind",
+      "prompt": "What is the difference between a Counter and a Gauge?",
+      "options": [
+        { "id": "a", "text": "A Counter accumulates over time; a Gauge measures a current value at the moment it is read" },
+        { "id": "b", "text": "A Counter can go down; a Gauge cannot" },
+        { "id": "c", "text": "They are identical" },
+        { "id": "d", "text": "A Gauge aggregates request latencies into buckets" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A Counter accumulates over time, while a Gauge measures a current value at read time; a Histogram aggregates values such as latencies into buckets."
+    },
+    {
+      "id": "ob14",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Profiling",
+      "prompt": "Why is profiling useful?",
+      "options": [
+        { "id": "a", "text": "It identifies which program elements to optimize, avoiding wasted effort on low-impact methods" },
+        { "id": "b", "text": "It encrypts telemetry data" },
+        { "id": "c", "text": "It replaces the need for tests" },
+        { "id": "d", "text": "It guarantees zero bugs" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Profiling makes programs more efficient and developers more productive by identifying which elements to optimize; without it you risk optimizing low-impact methods."
+    },
+    {
+      "id": "ob15",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Java Flight Recorder",
+      "prompt": "Java Flight Recorder (JFR) is a low-overhead profiling and monitoring system built into the JVM that stores events in a compact .jfr file.",
+      "correctValue": true,
+      "explanation": "JFR is a low-overhead profiling/monitoring system built into the JVM; it records CPU, memory, GC, threads, and I/O events into a compact .jfr file for later analysis."
+    },
+    {
+      "id": "ob16",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Profiling",
+      "prompt": "Which are profile types described in the lecture?",
+      "options": [
+        { "id": "a", "text": "On-CPU" },
+        { "id": "b", "text": "Off-CPU (time blocked, not running on a CPU)" },
+        { "id": "c", "text": "Memory (allocation/growth events)" },
+        { "id": "d", "text": "Span-CPU" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Profile types include On-CPU, stall cycles, Memory, I/O, and Off-CPU (time a thread is blocked, e.g. waiting on I/O or locks)."
     }
   ]
 }

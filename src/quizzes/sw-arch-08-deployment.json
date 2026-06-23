@@ -102,6 +102,75 @@
       ],
       "correctOptionIds": ["a", "b", "c", "d"],
       "explanation": "A deployment node can be physical infrastructure, virtualized infrastructure, containerised infrastructure, or an execution environment."
+    },
+    {
+      "id": "dep8",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Blue-Green",
+      "prompt": "In blue-green deployment, once traffic is switched the former green environment becomes the main one and the blue becomes idle, with alternation continuing on the next release.",
+      "correctValue": true,
+      "explanation": "After switching traffic to green, green becomes production and blue goes idle; the two environments alternate roles on each subsequent release."
+    },
+    {
+      "id": "dep9",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Canary",
+      "prompt": "What happens in a canary deployment if problems are detected in the new version?",
+      "options": [
+        { "id": "a", "text": "The load balancer can temporarily reverse/reduce traffic to the new version" },
+        { "id": "b", "text": "All nodes are immediately upgraded anyway" },
+        { "id": "c", "text": "The system must be taken fully offline" },
+        { "id": "d", "text": "The old version is permanently deleted" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "If problems arise, the load balancer can temporarily reverse the balance (reduce traffic to the new version) until issues are resolved."
+    },
+    {
+      "id": "dep10",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Infrastructure",
+      "prompt": "What distinguishes a 'hosted' infrastructure from 'cloud'?",
+      "options": [
+        { "id": "a", "text": "Hosted means installed on third-party data centers; cloud means virtualized over the cloud" },
+        { "id": "b", "text": "Hosted means virtualized; cloud means on your own servers" },
+        { "id": "c", "text": "They are identical" },
+        { "id": "d", "text": "Hosted requires no servers at all" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "On premise = your own servers; hosted = installed on third-party centers; cloud = the system is virtualized over the cloud."
+    },
+    {
+      "id": "dep11",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Feature Flags",
+      "prompt": "How do canary deployments with feature flags work?",
+      "options": [
+        { "id": "a", "text": "New features are flagged in code and enabled via configuration for a small group of users, then progressively expanded" },
+        { "id": "b", "text": "New features are always enabled for everyone at once" },
+        { "id": "c", "text": "Features can only be toggled by redeploying the whole system" },
+        { "id": "d", "text": "Feature flags disable monitoring" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "With feature flags, new features are flagged in code and enabled via configuration for a small 'canary' group of users, then progressively expanded (or reduced if problems arise)."
+    },
+    {
+      "id": "dep12",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Deployment Diagram",
+      "prompt": "Which method is used to draw a deployment diagram?",
+      "options": [
+        { "id": "a", "text": "The C4 model with further boundaries for each deployment node" },
+        { "id": "b", "text": "A UML state machine per node" },
+        { "id": "c", "text": "An entity-relationship diagram" },
+        { "id": "d", "text": "A flamegraph" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A deployment diagram uses the C4 model with additional boundaries for each deployment node (physical, virtualized, containerised, or an execution environment)."
     }
   ]
 }

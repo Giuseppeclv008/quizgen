@@ -111,6 +111,84 @@
       ],
       "correctOptionId": "a",
       "explanation": "All source-code dependencies point toward the abstract level, while the flow of control crosses the separation line in the opposite direction — the essence of 'dependency inversion'."
+    },
+    {
+      "id": "p2q9",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "LSP",
+      "prompt": "Why is the Rectangle example ('setW(5); setH(2); assert area == 10') used to show an LSP violation?",
+      "options": [
+        { "id": "a", "text": "Depending on how the type is defined (e.g. a Square subtype), the assertion can fail" },
+        { "id": "b", "text": "Rectangles cannot store width and height" },
+        { "id": "c", "text": "area() is a private method" },
+        { "id": "d", "text": "Integers cannot be multiplied" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "If a subtype (e.g. Square) changes the behaviour of setW/setH, the area assertion can fail — a behavioral-subtyping (LSP) violation."
+    },
+    {
+      "id": "p2q10",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "DIP",
+      "prompt": "Abstract Factories help adhere to the DIP by minimizing the number of dependencies on concrete implementations.",
+      "correctValue": true,
+      "explanation": "Abstract Factories minimize dependencies on concrete implementations and keep them separate from the rest of the system, supporting the DIP."
+    },
+    {
+      "id": "p2q11",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "DIP",
+      "prompt": "Toward what should volatility be shifted, according to the DIP's practical implications?",
+      "options": [
+        { "id": "a", "text": "Toward implementation details, without changing interfaces" },
+        { "id": "b", "text": "Toward the abstractions and interfaces" },
+        { "id": "c", "text": "Toward the main function only" },
+        { "id": "d", "text": "Toward the database schema" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Volatility should be shifted toward implementation details without changing interfaces, so stable abstractions stay unaffected."
+    },
+    {
+      "id": "p2q12",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "ISP",
+      "prompt": "What concrete guidance does ISP give for designing interfaces?",
+      "options": [
+        { "id": "a", "text": "Make fine-grained interfaces that are client-specific" },
+        { "id": "b", "text": "Make one large interface shared by all clients" },
+        { "id": "c", "text": "Avoid interfaces entirely" },
+        { "id": "d", "text": "Expose concrete classes directly" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "ISP says to make fine-grained, client-specific interfaces so clients aren't forced to depend on operations they don't use."
+    },
+    {
+      "id": "p2q13",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "DIP",
+      "prompt": "Under the DIP, stable abstractions should not depend on details, so that changes to details do not affect them.",
+      "correctValue": true,
+      "explanation": "High-level modules shouldn't depend on low-level ones, and abstractions should not depend on details so detail changes don't affect them."
+    },
+    {
+      "id": "p2q14",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "DIP",
+      "prompt": "When are dependencies on concretions considered tolerable?",
+      "options": [
+        { "id": "a", "text": "For operating systems, platform facilities and similar components whose changes are tightly controlled and infrequent" },
+        { "id": "b", "text": "For any volatile business class" },
+        { "id": "c", "text": "Always — concretions are preferred" },
+        { "id": "d", "text": "Only inside the UI layer" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Dependencies on concretions are tolerable for OSes, platform facilities, and similar components whose changes are tightly controlled and not frequent."
     }
   ]
 }

@@ -111,6 +111,90 @@
       ],
       "correctOptionId": "a",
       "explanation": "NASA uses full-environment simulations, Monte Carlo stress testing, and large-scale fault injection on supercomputers to verify the software can fail silent and recover."
+    },
+    {
+      "id": "na9",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Apollo vs Artemis",
+      "prompt": "How did the Apollo Guidance Computer compare to Orion's architecture?",
+      "options": [
+        { "id": "a", "text": "Apollo used a ~1-MHz processor with about 4 KB of erasable memory and relied on mechanical fallbacks" },
+        { "id": "b", "text": "Apollo managed every safety-critical function in software, like Orion" },
+        { "id": "c", "text": "Apollo had eight redundant CPUs" },
+        { "id": "d", "text": "Apollo used time-triggered Ethernet" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The Apollo Guidance Computer had a ~1-MHz processor and roughly 4 KB of erasable memory, with critical controls handled by manual/electromechanical means; Orion instead manages nearly all safety-critical functions in software."
+    },
+    {
+      "id": "na10",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Dead Bus Recovery",
+      "prompt": "In a total power loss ('dead bus') scenario, what does Orion do once power is restored?",
+      "options": [
+        { "id": "a", "text": "Enters safe mode, stabilizes, points solar arrays at the Sun, then orients its tail to the Sun for thermal stability before re-establishing communication" },
+        { "id": "b", "text": "Immediately fires all thrusters at full power" },
+        { "id": "c", "text": "Shuts down permanently" },
+        { "id": "d", "text": "Switches to Apollo-era rope memory" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "After a dead bus, Orion enters safe mode: it stabilizes, points solar arrays at the Sun to recover power, then orients its tail to the Sun for thermal stability before attempting to re-establish communication."
+    },
+    {
+      "id": "na11",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Determinism",
+      "prompt": "Orion measures each FCM's drift every second and recalibrates its local clock to the network's 'true' time.",
+      "correctValue": true,
+      "explanation": "Every second, the drift of each FCM is measured and its local clock recalibrated to the network's true time; a module missing its deadline is silenced, reset, and re-synchronized."
+    },
+    {
+      "id": "na12",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Radiation Environment",
+      "prompt": "Where does NASA specifically anticipate transient failures during the Artemis II mission?",
+      "options": [
+        { "id": "a", "text": "During transit through the high-radiation Van Allen Belts" },
+        { "id": "b", "text": "Only on the launch pad" },
+        { "id": "c", "text": "Only during re-entry" },
+        { "id": "d", "text": "Only when docked" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "NASA anticipates transient failures during the mission's transit through the high-radiation Van Allen Belts, which is why the redundancy is scaled for deep space."
+    },
+    {
+      "id": "na13",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Monitoring",
+      "prompt": "According to Riley, what must fail-silent logic be paired with to avoid catastrophic gaps?",
+      "options": [
+        { "id": "a", "text": "Active monitoring such as another component or a watchdog timer" },
+        { "id": "b", "text": "More manual switches" },
+        { "id": "c", "text": "A larger erasable memory" },
+        { "id": "d", "text": "Disabling redundancy" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Riley emphasizes that a silently failing component may go undetected unless monitored by another component or watchdog timer; error detection/recovery must be explicitly designed across layers."
+    },
+    {
+      "id": "na14",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Determinism",
+      "prompt": "What did Riley say about modern Agile/DevOps approaches in relation to architectural discipline?",
+      "options": [
+        { "id": "a", "text": "They prioritize iteration, which can challenge architectural discipline and let technical debt accumulate" },
+        { "id": "b", "text": "They eliminate technical debt entirely" },
+        { "id": "c", "text": "They are required for deterministic lockstep execution" },
+        { "id": "d", "text": "They were used to build the Apollo AGC" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Riley notes modern Agile and DevOps prioritize iteration, which can challenge architectural discipline so technical debt accumulates and resiliency suffers."
     }
   ]
 }

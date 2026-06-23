@@ -111,6 +111,99 @@
       ],
       "correctOptionId": "a",
       "explanation": "Gall's Law: a complex system that works has invariably evolved from a simple system that worked; one designed from scratch never works."
+    },
+    {
+      "id": "di9",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Modules",
+      "prompt": "How is 'abstraction' defined in the lecture?",
+      "options": [
+        { "id": "a", "text": "The selective removal of information — a simplified view that omits unimportant details" },
+        { "id": "b", "text": "Adding as much detail as possible to an interface" },
+        { "id": "c", "text": "Splitting one class into many small classes" },
+        { "id": "d", "text": "Caching results to speed up a method" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Abstraction is the selective removal of information: omitting important info leads to unknowns, while keeping unimportant info leads to cognitive overload."
+    },
+    {
+      "id": "di10",
+      "type": "true_false",
+      "difficulty": "easy",
+      "topic": "Information Hiding",
+      "prompt": "'Classitis' is the term for software that suffers from having too many (shallow) classes.",
+      "correctValue": true,
+      "explanation": "Classitis is the disease of having too many classes; the Java I/O BufferedReader/InputStreamReader stack is the classic example."
+    },
+    {
+      "id": "di11",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Abstraction Layers",
+      "prompt": "What is a 'pass-through method' red flag?",
+      "options": [
+        { "id": "a", "text": "A method that does nothing but pass its arguments to another method" },
+        { "id": "b", "text": "A method that catches and rethrows every exception" },
+        { "id": "c", "text": "A method that is never called" },
+        { "id": "d", "text": "A method with too many parameters" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A pass-through method does nothing but forward arguments to another method; it appears when the abstractions of adjacent layers are too close."
+    },
+    {
+      "id": "di12",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Complexity",
+      "prompt": "The principle 'pull complexity downwards' holds that it is more important for a module to have a simple interface than a simple implementation.",
+      "correctValue": true,
+      "explanation": "Pulling complexity downwards means a module should prefer a simple interface even at the cost of a more complex implementation."
+    },
+    {
+      "id": "di13",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Comments and Names",
+      "prompt": "What should good comments primarily describe?",
+      "options": [
+        { "id": "a", "text": "Things that are not obvious from the code itself" },
+        { "id": "b", "text": "A line-by-line restatement of the code" },
+        { "id": "c", "text": "The author's name and the date" },
+        { "id": "d", "text": "The compiler flags used" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Comments should describe things not obvious in the code; they should not repeat the code, and higher-level comments enhance intuition."
+    },
+    {
+      "id": "di14",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Errors",
+      "prompt": "Which techniques are suggested for limiting the impact of exceptions?",
+      "options": [
+        { "id": "a", "text": "Exception masking (handle low-level, e.g. retry)" },
+        { "id": "b", "text": "Exception aggregation (one handler for different exceptions)" },
+        { "id": "c", "text": "Just crash" },
+        { "id": "d", "text": "Throw a new exception for every caller" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Limiting exceptions: masking, aggregation, just crash, and avoiding unnecessary exceptions — all reduce the places where exceptions must be handled."
+    },
+    {
+      "id": "di15",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Dependencies",
+      "prompt": "Which of these are structural (code-level) dependencies?",
+      "options": [
+        { "id": "a", "text": "Implementation dependency (on a concrete class, not an abstraction)" },
+        { "id": "b", "text": "Construction dependency (on how collaborators are created)" },
+        { "id": "c", "text": "Compile-time dependency (must know another module at compile time)" },
+        { "id": "d", "text": "Spatial dependency (on the location of another component)" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Structural dependencies are implementation, construction, and compile-time; spatial dependency is a runtime/distribution dependency."
     }
   ]
 }

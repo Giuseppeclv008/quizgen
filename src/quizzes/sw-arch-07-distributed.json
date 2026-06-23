@@ -132,6 +132,105 @@
       ],
       "correctOptionId": "a",
       "explanation": "Key-based payloads carry just keys/IDs to query the DB later: DB stays single source of truth, minimal contracts and network usage, no versioning — but more DB pressure."
+    },
+    {
+      "id": "d7q10",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Service-based",
+      "prompt": "When is service-based architecture a good fit?",
+      "options": [
+        { "id": "a", "text": "Small-medium systems with limited scalability needs, or teams new to distributed systems" },
+        { "id": "b", "text": "Only for extreme-scale global systems" },
+        { "id": "c", "text": "When you need thousands of fine-grained services" },
+        { "id": "d", "text": "Only for real-time streaming" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Service-based suits small-medium systems, limited scalability needs, low coordination, and teams new to distributed systems, or as an intermediate migration step."
+    },
+    {
+      "id": "d7q11",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Microservices",
+      "prompt": "What is a key consideration about microservice granularity?",
+      "options": [
+        { "id": "a", "text": "Extreme granularity may affect performance; decisions hinge on purpose, minimizing transactions, and choreography" },
+        { "id": "b", "text": "Finer is always better regardless of cost" },
+        { "id": "c", "text": "Granularity has no effect on performance" },
+        { "id": "d", "text": "Services should always share one database" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Extreme granularity can hurt performance; main criteria are purpose (problem domain), avoiding/minimizing transactions, and choreography, plus data isolation and API neutrality."
+    },
+    {
+      "id": "d7q12",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Event-driven",
+      "prompt": "How does an orchestrated EDA work?",
+      "options": [
+        { "id": "a", "text": "An event mediator catches events and generates specific point-to-point derived events, usually via queues" },
+        { "id": "b", "text": "Every processor broadcasts to every other processor directly" },
+        { "id": "c", "text": "There is no broker or mediator at all" },
+        { "id": "d", "text": "The database orchestrates all events" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "In orchestrated EDA an event mediator catches initiating events and generates point-to-point derived events (usually with queues), following fire-and-forget."
+    },
+    {
+      "id": "d7q13",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Event-driven",
+      "prompt": "Which mechanisms help prevent data loss in event-driven architectures?",
+      "options": [
+        { "id": "a", "text": "Synchronous send plus persistent message queues" },
+        { "id": "b", "text": "Client acknowledge mode before dequeuing" },
+        { "id": "c", "text": "Last participant support (remove events only after a successful write)" },
+        { "id": "d", "text": "Disabling acknowledgements entirely" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Data-loss prevention uses synchronous send + persistent queues, client-acknowledge before dequeuing, and last-participant support that removes events only after a successful write."
+    },
+    {
+      "id": "d7q14",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Space-based",
+      "prompt": "In space-based architecture, what is the role of 'data pumps'?",
+      "options": [
+        { "id": "a", "text": "They asynchronously send updated data to the database, decoupling processing units from it" },
+        { "id": "b", "text": "They render the user interface" },
+        { "id": "c", "text": "They replace the in-memory data grid" },
+        { "id": "d", "text": "They authenticate users" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Data pumps asynchronously send updated data to the database (usually via messaging/queues), decoupling the processing units from the database; data writers then perform the updates."
+    },
+    {
+      "id": "d7q15",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Event-driven",
+      "prompt": "Request-reply ('pseudosynchronous') processing requires a request queue and a reply queue, often using a correlation ID.",
+      "correctValue": true,
+      "explanation": "Request-reply processing uses a request queue and a reply queue; the producer waits for confirmation, commonly implemented with a correlation ID or a temporary queue."
+    },
+    {
+      "id": "d7q16",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Event-driven",
+      "prompt": "What is a trade-off of a data-based event payload?",
+      "options": [
+        { "id": "a", "text": "It carries all data for subscribers (less DB pressure) but creates stamp coupling and needs versioning" },
+        { "id": "b", "text": "It keeps the DB as the single source of truth with no versioning" },
+        { "id": "c", "text": "It removes all coupling between services" },
+        { "id": "d", "text": "It requires no contract at all" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A data-based payload includes all info for subscribers (avoiding DB pressure) and aids consistency, but creates stamp coupling and requires data/contract versioning."
     }
   ]
 }

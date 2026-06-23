@@ -126,6 +126,105 @@
       "prompt": "Among monolithic styles, the layered architecture is rated very high on simplicity but very low on modularity.",
       "correctValue": true,
       "explanation": "Layered architecture has very high simplicity but very low modularity, maintainability, deployability, and evolvability."
+    },
+    {
+      "id": "m6q10",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Layered Architecture",
+      "prompt": "Which is the common layer pattern in a layered (n-tier) architecture?",
+      "options": [
+        { "id": "a", "text": "Presentation, Business, Persistence, Database" },
+        { "id": "b", "text": "Producer, Transformer, Tester, Consumer" },
+        { "id": "c", "text": "Core, Plug-in, Registry, UI" },
+        { "id": "d", "text": "UI, Broker, Service, Queue" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The common layered pattern is Presentation, Business, Persistence, and Database, with requests flowing through the layers."
+    },
+    {
+      "id": "m6q11",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Modular Monolith",
+      "prompt": "Which inter-module and data-topology options are described for a modular monolith?",
+      "options": [
+        { "id": "a", "text": "Peer-to-peer communication between modules" },
+        { "id": "b", "text": "A mediator/orchestrator component" },
+        { "id": "c", "text": "A single database vs domain-specific databases" },
+        { "id": "d", "text": "Mandatory separate physical servers per module" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Modular monoliths can use peer-to-peer or mediator inter-module communication, and either a single database or domain-specific databases — all still deployed as one unit."
+    },
+    {
+      "id": "m6q12",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Pipeline Architecture",
+      "prompt": "Which are trade-offs/weaknesses of the pipeline architecture?",
+      "options": [
+        { "id": "a", "text": "Latency due to multiple stages" },
+        { "id": "b", "text": "Harder debugging across the pipeline" },
+        { "id": "c", "text": "Weak fit for complex business logic and data-format coupling between filters" },
+        { "id": "d", "text": "Very high fault tolerance" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Pipeline trade-offs: multi-stage latency, harder cross-pipeline debugging, weak fit for complex business logic, and data-format coupling between filters."
+    },
+    {
+      "id": "m6q13",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Microkernel",
+      "prompt": "Which are cited as examples of microkernel (plug-in) systems?",
+      "options": [
+        { "id": "a", "text": "Web browsers" },
+        { "id": "b", "text": "IDEs" },
+        { "id": "c", "text": "Jira / PMD" },
+        { "id": "d", "text": "MapReduce" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Microkernel examples include browsers, IDEs, PMD, and Jira; MapReduce is a pipeline example."
+    },
+    {
+      "id": "m6q14",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Layered Architecture",
+      "prompt": "When is the layered architecture a good fit?",
+      "options": [
+        { "id": "a", "text": "Small, simple applications or a low-budget, short-timeframe starting point (e.g. OSes, desktop apps)" },
+        { "id": "b", "text": "Very large, high-performance, highly dynamic systems" },
+        { "id": "c", "text": "Systems needing independent scaling of every module" },
+        { "id": "d", "text": "Real-time reactive event systems" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Layered architecture suits small/simple apps and low-budget, short-time starting points (examples: operating systems, desktop applications); it is not ideal for large or high-performance systems."
+    },
+    {
+      "id": "m6q15",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Modular Monolith",
+      "prompt": "A modular monolith has a simpler operational model than microservices and no network overhead, but requires discipline to maintain its boundaries.",
+      "correctValue": true,
+      "explanation": "Modular monoliths avoid network overhead and are simpler to operate/test than microservices, but require discipline to keep boundaries from becoming tightly coupled."
+    },
+    {
+      "id": "m6q16",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Microkernel",
+      "prompt": "How should plug-in components communicate in a microkernel architecture?",
+      "options": [
+        { "id": "a", "text": "Peer-to-peer with the core system, not directly between plugins" },
+        { "id": "b", "text": "Directly with each other, bypassing the core" },
+        { "id": "c", "text": "Only through a shared database" },
+        { "id": "d", "text": "Through a message broker between plugins" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Plug-ins should be independent and self-contained, communicating p2p with the core system rather than between plugins; the architecture stays monolithic due to coupling with the core."
     }
   ]
 }

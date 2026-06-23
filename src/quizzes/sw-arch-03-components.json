@@ -132,6 +132,99 @@
       ],
       "correctOptionId": "a",
       "explanation": "Scalability (and elasticity, availability, fault tolerance) are operational characteristics; maintainability, testability, and deployability are engineering characteristics."
+    },
+    {
+      "id": "c3q10",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Cohesion Principles",
+      "prompt": "What does the Reuse/Release Equivalence Principle (REP) state?",
+      "options": [
+        { "id": "a", "text": "The granule of reuse is the granule of release" },
+        { "id": "b", "text": "Classes that change together are packaged together" },
+        { "id": "c", "text": "The dependency graph must have no cycles" },
+        { "id": "d", "text": "Abstractness increases with stability" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "REP: the granule of reuse is the granule of release — classes/modules reused together must be releasable together with proper release documentation."
+    },
+    {
+      "id": "c3q11",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Cohesion Principles",
+      "prompt": "The Common Closure Principle (CCP) is most closely related to which design principle?",
+      "options": [
+        { "id": "a", "text": "Single Responsibility Principle (and the closure aspect of OCP)" },
+        { "id": "b", "text": "Liskov Substitution Principle" },
+        { "id": "c", "text": "Interface Segregation Principle" },
+        { "id": "d", "text": "Dependency Inversion Principle" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "CCP groups classes that change together for the same reasons; it is similar to SRP and addresses the 'closure' aspect of OCP."
+    },
+    {
+      "id": "c3q12",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Cohesion Principles",
+      "prompt": "The Common Reuse Principle (CRP) is the component-level analogue of which design principle?",
+      "options": [
+        { "id": "a", "text": "Interface Segregation Principle (ISP)" },
+        { "id": "b", "text": "Open-Closed Principle (OCP)" },
+        { "id": "c", "text": "Single Responsibility Principle (SRP)" },
+        { "id": "d", "text": "Liskov Substitution Principle (LSP)" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "CRP says classes used together are packaged together, and users shouldn't depend on unnecessary features — similar to the Interface Segregation Principle."
+    },
+    {
+      "id": "c3q13",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Coupling Principles",
+      "prompt": "The Stable Abstractions Principle (SAP) says a component should be as abstract as it is stable.",
+      "correctValue": true,
+      "explanation": "SAP: a component should be as abstract as it is stable; high-level policy code belongs in stable components."
+    },
+    {
+      "id": "c3q14",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Main Sequence",
+      "prompt": "On the abstractness/instability graph, what characterizes the 'zone of pain'?",
+      "options": [
+        { "id": "a", "text": "Highly stable and highly concrete (e.g. a database or utility library that is hard to change)" },
+        { "id": "b", "text": "Highly abstract and highly unstable" },
+        { "id": "c", "text": "Exactly on the main sequence" },
+        { "id": "d", "text": "Maximally abstract with no dependents" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The zone of pain is stable + concrete (hard to change yet depended upon, e.g. databases/utility libraries); the zone of uselessness is abstract + unstable (unmaintained code)."
+    },
+    {
+      "id": "c3q15",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Coupling Principles",
+      "prompt": "Which are valid solutions to break a dependency cycle between components?",
+      "options": [
+        { "id": "a", "text": "Apply the Dependency Inversion Principle" },
+        { "id": "b", "text": "Create a new component holding the shared classes that both depend on" },
+        { "id": "c", "text": "Leave the cycle in place since small cycles are fine" },
+        { "id": "d", "text": "Delete all the tests" }
+      ],
+      "correctOptionIds": ["a", "b"],
+      "explanation": "Two solutions to a dependency cycle: use DIP to invert one dependency, or extract the shared class(es) into a new component both depend on."
+    },
+    {
+      "id": "c3q16",
+      "type": "true_false",
+      "difficulty": "hard",
+      "topic": "Stable Dependencies",
+      "prompt": "Following the SDP, the instability metric I should decrease in the direction of dependency.",
+      "correctValue": true,
+      "explanation": "Per SDP, a component's I should be larger than that of the components it depends on — I decreases in the direction of dependency."
     }
   ]
 }

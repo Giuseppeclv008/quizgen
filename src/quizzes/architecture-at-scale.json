@@ -126,6 +126,105 @@
       "prompt": "A key takeaway is to document architecture decisions using ADRs and prefer iterative, incremental changes over big-bang changes.",
       "correctValue": true,
       "explanation": "Takeaways: document with ADRs, prefer iterative/incremental changes (no big bang), let data drive decisions, run workshops, and measure success before/after."
+    },
+    {
+      "id": "sc10",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Vertical vs Horizontal Scaling",
+      "prompt": "How do vertical and horizontal compute scaling differ?",
+      "options": [
+        { "id": "a", "text": "Vertical scaling adds memory/CPU to a machine (scaling up); horizontal adds more nodes (scaling out)" },
+        { "id": "b", "text": "Vertical scaling adds more nodes; horizontal adds memory/CPU" },
+        { "id": "c", "text": "They both only apply to storage" },
+        { "id": "d", "text": "They are the same thing" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "VMs scale vertically by adding memory/CPU (scaling up); adding more nodes is horizontal scaling (scaling out), also enabled by containers and functions."
+    },
+    {
+      "id": "sc11",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "SLA",
+      "prompt": "What is a Service-Level Agreement (SLA)?",
+      "options": [
+        { "id": "a", "text": "A legal contract defining what a customer should expect from the provider, e.g. availability (number of 9s)" },
+        { "id": "b", "text": "A profiling tool built into the JVM" },
+        { "id": "c", "text": "A type of database index" },
+        { "id": "d", "text": "An event payload format" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "An SLA is a legal document/contract defining what a customer should expect from a SaaS provider, such as the amount of available time (number of 9s)."
+    },
+    {
+      "id": "sc12",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Quality Gates",
+      "prompt": "Static code analysis in the CI/CD pipeline is used to PREVENT bad code from reaching the main branch via quality gates.",
+      "correctValue": true,
+      "explanation": "Running static code analysis with quality gates inside CI/CD prevents bad code from reaching the master/main branch — the same idea applies to agentic coding."
+    },
+    {
+      "id": "sc13",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "High Availability",
+      "prompt": "How is high availability typically achieved in the cloud per the deck?",
+      "options": [
+        { "id": "a", "text": "Deploying across multiple Availability Zones (and regions) for redundancy and disaster recovery" },
+        { "id": "b", "text": "Running a single large server" },
+        { "id": "c", "text": "Disabling replication" },
+        { "id": "d", "text": "Sharding from day one" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "High availability and disaster recovery use multiple Availability Zones (Multi-AZ) and regions; CAP reminds us a distributed system trades among consistency, availability, and partition tolerance."
+    },
+    {
+      "id": "sc14",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Cost of Bugs",
+      "prompt": "How does the cost of finding/fixing bugs change across the SDLC stages?",
+      "options": [
+        { "id": "a", "text": "It increases the later it is found (idea → requirement → development → testing → production)" },
+        { "id": "b", "text": "It is constant at every stage" },
+        { "id": "c", "text": "It decreases towards production" },
+        { "id": "d", "text": "It only matters at the idea stage" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The cost of finding bugs rises across stages from idea through requirements, development, integration, and testing, peaking in production."
+    },
+    {
+      "id": "sc15",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Total Cost of Ownership",
+      "prompt": "Which items are part of Total Cost of Ownership (TCO)?",
+      "options": [
+        { "id": "a", "text": "Infrastructure and development team costs" },
+        { "id": "b", "text": "Licenses and development tools costs" },
+        { "id": "c", "text": "Training, support, and maintenance" },
+        { "id": "d", "text": "The number of git branches" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "TCO includes infrastructure, development team, licenses, tools, training, support, marketing/sales, fixed costs, taxes, maintenance, and security."
+    },
+    {
+      "id": "sc16",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "SaaS Model",
+      "prompt": "Which architectural traits support the SaaS upsell/cross-sell business model?",
+      "options": [
+        { "id": "a", "text": "Modular architecture, feature composition, feature toggling, and regional customizations" },
+        { "id": "b", "text": "A single hard-coded feature set for all customers" },
+        { "id": "c", "text": "One-off on-prem licenses only" },
+        { "id": "d", "text": "Disabling all configuration" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The SaaS model (MRR, freemium) leans on modular architecture, feature composition, feature toggling, dynamic feature sets, and regional customizations to enable upsell/cross-sell."
     }
   ]
 }

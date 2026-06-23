@@ -96,6 +96,75 @@
       "prompt": "The recommended action for SRP is to separate the code that different actors depend on.",
       "correctValue": true,
       "explanation": "The action for SRP is to separate the code that different actors depend on, e.g. by separating data from functions or using the Façade pattern."
+    },
+    {
+      "id": "p1q8",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "OCP",
+      "prompt": "In the student-report OCP example, which two responsibilities are separated?",
+      "options": [
+        { "id": "a", "text": "The calculation of the reported data and the presentation of that data" },
+        { "id": "b", "text": "Reading from disk and writing to disk" },
+        { "id": "c", "text": "Authentication and authorization" },
+        { "id": "d", "text": "Logging and monitoring" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Generating the report involves two responsibilities: calculating the reported data and presenting it (in web- and printer-friendly form)."
+    },
+    {
+      "id": "p1q9",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "SRP",
+      "prompt": "Which solutions are proposed to fix an SRP violation?",
+      "options": [
+        { "id": "a", "text": "Separate data from functions" },
+        { "id": "b", "text": "Use the Façade pattern" },
+        { "id": "c", "text": "Merge all responsibilities into one class" },
+        { "id": "d", "text": "Remove all interfaces" }
+      ],
+      "correctOptionIds": ["a", "b"],
+      "explanation": "Proposed SRP fixes include separating data from functions and using the Façade pattern (and variations of it)."
+    },
+    {
+      "id": "p1q10",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "OCP",
+      "prompt": "Applying OCP, the architect arranges components in a dependency hierarchy that protects higher-level components from changes in lower-level ones.",
+      "correctValue": true,
+      "explanation": "OCP divides the system into components arranged so that higher-level components are protected from changes in lower-level components."
+    },
+    {
+      "id": "p1q11",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "SRP",
+      "prompt": "What is the original statement of the Single Responsibility Principle?",
+      "options": [
+        { "id": "a", "text": "A module should have one, and only one, reason to change" },
+        { "id": "b", "text": "A module should be open for extension but closed for modification" },
+        { "id": "c", "text": "Depend in the direction of stability" },
+        { "id": "d", "text": "A module should expose every operation it can perform" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The original SRP statement is 'a module should have one, and only one, reason to change', rephrased as being responsible to a single actor."
+    },
+    {
+      "id": "p1q12",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "OCP",
+      "prompt": "Whose work is the Open-Closed Principle originally attributed to?",
+      "options": [
+        { "id": "a", "text": "Bertrand Meyer (Object Oriented Software Construction, 1988)" },
+        { "id": "b", "text": "Barbara Liskov" },
+        { "id": "c", "text": "Robert C. Martin" },
+        { "id": "d", "text": "Edsger Dijkstra" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The OCP's original statement is attributed to Bertrand Meyer (Object Oriented Software Construction, Prentice Hall, 1988)."
     }
   ]
 }

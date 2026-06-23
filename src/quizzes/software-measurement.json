@@ -147,6 +147,105 @@
       ],
       "correctOptionId": "a",
       "explanation": "SMART indicators are Specific, Measurable, Achievable, Relevant, and Timely."
+    },
+    {
+      "id": "me11",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Entity Categories",
+      "prompt": "Which are the three entity categories in software measurement?",
+      "options": [
+        { "id": "a", "text": "Resource, Process, and Product" },
+        { "id": "b", "text": "Nominal, Ordinal, and Ratio" },
+        { "id": "c", "text": "Base, Derived, and Indicator" },
+        { "id": "d", "text": "Internal, External, and Subjective" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Entities are categorized as Resource (input to a process), Process (an activity/event), and Product (an object/service resulting from a process)."
+    },
+    {
+      "id": "me12",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Nominal Scale",
+      "prompt": "Which statistics are meaningful on a nominal scale?",
+      "options": [
+        { "id": "a", "text": "Frequency per category and the mode" },
+        { "id": "b", "text": "Mean and variance" },
+        { "id": "c", "text": "Median and quantiles" },
+        { "id": "d", "text": "Geometric mean" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Nominal scales support only counting, so the available statistics are frequency per category and the mode (no ordering or mean)."
+    },
+    {
+      "id": "me13",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "LOC",
+      "prompt": "Lines of Code is easy to understand but hard to measure precisely, and using it for productivity does not favor well-structured programs.",
+      "correctValue": true,
+      "explanation": "LOC is intuitive and widely used but hard to measure precisely; if used to measure productivity it does not reward well-structured programs."
+    },
+    {
+      "id": "me14",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Cyclomatic Complexity",
+      "prompt": "In one common classification of McCabe's cyclomatic complexity, what does a value of 1–10 indicate?",
+      "options": [
+        { "id": "a", "text": "A low-risk routine" },
+        { "id": "b", "text": "Moderate risk" },
+        { "id": "c", "text": "High risk" },
+        { "id": "d", "text": "Most complex and highly unstable" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A common CC classification: 1–10 low-risk, 11–20 moderate risk, 21–50 high risk, and >50 most complex and highly unstable."
+    },
+    {
+      "id": "me15",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Functional Size",
+      "prompt": "Function Point Analysis was originally developed by whom?",
+      "options": [
+        { "id": "a", "text": "Allan J. Albrecht (late 1970s)" },
+        { "id": "b", "text": "Thomas McCabe" },
+        { "id": "c", "text": "Chidamber and Kemerer" },
+        { "id": "d", "text": "S. S. Stevens" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Function Point Analysis was developed by Allan J. Albrecht in the late 1970s; variations include COSMIC, IFPUG, Mk II, NESMA, and FiSMA."
+    },
+    {
+      "id": "me16",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Measurement Laws",
+      "prompt": "Which law warns that the more a quantitative indicator is used for decision-making, the more it will be subject to corruption pressures?",
+      "options": [
+        { "id": "a", "text": "Campbell's law" },
+        { "id": "b", "text": "Goodhart's law" },
+        { "id": "c", "text": "Gall's law" },
+        { "id": "d", "text": "Conway's law" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Campbell's law: the more any quantitative social indicator is used for decision-making, the more it is subject to corruption and the more it distorts the processes it monitors."
+    },
+    {
+      "id": "me17",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Ordinal Scale",
+      "prompt": "What set of admissible transformations defines an ordinal scale?",
+      "options": [
+        { "id": "a", "text": "Any monotonic increasing function (order-preserving)" },
+        { "id": "b", "text": "Affine transformations M' = a·M + b" },
+        { "id": "c", "text": "Only the identity M' = M" },
+        { "id": "d", "text": "Ratio transformations M' = a·M" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "An ordinal scale preserves order, so its admissible transformations are all monotonic increasing functions; meaningful statistics include the median and quantiles."
     }
   ]
 }

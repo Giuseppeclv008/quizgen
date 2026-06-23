@@ -111,6 +111,90 @@
       "prompt": "The C4 model is a lightweight notation for visualizing the static structure of a software system.",
       "correctValue": true,
       "explanation": "C4 is a lightweight notation to visualize the static structure, based on a hierarchical model with four levels and four main element types."
+    },
+    {
+      "id": "v4q9",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Code Diagram",
+      "prompt": "What does the Level 4 Code diagram show, and how is it usually produced?",
+      "options": [
+        { "id": "a", "text": "The implementation details of an individual component, usually as UML class diagrams that can be auto-generated" },
+        { "id": "b", "text": "The deployment nodes and their infrastructure" },
+        { "id": "c", "text": "The people and external systems around the system" },
+        { "id": "d", "text": "The network port numbers between containers" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The Code diagram shows an individual component's implementation, usually via UML class diagrams (often auto-generated, e.g. PlantUML); it is optional and for technical people."
+    },
+    {
+      "id": "v4q10",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Component Diagram",
+      "prompt": "What scope does a Component diagram cover?",
+      "options": [
+        { "id": "a", "text": "The components within a single container at a time" },
+        { "id": "b", "text": "All containers across the whole system" },
+        { "id": "c", "text": "The external people and systems" },
+        { "id": "d", "text": "The physical deployment nodes" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A Component diagram shows the components within a single container; it is optional and intended for technical people within the development team."
+    },
+    {
+      "id": "v4q11",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Tooling",
+      "prompt": "The slides recommend text-based modelling tools (e.g. Structurizr or PlantUML) over purely visual diagramming.",
+      "correctValue": true,
+      "explanation": "Text-based modelling (e.g. Structurizr, PlantUML) is recommended; visual diagramming such as draw.io is lower on the suggested ordering."
+    },
+    {
+      "id": "v4q12",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Notation",
+      "prompt": "How can C4 diagrams be customized?",
+      "options": [
+        { "id": "a", "text": "Line styles for synchronous/asynchronous communication" },
+        { "id": "b", "text": "Colors for different components" },
+        { "id": "c", "text": "Different shapes for specific types of components" },
+        { "id": "d", "text": "Mandatory three-dimensional rendering" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "C4 is customizable with line styles (sync/async), colors for components, and shapes for component types."
+    },
+    {
+      "id": "v4q13",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Elements",
+      "prompt": "For a 'Person' element, what information should be reported?",
+      "options": [
+        { "id": "a", "text": "Name and description (role/responsibilities)" },
+        { "id": "b", "text": "Name, technology, and description" },
+        { "id": "c", "text": "Only the implementation technology" },
+        { "id": "d", "text": "Port numbers and protocols" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A Person is reported with a name and a description (role, responsibilities); technology is only added for containers and components."
+    },
+    {
+      "id": "v4q14",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Other Diagrams",
+      "prompt": "Which 'other diagrams' are mentioned as complements to C4?",
+      "options": [
+        { "id": "a", "text": "System landscape diagram" },
+        { "id": "b", "text": "UI mockups and wireframes" },
+        { "id": "c", "text": "Business process / workflow (e.g. BPMN, UML activity)" },
+        { "id": "d", "text": "Gantt charts of the project schedule" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Complementary diagrams include system landscape, UI mockups/wireframes, business process/workflow (BPMN, UML activity), domain models, and sequence diagrams."
     }
   ]
 }

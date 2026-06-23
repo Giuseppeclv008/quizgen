@@ -111,6 +111,105 @@
       ],
       "correctOptionId": "a",
       "explanation": "Brokerless messaging offers lighter load, less latency, no central point of failure, and simplicity, but requires discovery and reduces availability."
+    },
+    {
+      "id": "co9",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Network Latency",
+      "prompt": "Which solution is suggested to reduce the round-trips caused by decomposing an operation across services?",
+      "options": [
+        { "id": "a", "text": "A batch API that feeds multiple requests, or merging services" },
+        { "id": "b", "text": "Adding more network hops" },
+        { "id": "c", "text": "Disabling all caching" },
+        { "id": "d", "text": "Switching every call to synchronous" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "To cut round-trips, use a batch API that feeds multiple requests, or merge services to convert messages into method calls."
+    },
+    {
+      "id": "co10",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Message Structure",
+      "prompt": "What does a message header contain?",
+      "options": [
+        { "id": "a", "text": "Metadata as name-value pairs, e.g. message ID and return address" },
+        { "id": "b", "text": "Only the business data being sent" },
+        { "id": "c", "text": "The full database schema" },
+        { "id": "d", "text": "The receiver's source code" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A message header is a collection of name-value pairs (metadata) such as message ID and return address; the body carries the data."
+    },
+    {
+      "id": "co11",
+      "type": "single_choice",
+      "difficulty": "easy",
+      "topic": "Message Types",
+      "prompt": "Which message type is the equivalent of an RPC request, specifying the operation to invoke and its parameters?",
+      "options": [
+        { "id": "a", "text": "Command" },
+        { "id": "b", "text": "Document" },
+        { "id": "c", "text": "Event" },
+        { "id": "d", "text": "Header" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A command is the equivalent of an RPC request: it specifies the operation to invoke and its parameters."
+    },
+    {
+      "id": "co12",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Channels",
+      "prompt": "A point-to-point channel delivers each message to exactly one of the consumers reading from it.",
+      "correctValue": true,
+      "explanation": "Point-to-point channels deliver a message to exactly one consumer and are used for one-to-one interaction styles (e.g. command messages)."
+    },
+    {
+      "id": "co13",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Communication Styles",
+      "prompt": "In which one-to-many style does a client publish a request and then wait a certain time for responses from interested services?",
+      "options": [
+        { "id": "a", "text": "Publish/async responses" },
+        { "id": "b", "text": "Publish/subscribe" },
+        { "id": "c", "text": "One-way notification" },
+        { "id": "d", "text": "Synchronous request/response" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Publish/async responses: a client publishes a request message and waits for a period for responses from interested services (one-to-many, two-way)."
+    },
+    {
+      "id": "co14",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Coordination",
+      "prompt": "Which are drawbacks of choreography?",
+      "options": [
+        { "id": "a", "text": "Difficult to understand and maintain because transaction logic is scattered" },
+        { "id": "b", "text": "Complex (and possibly cyclic) service dependencies leading to tight coupling" },
+        { "id": "c", "text": "Requires reliable messaging and correlation IDs" },
+        { "id": "d", "text": "Transaction logic is gathered in a single place" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Choreography scatters transaction logic, creates complex/cyclic dependencies, and requires reliable messaging with correlation IDs; gathering logic in one place is an orchestration trait."
+    },
+    {
+      "id": "co15",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Broker Characteristics",
+      "prompt": "Which of these are characteristics used to compare message brokers?",
+      "options": [
+        { "id": "a", "text": "Delivery guarantees" },
+        { "id": "b", "text": "Message ordering" },
+        { "id": "c", "text": "Persistence and durability" },
+        { "id": "d", "text": "The client's programming language" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Broker characteristics include supported standards, ordering, delivery guarantees, persistence, durability, scalability, latency, and competing-consumer support."
     }
   ]
 }

@@ -126,6 +126,99 @@
       ],
       "correctOptionId": "a",
       "explanation": "Architectural patterns address system-wide structures; design patterns refine components; idioms are language-specific low-level patterns."
+    },
+    {
+      "id": "dp10",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Structural Patterns",
+      "prompt": "Which pattern lets a class with an unexpected interface be integrated without modifying its source?",
+      "options": [
+        { "id": "a", "text": "Adapter" },
+        { "id": "b", "text": "Observer" },
+        { "id": "c", "text": "Strategy" },
+        { "id": "d", "text": "Builder" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Adapter integrates a provider class whose interface is not the one expected, without modifying it; it is the only structural pattern where inheritance plays the key role."
+    },
+    {
+      "id": "dp11",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Structural Patterns",
+      "prompt": "Which pattern represents part-whole hierarchies so clients treat individual and composed objects uniformly?",
+      "options": [
+        { "id": "a", "text": "Composite" },
+        { "id": "b", "text": "Proxy" },
+        { "id": "c", "text": "Singleton" },
+        { "id": "d", "text": "Command" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Composite represents part-whole hierarchies (e.g. Java Swing JPanel containment) so clients can treat individual and composite objects the same way."
+    },
+    {
+      "id": "dp12",
+      "type": "true_false",
+      "difficulty": "medium",
+      "topic": "Structural Patterns",
+      "prompt": "The Decorator pattern adds responsibilities to individual objects dynamically without an explosion of subclasses.",
+      "correctValue": true,
+      "explanation": "Decorator extends an object's behaviour dynamically without subclass explosion; Java's JScrollPane and BufferedReader are examples."
+    },
+    {
+      "id": "dp13",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Behavioral Patterns",
+      "prompt": "Which pattern provides an object to traverse a collection without exposing its internal storage?",
+      "options": [
+        { "id": "a", "text": "Iterator" },
+        { "id": "b", "text": "Visitor" },
+        { "id": "c", "text": "Facade" },
+        { "id": "d", "text": "Prototype" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Iterator provides an iterator object attached to the collection, allowing multiple concurrent iterations without exposing internal storage (java.util.Iterator)."
+    },
+    {
+      "id": "dp14",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Structural Patterns",
+      "prompt": "Which pattern supports very large numbers of fine-grained objects efficiently by sharing intrinsic state?",
+      "options": [
+        { "id": "a", "text": "Flyweight" },
+        { "id": "b", "text": "Adapter" },
+        { "id": "c", "text": "Template Method" },
+        { "id": "d", "text": "Mediator" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Flyweight shares common (intrinsic) state across many fine-grained objects to save memory; Java's Integer pooling is an example."
+    },
+    {
+      "id": "dp15",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Behavioral Patterns",
+      "prompt": "Which are listed consequences of the Observer pattern?",
+      "options": [
+        { "id": "a", "text": "Abstract coupling between Subject and Observer" },
+        { "id": "b", "text": "Support for broadcast communication" },
+        { "id": "c", "text": "Risk of unanticipated updates" },
+        { "id": "d", "text": "Guaranteed compile-time type safety of updates" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Observer gives abstract coupling and broadcast support (pros) but risks unanticipated updates (con)."
+    },
+    {
+      "id": "dp16",
+      "type": "true_false",
+      "difficulty": "easy",
+      "topic": "Idioms",
+      "prompt": "A fluent interface uses extensive method chaining to improve readability, often forming a domain-specific language.",
+      "correctValue": true,
+      "explanation": "Fluent interfaces rely on method chaining to read like prose and create a DSL-like API; Java Stream and Optional are examples."
     }
   ]
 }

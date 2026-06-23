@@ -111,6 +111,90 @@
       ],
       "correctOptionId": "a",
       "explanation": "WP Rules defines the API that Language implements; the API is defined and owned by the user, not by the implementer."
+    },
+    {
+      "id": "b5q9",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Drawing Boundaries",
+      "prompt": "What is the correct sequence for drawing architectural boundaries?",
+      "options": [
+        { "id": "a", "text": "Partition into components, identify core-business components, then arrange dependencies to point toward the core business" },
+        { "id": "b", "text": "Pick the database, then write the UI, then add business rules" },
+        { "id": "c", "text": "Point all dependencies toward the database" },
+        { "id": "d", "text": "Merge everything into a single component" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Drawing boundaries: partition the system into components, separate core-business components from non-core ones, and arrange code so dependencies point toward the core business."
+    },
+    {
+      "id": "b5q10",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Package by Layer",
+      "prompt": "What is a disadvantage of organizing code 'by layer'?",
+      "options": [
+        { "id": "a", "text": "As the software grows the layers become 'fat' and it is not tied to a specific business view" },
+        { "id": "b", "text": "It perfectly reflects the domain" },
+        { "id": "c", "text": "It makes every component independently deployable" },
+        { "id": "d", "text": "It removes all dependencies between layers" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Package by layer is simple and common but layers grow fat as software grows, it isn't tied to a business view, and non-adjacent dependencies remain possible."
+    },
+    {
+      "id": "b5q11",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Ports and Adapters",
+      "prompt": "What characterizes the ports-and-adapters packaging option?",
+      "options": [
+        { "id": "a", "text": "Domain-specific code is well separated from implementation details, which depend on the domain (dependencies flow inward)" },
+        { "id": "b", "text": "Implementation details own the domain code" },
+        { "id": "c", "text": "Everything is grouped only by technical layer" },
+        { "id": "d", "text": "The database is the innermost element" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Ports and adapters separate domain (inner) from implementation details (outer); the outer depends on the inner, with dependencies flowing inward."
+    },
+    {
+      "id": "b5q12",
+      "type": "true_false",
+      "difficulty": "easy",
+      "topic": "Package by Feature",
+      "prompt": "Packaging 'by feature' slices the system vertically so everything about a functionality lives in one package.",
+      "correctValue": true,
+      "explanation": "Package by feature is vertical slicing that reflects the domain — everything about a functionality is in one package, though separation of details vs logic can be suboptimal."
+    },
+    {
+      "id": "b5q13",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Design for Testability",
+      "prompt": "How should tests be designed to reduce their fragility?",
+      "options": [
+        { "id": "a", "text": "They should depend as little as possible on volatile elements (e.g. test business rules without the GUI)" },
+        { "id": "b", "text": "They should always go through the GUI" },
+        { "id": "c", "text": "They should depend directly on the database schema" },
+        { "id": "d", "text": "They should avoid the Dependency Rule" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "To reduce fragility, tests should depend as little as possible on volatile elements — e.g. test business rules without the GUI; specific test APIs can avoid constraints."
+    },
+    {
+      "id": "b5q14",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Humble Object",
+      "prompt": "Which are given as examples of Humble Objects?",
+      "options": [
+        { "id": "a", "text": "Database gateways" },
+        { "id": "b", "text": "Data mappers (e.g. ORM)" },
+        { "id": "c", "text": "Service listeners" },
+        { "id": "d", "text": "Business rule interactors" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Humble Object examples include database gateways, data mappers (ORMs), and service listeners — hard-to-test boundary code kept as simple as possible."
     }
   ]
 }
