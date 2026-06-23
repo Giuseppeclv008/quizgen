@@ -384,6 +384,381 @@
       ],
       "correctOptionId": "b",
       "explanation": "The Strangler pattern grows a new system around the edges of the old one until the monolith is strangled. Big-bang rewrites are risky — \"the only thing a Big Bang rewrite guarantees is a Big Bang!\" (Fowler)."
+    },
+    {
+      "id": "q27",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Domain-Driven Design",
+      "prompt": "Decomposition by subdomain identifies services based on…",
+      "options": [
+        { "id": "a", "text": "bounded contexts / DDD sub-domains that partition the overall domain model" },
+        { "id": "b", "text": "the existing relational tables" },
+        { "id": "c", "text": "the screens of the user interface" },
+        { "id": "d", "text": "the programming language used" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Decomposing by subdomain identifies bounded contexts (DDD sub-domains) that partition the overall domain model, yielding cohesive, loosely coupled services and a stable architecture for autonomous teams."
+    },
+    {
+      "id": "q28",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Microservices Basics",
+      "prompt": "Which are listed as obstacles to decomposition?",
+      "options": [
+        { "id": "a", "text": "Network latency" },
+        { "id": "b", "text": "Reduced availability due to synchronous communication" },
+        { "id": "c", "text": "Data consistency across services and god classes" },
+        { "id": "d", "text": "Automatic removal of all coupling" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Decomposition obstacles include network latency, reduced availability from synchronous communication, data consistency across services, getting a consistent view of data, and god classes."
+    },
+    {
+      "id": "q29",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Business Logic",
+      "prompt": "When is the Transaction Script pattern appropriate, and what is its downside?",
+      "options": [
+        { "id": "a", "text": "For simple business logic (a sequence of steps); downside is code duplication and being hard to maintain" },
+        { "id": "b", "text": "For complex logic; downside is no code duplication" },
+        { "id": "c", "text": "For querying multiple services; downside is replication lag" },
+        { "id": "d", "text": "For event-sourced aggregates; downside is a learning curve" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Transaction Script suits simple business logic organised as procedures (one service class method per request); all code for a request is in one place but it causes duplication and is hard to maintain/refactor."
+    },
+    {
+      "id": "q30",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Business Logic",
+      "prompt": "What characterizes the Domain Model pattern for business logic?",
+      "options": [
+        { "id": "a", "text": "Complex logic in OO classes encapsulating code and data (DDD); no duplication, easy to maintain and extend" },
+        { "id": "b", "text": "A single procedure per request with duplicated code" },
+        { "id": "c", "text": "Storing aggregates only as event sequences" },
+        { "id": "d", "text": "A read-only view fed by events" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The Domain Model suits complex logic: OO classes encapsulate both code and data (DDD); code is spread across classes with no duplication, easy to maintain, refactor, and extend (e.g. with Strategy or Template Method)."
+    },
+    {
+      "id": "q31",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Business Logic",
+      "prompt": "In the Ports & Adapters (hexagonal) architecture, how is the business logic structured?",
+      "options": [
+        { "id": "a", "text": "A core business logic accessed through inbound and outbound adapters via ports" },
+        { "id": "b", "text": "A single layered stack with the database on top" },
+        { "id": "c", "text": "A pipeline of stateless filters" },
+        { "id": "d", "text": "A god class controlling all other objects" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Ports & Adapters puts business logic at the core, reachable through inbound adapters (e.g. web) and outbound adapters (e.g. DB, web services) via in/out ports — separating domain from infrastructure."
+    },
+    {
+      "id": "q32",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Domain-Driven Design",
+      "prompt": "What is the role of the DDD Factory pattern?",
+      "options": [
+        { "id": "a", "text": "Implement object construction, possibly hiding the concrete class" },
+        { "id": "b", "text": "Provide access to persistent entities" },
+        { "id": "c", "text": "Hold business logic spanning several entities" },
+        { "id": "d", "text": "Represent an interchangeable collection of values" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A Factory implements object construction and may hide the concrete class; Repository accesses persistent entities, Service holds cross-entity logic, and a Value object holds values."
+    },
+    {
+      "id": "q33",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Aggregates",
+      "prompt": "What is an aggregate in the Aggregate pattern?",
+      "options": [
+        { "id": "a", "text": "A graph of objects that can be treated as a unit, self-contained and sharing the same life cycle" },
+        { "id": "b", "text": "A single database table" },
+        { "id": "c", "text": "A read-only projection of events" },
+        { "id": "d", "text": "A network proxy for remote calls" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "An aggregate organises the domain model as a graph of objects treated as a unit — self-contained chunks that clarify operation scope, where all elements share the same life cycle."
+    },
+    {
+      "id": "q34",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Aggregates",
+      "prompt": "What is an advantage of COARSE-grained aggregates?",
+      "options": [
+        { "id": "a", "text": "They are more suitable for fitting all relevant entities into a single transaction" },
+        { "id": "b", "text": "They maximize scalability through serialized updates" },
+        { "id": "c", "text": "They minimize the risk of update conflicts" },
+        { "id": "d", "text": "They make decomposition into services easier" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Coarse-grained aggregates fit more relevant entities into one transaction; fine-grained aggregates instead favour scalability, fewer conflicts, and easier service decomposition."
+    },
+    {
+      "id": "q35",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Aggregates",
+      "prompt": "Which are stated uses of domain events?",
+      "options": [
+        { "id": "a", "text": "Maintaining data consistency across services" },
+        { "id": "b", "text": "Notifying a service that maintains a replica that source data changed" },
+        { "id": "c", "text": "Notifying another application via a webhook or message broker" },
+        { "id": "d", "text": "Replacing the need for any database" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Domain events maintain cross-service consistency, notify replicas, send user notifications, trigger related updates, notify other apps via webhook/broker, and support monitoring and behaviour analysis."
+    },
+    {
+      "id": "q36",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Inter-Service Communication",
+      "prompt": "What does API-first design recommend to avoid late integration issues?",
+      "options": [
+        { "id": "a", "text": "Define the interface (with an IDL), review with client developers, iterate to consensus, then implement" },
+        { "id": "b", "text": "Implement the service first and document it afterwards" },
+        { "id": "c", "text": "Skip interface definition and rely on runtime discovery" },
+        { "id": "d", "text": "Let each client invent its own contract" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "API-first design ensures agreement on the interaction mechanism: define the interface with an IDL, review with client-service developers, iterate to consensus, then start implementing."
+    },
+    {
+      "id": "q37",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Inter-Service Communication",
+      "prompt": "What does the 'robustness principle' for API evolution state?",
+      "options": [
+        { "id": "a", "text": "Be conservative in what you do, be liberal in what you accept from others" },
+        { "id": "b", "text": "Break compatibility freely as long as you document it" },
+        { "id": "c", "text": "Never accept unexpected input" },
+        { "id": "d", "text": "Always require clients to upgrade simultaneously" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "API evolution aims for minor backward-compatible changes following the robustness principle: be conservative in what you do, liberal in what you accept from others (cf. Lehman's first law)."
+    },
+    {
+      "id": "q38",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Inter-Service Communication",
+      "prompt": "Which are binary message formats mentioned for inter-service communication?",
+      "options": [
+        { "id": "a", "text": "Protocol Buffers (used by gRPC)" },
+        { "id": "b", "text": "Avro" },
+        { "id": "c", "text": "JSON" },
+        { "id": "d", "text": "XML" }
+      ],
+      "correctOptionIds": ["a", "b"],
+      "explanation": "Binary formats include Protocol Buffers (gRPC) and Avro; JSON and XML are the text-based formats. The format may be mandated by the communication mechanism."
+    },
+    {
+      "id": "q39",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Inter-Service Communication",
+      "prompt": "Which techniques make synchronous APIs robust?",
+      "options": [
+        { "id": "a", "text": "Network timeouts (never block indefinitely)" },
+        { "id": "b", "text": "Limiting the number of outstanding requests" },
+        { "id": "c", "text": "The circuit breaker pattern (fail fast)" },
+        { "id": "d", "text": "Removing service discovery" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Robust synchronous APIs use network timeouts, an upper bound on outstanding requests per service, and the circuit breaker pattern to fail fast."
+    },
+    {
+      "id": "q40",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Service Discovery",
+      "prompt": "Why is service discovery needed in an RPC-based microservices system?",
+      "options": [
+        { "id": "a", "text": "Service instances change continuously due to autoscaling, failures, and upgrades" },
+        { "id": "b", "text": "Because messages are always asynchronous" },
+        { "id": "c", "text": "Because databases are shared between services" },
+        { "id": "d", "text": "Because the monolith never changes location" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "With RPC you need a service's network location, but instances change continuously due to autoscaling, failures, and upgrades — hence service discovery."
+    },
+    {
+      "id": "q41",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Service Discovery",
+      "prompt": "In the third-party / server-side (platform-level) discovery pattern, who performs registration and resolution?",
+      "options": [
+        { "id": "a", "text": "A registrar component (often part of the platform, e.g. Docker/Kubernetes) registers instances, and a router resolves DNS requests via the registry" },
+        { "id": "b", "text": "The client queries the registry and load-balances itself" },
+        { "id": "c", "text": "Each service hard-codes the addresses of the others" },
+        { "id": "d", "text": "No registry is involved at all" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "In platform-level discovery a registrar (often Docker/Kubernetes) registers instances, and in server-side discovery the client makes a DNS request that a router resolves via the registry with load balancing."
+    },
+    {
+      "id": "q42",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Inter-Service Communication",
+      "prompt": "How do sharded (partitioned) channels handle competing receivers needing ordered, once-only processing?",
+      "options": [
+        { "id": "a", "text": "The sender puts a shard key in the message header and the broker assigns the message to a partition" },
+        { "id": "b", "text": "Every receiver processes every message independently" },
+        { "id": "c", "text": "The broker randomly drops duplicate messages" },
+        { "id": "d", "text": "Messages are broadcast to all shards at once" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "With sharded channels the sender specifies a shard key in the message header; the broker uses it to assign the message to a particular shard/partition, so each message is processed once and in order."
+    },
+    {
+      "id": "q43",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Sagas",
+      "prompt": "Which are stated limits of distributed (2PC) transactions?",
+      "options": [
+        { "id": "a", "text": "Not universally supported (e.g. NoSQL DBs, modern message brokers)" },
+        { "id": "b", "text": "Synchronous, which reduces availability" },
+        { "id": "c", "text": "You cannot have both availability and the most recent data" },
+        { "id": "d", "text": "They guarantee perfect isolation for free" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Distributed transactions aren't universally supported (NoSQL, brokers), are synchronous (reducing availability), and can't provide both availability and most-recent data; isolation is also 'overrated' as most DBs use weaker levels."
+    },
+    {
+      "id": "q44",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Sagas",
+      "prompt": "Sagas provide ACD but not isolation. What does that imply?",
+      "options": [
+        { "id": "a", "text": "They are Atomic, Consistent, and Durable, but non-isolated, so anomalies like dirty reads can occur" },
+        { "id": "b", "text": "They give full ACID guarantees automatically" },
+        { "id": "c", "text": "They are isolated but not durable" },
+        { "id": "d", "text": "They cannot be rolled back at all" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Sagas are Atomic (via coordination/compensation), Consistent (each service locally), and Durable (local DBs), but non-isolated — so lost updates, dirty reads, and non-repeatable reads can occur."
+    },
+    {
+      "id": "q45",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Sagas",
+      "prompt": "What is a 'retriable' transaction in a saga?",
+      "options": [
+        { "id": "a", "text": "One that follows the pivot transaction and is guaranteed to succeed" },
+        { "id": "b", "text": "One that can be rolled back with a compensating transaction" },
+        { "id": "c", "text": "The go/no-go point of the saga" },
+        { "id": "d", "text": "A transaction that always fails first" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Retriable transactions follow the pivot and are guaranteed to succeed; compensatable transactions precede the pivot and can be rolled back; the pivot is the go/no-go point."
+    },
+    {
+      "id": "q46",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Sagas",
+      "prompt": "How does the 'semantic lock' countermeasure work?",
+      "options": [
+        { "id": "a", "text": "A compensatable transaction sets a flag on records it creates/updates to signal they are not fully committed" },
+        { "id": "b", "text": "It acquires a global database lock for the whole saga" },
+        { "id": "c", "text": "It reorders saga steps to reduce risk" },
+        { "id": "d", "text": "It records operations so they can be reordered" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A semantic lock is an application-level lock: a compensatable transaction flags records as not fully committed; the flag is cleared by a retriable transaction (success) or a compensating transaction (rollback)."
+    },
+    {
+      "id": "q47",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Data Management",
+      "prompt": "Which are advantages of event sourcing?",
+      "options": [
+        { "id": "a", "text": "Reliably publishes domain events" },
+        { "id": "b", "text": "Preserves the history of aggregates (a 'time machine')" },
+        { "id": "c", "text": "Avoids the object/relational impedance mismatch" },
+        { "id": "d", "text": "Makes querying the event store trivial" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Event sourcing reliably publishes domain events, preserves aggregate history (a time machine), and avoids the O/R impedance mismatch; querying the event store, however, is challenging."
+    },
+    {
+      "id": "q48",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "External API",
+      "prompt": "Which patterns address the problems of exposing services to external clients?",
+      "options": [
+        { "id": "a", "text": "API Gateway and Backend-for-Frontend" },
+        { "id": "b", "text": "Saga and CQRS" },
+        { "id": "c", "text": "Circuit Breaker and Bulkhead" },
+        { "id": "d", "text": "Transaction Script and Domain Model" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "External clients face low bandwidth, lack of encapsulation, and differing communication mechanisms; solutions are the API Gateway and Backend-for-Frontend patterns."
+    },
+    {
+      "id": "q49",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "External API",
+      "prompt": "Which responsibilities are handled by edge functions (e.g. in an API gateway)?",
+      "options": [
+        { "id": "a", "text": "Authentication and authorization" },
+        { "id": "b", "text": "Rate limiting and caching" },
+        { "id": "c", "text": "Metrics collection and request logging" },
+        { "id": "d", "text": "Compiling the service source code" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Edge functions cover authentication, authorization, rate limiting, caching, metrics collection, and request logging."
+    },
+    {
+      "id": "q50",
+      "type": "multi_select",
+      "difficulty": "medium",
+      "topic": "Microservices Basics",
+      "prompt": "Which are strategies for transitioning a monolith to microservices?",
+      "options": [
+        { "id": "a", "text": "Implement new features as services (stop the monolith's growth)" },
+        { "id": "b", "text": "Separate presentation from backend (intermediate strategy)" },
+        { "id": "c", "text": "Break up the monolith by extracting functionalities into services" },
+        { "id": "d", "text": "Perform a big-bang rewrite" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Transition strategies: implement new features as services, separate presentation and backend, and break up the monolith by extracting functionalities; big-bang rewrites are discouraged."
+    },
+    {
+      "id": "q51",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Microservices Basics",
+      "prompt": "What is the recommended way to split a 'God Class' such as Order?",
+      "options": [
+        { "id": "a", "text": "Apply DDD: separate the domain model into subdomains, each with its own possibly partial model, avoiding a shared library/central DB" },
+        { "id": "b", "text": "Wrap it in a single shared library used by all services" },
+        { "id": "c", "text": "Turn it into one central data service for everyone" },
+        { "id": "d", "text": "Leave it as is since most apps have one" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Splitting a God Class via DDD separates the domain into subdomains with their own partial models, avoiding the tight coupling of a shared library/central DB or a data service; different Order views are kept consistent with sagas and adapted via an API gateway."
     }
   ]
 }
