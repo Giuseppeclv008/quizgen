@@ -291,6 +291,66 @@
       ],
       "correctOptionId": "a",
       "explanation": "A distributed trace's spans are commonly shown as a waterfall diagram; flamegraphs instead represent stack samples for profiling."
+    },
+    {
+      "id": "ob21",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Log Format",
+      "prompt": "Which log format is shown in this slide example?\n\n{\n  \"timestamp\": \"2024-08-04T12:34:56.789Z\",\n  \"level\": \"INFO\",\n  \"service\": \"user-authentication\",\n  \"message\": \"User login successful\",\n  \"context\": { \"userId\": \"12345\" }\n}",
+      "options": [
+        { "id": "a", "text": "Structured (JSON)" },
+        { "id": "b", "text": "Unstructured" },
+        { "id": "c", "text": "Semistructured" },
+        { "id": "d", "text": "Common Log Format" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A consistent JSON schema with typed fields is a structured log. Source: SwD&A Observability slides (Marco Torchiano) — 'Structured Log (JSON)' example."
+    },
+    {
+      "id": "ob22",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Log Format",
+      "prompt": "In this Common Log Format line from the slides:\n\n192.168.1.30 - alice [01/May/2025:07:20:10 +0000] \"GET /index.html HTTP/1.1\" 200 9481\n\nwhat do the final two fields, 200 and 9481, mean?",
+      "options": [
+        { "id": "a", "text": "The HTTP response status code and the response size in bytes" },
+        { "id": "b", "text": "The client IP and the user id" },
+        { "id": "c", "text": "The request timestamp and HTTP method" },
+        { "id": "d", "text": "The trace-id and span-id" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "In CLF, 200 is the HTTP response status code and 9481 is the response size in bytes (alice is the userid, 192.168.1.30 the client IP). Source: SwD&A Observability slides — 'Common Log Format (CLF)'."
+    },
+    {
+      "id": "ob23",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Context Propagation",
+      "prompt": "The W3C traceparent header shown in the slides looks like:\n\n00-a0892f3577b34da6a3ce929d0e0e4736-f03067aa0ba902b7-01\n\nWhat are its four fields, in order?",
+      "options": [
+        { "id": "a", "text": "version, trace-id, parent-id, trace-flags" },
+        { "id": "b", "text": "service, level, message, context" },
+        { "id": "c", "text": "counter, gauge, histogram, sum" },
+        { "id": "d", "text": "entry, exit, read, write" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The standard traceparent header carries version, trace-id, parent-id, and trace-flags so spans of one trace can be related. Source: SwD&A Observability slides — 'Context propagation'."
+    },
+    {
+      "id": "ob24",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Java Flight Recorder",
+      "prompt": "What does this command from the slides do?\n\njava -XX:StartFlightRecording=filename=profiling-recording.jfr,duration=30s -cp target/classes it.polito.swda.profiling.Example",
+      "options": [
+        { "id": "a", "text": "Runs the app with a Java Flight Recorder profiling session, recording 30s into a .jfr file" },
+        { "id": "b", "text": "Compiles the program into a .jfr archive" },
+        { "id": "c", "text": "Runs the unit tests for 30 seconds" },
+        { "id": "d", "text": "Starts a web server on the profiling port" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "It launches the app with JFR started from the begin, recording for 30 seconds into profiling-recording.jfr. Source: SwD&A Observability slides — 'JFR Profiling Session'."
     }
   ]
 }

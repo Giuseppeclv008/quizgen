@@ -321,6 +321,36 @@
       ],
       "correctOptionId": "a",
       "explanation": "RFC is the sum of the class's methods plus the remote methods directly called by them; NOC counts subclasses, DIT is inheritance depth, and LCOM relates to method/attribute sharing."
+    },
+    {
+      "id": "me23",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Cyclomatic Complexity",
+      "prompt": "The slides compute McCabe's cyclomatic complexity for a control-flow graph with 14 edges and 11 nodes using V(G) = E - N + 2. What is V(G)?",
+      "options": [
+        { "id": "a", "text": "5" },
+        { "id": "b", "text": "3" },
+        { "id": "c", "text": "25" },
+        { "id": "d", "text": "7" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "V(G) = 14 - 11 + 2 = 5, i.e. five linearly independent base paths. Source: SwD&A Measurement slides (Marco Torchiano) — 'Cyclomatic complexity' worked example."
+    },
+    {
+      "id": "me24",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Derived Measures",
+      "prompt": "The slides define a derived measure as:\n\nLOC produced / Effort in months\n\nWhich measure is this?",
+      "options": [
+        { "id": "a", "text": "Programmer productivity" },
+        { "id": "b", "text": "Module defect density" },
+        { "id": "c", "text": "Requirements stability" },
+        { "id": "d", "text": "Test effectiveness ratio" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Programmer productivity = LOC produced / Effort in months — a derived measure. Source: SwD&A Measurement slides — 'Derived measures examples'."
     }
   ]
 }

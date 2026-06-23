@@ -273,6 +273,51 @@
       ],
       "correctOptionId": "a",
       "explanation": "Cognitive load is how much information is required to perform a task; sometimes more lines of code are better because they are easier to understand."
+    },
+    {
+      "id": "di21",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Modules",
+      "prompt": "The slides present the Unix file API:\n\nint open(const char *path, int flags, mode_t permissions);\nssize_t read(int fd, void *buffer, size_t count);\nssize_t write(int fd, const void *buffer, size_t count);\noff_t lseek(int fd, off_t offset, int referencePosition);\nint close(int fd);\n\nWhat design quality does this API exemplify?",
+      "options": [
+        { "id": "a", "text": "A deep module — a simple interface hiding a complex implementation" },
+        { "id": "b", "text": "A shallow module" },
+        { "id": "c", "text": "Classitis" },
+        { "id": "d", "text": "Information leakage" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The small Unix file API hides a large, complex implementation — the textbook deep module. Source: SwD&A Design slides (Marco Torchiano) — 'Deep module: the API of Unix'."
+    },
+    {
+      "id": "di22",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Information Hiding",
+      "prompt": "The slides cite this Java code as a symptom of a 'disease':\n\nBufferedReader r = new BufferedReader(new InputStreamReader(System.in));\n\nWhich problem does it illustrate?",
+      "options": [
+        { "id": "a", "text": "Classitis — too many shallow classes" },
+        { "id": "b", "text": "A deep module" },
+        { "id": "c", "text": "Pulling complexity downward" },
+        { "id": "d", "text": "Information hiding done well" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Stacking BufferedReader/InputStreamReader just to read input is the slides' example of 'classitis' — code divided into too many shallow classes. Source: SwD&A Design slides — 'Classitis: Java I/O'."
+    },
+    {
+      "id": "di23",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Errors",
+      "prompt": "The slides note that String.substring(int beginIndex, int endIndex) throws IndexOutOfBoundsException and call this 'completely unnecessary'. Which technique does the example motivate?",
+      "options": [
+        { "id": "a", "text": "Define errors out of existence" },
+        { "id": "b", "text": "Exception aggregation" },
+        { "id": "c", "text": "Exception masking" },
+        { "id": "d", "text": "Just crash" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Redefining a method's behaviour so the error condition no longer exists is 'defining errors out of existence', argued via String.substring. Source: SwD&A Design slides — 'Define Errors out of Existence'."
     }
   ]
 }

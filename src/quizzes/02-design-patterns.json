@@ -309,6 +309,81 @@
       ],
       "correctOptionId": "a",
       "explanation": "Prototype creates objects from a palette of similar classes, avoiding a complex hierarchy whose classes differ only by minor parameters."
+    },
+    {
+      "id": "dp23",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Creational Patterns",
+      "prompt": "Which pattern does this Java code from the slides implement?\n\nprivate Singleton() { }\nprivate static Singleton instance;\npublic static Singleton getInstance() {\n  if (instance == null)\n    instance = new Singleton();\n  return instance;\n}",
+      "options": [
+        { "id": "a", "text": "Singleton (with lazy instantiation)" },
+        { "id": "b", "text": "Factory Method" },
+        { "id": "c", "text": "Prototype" },
+        { "id": "d", "text": "Builder" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "A private constructor plus a static getInstance() that lazily creates the single instance is the Singleton pattern. Source: SwD&A Design Patterns slides (Marco Torchiano) — 'Singleton class' example."
+    },
+    {
+      "id": "dp24",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Behavioral Patterns",
+      "prompt": "Which design pattern is illustrated by Comparator in this slide example?\n\nclass StudentCmp implements Comparator<Student> {\n  public int compare(Student a, Student b) {\n    return a.id - b.id;\n  }\n}\nArrays.sort(sv, new StudentCmp());",
+      "options": [
+        { "id": "a", "text": "Strategy" },
+        { "id": "b", "text": "Observer" },
+        { "id": "c", "text": "Visitor" },
+        { "id": "d", "text": "Adapter" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Passing a java.util.Comparator to Arrays.sort embeds the comparison variation in a strategy object — the Strategy pattern. Source: SwD&A Design Patterns slides — 'Strategy example: Comparator'."
+    },
+    {
+      "id": "dp25",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Behavioral Patterns",
+      "prompt": "Which pattern keeps the stable sort algorithm fixed while letting subclasses define compare()?\n\npublic abstract class Sorter {\n  public void sort(Object v[]) {\n    for (int i=1; i<v.length; ++i)\n      for (int j=0; j<v.length-i; ++j)\n        if (compare(v[j], v[j+1]) > 0) { /* swap v[j], v[j+1] */ }\n  }\n  abstract int compare(Object a, Object b);\n}",
+      "options": [
+        { "id": "a", "text": "Template Method" },
+        { "id": "b", "text": "Strategy" },
+        { "id": "c", "text": "Decorator" },
+        { "id": "d", "text": "Composite" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Sorter defines the algorithm core and calls the abstract primitive compare(), which a subclass like StringSorter overrides — the Template Method pattern. Source: SwD&A Design Patterns slides — 'Example: Sorter / StringSorter'."
+    },
+    {
+      "id": "dp26",
+      "type": "single_choice",
+      "difficulty": "medium",
+      "topic": "Idioms",
+      "prompt": "Which idiom does this object-construction code from the slides demonstrate?\n\nMeasure power = Measure.value(10.4).is(\"kg\").by(\"m\").squared().by(\"s\").to(-3).withPrecision(2).done();",
+      "options": [
+        { "id": "a", "text": "Fluent interface (method chaining)" },
+        { "id": "b", "text": "Singleton" },
+        { "id": "c", "text": "Proxy" },
+        { "id": "d", "text": "Flyweight" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Extensive method chaining that reads like prose to build a complex object is a fluent interface (DSL-like). Source: SwD&A Design Patterns slides — 'Fluent builder' example (Measure)."
+    },
+    {
+      "id": "dp27",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Behavioral Patterns",
+      "prompt": "This expression tree from the slides:\n\nExpression e = new Operation('*', new Value(6), new Operation('+', new Value(4), new Value(3)));\nIO.println(e.formula() + \" = \" + e.eval());\n\nWhich patterns underlie its structure and evaluation?",
+      "options": [
+        { "id": "a", "text": "Composite (operators and operands form a tree)" },
+        { "id": "b", "text": "Interpreter (evaluating the expression)" },
+        { "id": "c", "text": "Visitor (operations over the tree)" },
+        { "id": "d", "text": "Singleton" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "The Abstract Syntax Tree uses Composite for operators/operands, and evaluation uses the Interpreter and Visitor patterns. Source: SwD&A Design Patterns slides — 'Abstract Syntax Tree / Expression Tree' example."
     }
   ]
 }
