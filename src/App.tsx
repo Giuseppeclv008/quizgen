@@ -9,6 +9,7 @@ import {
   type TopicGroup,
   type SourceGroup,
 } from "./domain/topics";
+import { shuffleQuizOptions } from "./domain/shuffle";
 import { GlobQuizRepository, type QuizModuleMap } from "./data/GlobQuizRepository";
 import { createAttemptRepository } from "./data/createAttemptRepository";
 import type { LoadError } from "./data/QuizRepository";
@@ -70,8 +71,12 @@ export function App() {
       sources={sources}
       errors={errors}
       onShowHistory={() => setView("history")}
-      onStartTopics={(selectedTopics, max) => setActive(assembleQuiz(topics, selectedTopics, max))}
-      onStartPdfs={(selectedQuizIds, max) => setActive(assembleFromSources(sources, selectedQuizIds, max))}
+      onStartTopics={(selectedTopics, max) =>
+        setActive(shuffleQuizOptions(assembleQuiz(topics, selectedTopics, max)))
+      }
+      onStartPdfs={(selectedQuizIds, max) =>
+        setActive(shuffleQuizOptions(assembleFromSources(sources, selectedQuizIds, max)))
+      }
     />
   );
 }

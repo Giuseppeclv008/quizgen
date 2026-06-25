@@ -311,7 +311,8 @@
       "type": "single_choice",
       "difficulty": "medium",
       "topic": "Errors",
-      "prompt": "The slides note that String.substring(int beginIndex, int endIndex) throws IndexOutOfBoundsException and call this 'completely unnecessary'. Which technique does the example motivate?",
+      "prompt": "The slides call the exception thrown by the String method below 'completely unnecessary'. Which technique does this example motivate?",
+      "code": "String.substring(int beginIndex, int endIndex)\n    throws IndexOutOfBoundsException",
       "options": [
         { "id": "a", "text": "Define errors out of existence" },
         { "id": "b", "text": "Exception aggregation" },
