@@ -389,6 +389,171 @@
       ],
       "correctOptionIds": ["a", "b", "c"],
       "explanation": "The Abstract Syntax Tree uses Composite for operators/operands, and evaluation uses the Interpreter and Visitor patterns. Source: SwD&A Design Patterns slides — 'Abstract Syntax Tree / Expression Tree' example."
+    },
+    {
+      "id": "dp28",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "GoF Classification",
+      "prompt": "In the GoF scope/purpose taxonomy, which pattern is classified as a CLASS-scoped behavioral pattern (relying on inheritance fixed at compile time) rather than an object-scoped one?",
+      "options": [
+        { "id": "a", "text": "Template Method" },
+        { "id": "b", "text": "Strategy" },
+        { "id": "c", "text": "Observer" },
+        { "id": "d", "text": "Mediator" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Template Method (and Interpreter) are class-scoped behavioral patterns — they use inheritance, fixed statically. Strategy, Observer, and Mediator are object-scoped behavioral patterns that compose objects at run time."
+    },
+    {
+      "id": "dp29",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Structural Patterns",
+      "prompt": "A class already in production exposes an interface a new client cannot use, and its source is unavailable. The integration must add no new behavior, only translate calls. Which is the MOST appropriate pattern, and why is Decorator wrong here?",
+      "options": [
+        { "id": "a", "text": "Adapter — it converts an existing interface to the expected one; Decorator instead keeps the same interface while adding responsibilities" },
+        { "id": "b", "text": "Decorator — it wraps the object to change its interface" },
+        { "id": "c", "text": "Proxy — it changes the interface to control access" },
+        { "id": "d", "text": "Facade — it adapts a single class to a new interface" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Adapter converts one interface into another expected one without modifying the adaptee. Decorator preserves the component's interface and adds responsibilities; Proxy also keeps the same interface (controlling access); Facade simplifies a whole subsystem, not a single mismatched interface."
+    },
+    {
+      "id": "dp30",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Structural Patterns",
+      "prompt": "Proxy, Decorator, and Adapter are all wrappers. Which statement correctly separates their intents?",
+      "options": [
+        { "id": "a", "text": "Proxy controls access (same interface), Decorator adds responsibilities (same interface), Adapter converts to a different interface" },
+        { "id": "b", "text": "Proxy adds responsibilities, Decorator converts interfaces, Adapter controls access" },
+        { "id": "c", "text": "All three convert interfaces; only the performance differs" },
+        { "id": "d", "text": "Proxy and Decorator both change the interface; Adapter keeps it" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Intent distinguishes them: Proxy keeps the interface and controls access (remote/virtual/protection/smart reference); Decorator keeps the interface and adds responsibilities dynamically; Adapter changes the interface to the one the client expects."
+    },
+    {
+      "id": "dp31",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Behavioral Patterns",
+      "prompt": "Strategy and State are structurally near-identical (an object delegating to a swappable companion). Which statements capture the REAL difference in intent?",
+      "options": [
+        { "id": "a", "text": "Strategy varies an algorithm chosen by the client; the strategy objects are usually unaware of each other" },
+        { "id": "b", "text": "State varies behavior with the object's internal condition and the states often trigger transitions between themselves" },
+        { "id": "c", "text": "Clients are typically aware of the different strategies, whereas state transitions are usually internal" },
+        { "id": "d", "text": "State and Strategy are the same pattern with two names and identical intent" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Same structure, different intent: Strategy encapsulates interchangeable algorithms selected (often by the client, who is aware of them); State encapsulates condition-dependent behavior where states commonly drive transitions among themselves. They are not the same pattern."
+    },
+    {
+      "id": "dp32",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Creational Patterns",
+      "prompt": "Abstract Factory and Factory Method both create products. What is the key structural distinction emphasized by GoF?",
+      "options": [
+        { "id": "a", "text": "Abstract Factory creates families of related products and is usually implemented with composition (an object of factories); Factory Method creates one product via inheritance/subclass overriding" },
+        { "id": "b", "text": "Factory Method creates families of products; Abstract Factory creates a single product" },
+        { "id": "c", "text": "Both rely solely on inheritance and never on composition" },
+        { "id": "d", "text": "Abstract Factory is a behavioral pattern; Factory Method is structural" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Abstract Factory provides an interface for creating families of related objects and is typically realized through object composition; Factory Method defers instantiation of a single product to subclasses via inheritance (a class-scoped creational pattern)."
+    },
+    {
+      "id": "dp33",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Behavioral Patterns",
+      "prompt": "Per the slides, what are the trade-offs (consequences) of the Strategy pattern?",
+      "options": [
+        { "id": "a", "text": "+ Avoids conditional statements and organizes algorithm families" },
+        { "id": "b", "text": "+ Allows run-time binding and a choice of implementations" },
+        { "id": "c", "text": "- Clients must be aware of the different strategies" },
+        { "id": "d", "text": "- It removes the need for any interface between algorithm and client" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Strategy consequences (from the slides): + avoids conditionals, organizes algorithm families, offers a choice of implementations and run-time binding; − clients must know the strategies, plus communication overhead and more objects. It still requires the strategy interface."
+    },
+    {
+      "id": "dp34",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Behavioral Patterns",
+      "prompt": "A new operation must be added across an existing object structure of many fixed element classes, without polluting those classes with the operation. New element types are NOT expected. Which pattern fits, and what is its main downside?",
+      "options": [
+        { "id": "a", "text": "Visitor — easy to add new operations, but adding new concrete element types becomes difficult and it can break encapsulation" },
+        { "id": "b", "text": "Strategy — but it makes adding element types easy" },
+        { "id": "c", "text": "Composite — but it cannot accumulate state" },
+        { "id": "d", "text": "Observer — but updates are unanticipated" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Visitor partitions operations away from the element classes, making new operations easy and able to accumulate state; its downside is that adding new concrete element types is hard and it can break encapsulation — acceptable here since element types are stable."
+    },
+    {
+      "id": "dp35",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Idioms",
+      "prompt": "The slides note that double-checked-free lazy Singleton 'getInstance()' can misbehave under concurrency. What is the underlying problem with the shown lazy implementation?",
+      "options": [
+        { "id": "a", "text": "Without synchronization, two threads can both see instance == null and create two instances, breaking the single-instance guarantee" },
+        { "id": "b", "text": "The private constructor prevents any instantiation at all" },
+        { "id": "c", "text": "Static fields cannot hold object references in Java" },
+        { "id": "d", "text": "getInstance() returns a copy rather than the shared instance" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "The lazy 'if (instance == null) instance = new Singleton();' is not thread-safe: concurrent threads can both pass the null check and construct separate instances. Real implementations need synchronization, an eager static initializer, or a holder idiom."
+    },
+    {
+      "id": "dp36",
+      "type": "multi_select",
+      "difficulty": "hard",
+      "topic": "Inheritance vs Composition",
+      "prompt": "The slides contrast achieving the Observer relation via inheritance (extending Observable) versus composition (PropertyChangeSupport). Which are advantages of the COMPOSITION-based approach?",
+      "options": [
+        { "id": "a", "text": "The subject is not forced to extend a specific base class, freeing its single inheritance slot" },
+        { "id": "b", "text": "Notification support is delegated to an embedded helper (PropertyChangeSupport)" },
+        { "id": "c", "text": "Listeners can subscribe to specific named properties" },
+        { "id": "d", "text": "It makes the inherited Observable methods directly callable by clients" }
+      ],
+      "correctOptionIds": ["a", "b", "c"],
+      "explanation": "Composition (PropertyChangeSupport) avoids consuming the subject's single base-class slot, delegates notification to an embedded object, and supports per-property listeners. Directly exposing inherited methods is a trait of the inheritance approach, not composition."
+    },
+    {
+      "id": "dp37",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Behavioral Patterns",
+      "prompt": "Which pattern encapsulates a request as an object so it can be queued, logged, or undone, decoupling the invoker from the receiver?",
+      "options": [
+        { "id": "a", "text": "Command" },
+        { "id": "b", "text": "Mediator" },
+        { "id": "c", "text": "Chain of Responsibility" },
+        { "id": "d", "text": "Memento" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Command turns a request into an object, letting you parameterize, queue, log, or undo operations and decoupling sender from receiver. Memento captures/restores state; Mediator centralizes interactions; Chain of Responsibility passes a request along handlers."
+    },
+    {
+      "id": "dp38",
+      "type": "single_choice",
+      "difficulty": "hard",
+      "topic": "Structural Patterns",
+      "prompt": "For the Flyweight pattern to reduce memory effectively, how must object state be handled?",
+      "options": [
+        { "id": "a", "text": "Intrinsic (shared, context-independent) state is stored in the flyweight; extrinsic (context-dependent) state is supplied by the client at use time" },
+        { "id": "b", "text": "All state, intrinsic and extrinsic, is duplicated inside each flyweight" },
+        { "id": "c", "text": "Extrinsic state is stored in the flyweight; intrinsic state is passed in" },
+        { "id": "d", "text": "Flyweights must hold no state at all to be shareable" }
+      ],
+      "correctOptionId": "a",
+      "explanation": "Flyweight shares intrinsic (context-independent) state inside the shared object and externalizes extrinsic (context-dependent) state to the client, so many fine-grained objects share one instance (e.g. Java Integer pooling, which has no extrinsic state)."
     }
   ]
 }
