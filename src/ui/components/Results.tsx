@@ -53,6 +53,7 @@ export function Results({ quiz, answers, result, onBackToMenu }: ResultsProps) {
         return (
           <div key={q.id} className={`review-item ${tone}`}>
             <p className="review-q">
+              <span className={`difficulty difficulty-${q.difficulty}`}>{q.difficulty}</span>
               <strong>{q.prompt}</strong> — <span className="review-status">{status}</span>
             </p>
             <p className="review-line">Your answer: {formatUserAnswer(q, answers[q.id])}</p>

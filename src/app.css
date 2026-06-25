@@ -248,6 +248,11 @@ button.ghost:hover { color: var(--text); border-color: var(--line-2); background
   background: var(--wrong-soft);
   border-color: rgba(210, 134, 122, 0.4);
 }
+.review-q .difficulty {
+  margin-bottom: 0;
+  margin-right: 0.55rem;
+  vertical-align: middle;
+}
 
 .question .prompt {
   font-family: var(--display);
