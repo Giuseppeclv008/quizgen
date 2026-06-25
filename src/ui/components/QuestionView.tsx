@@ -22,6 +22,9 @@ export function QuestionView(props: QuestionViewProps) {
   const View = viewRegistry[props.question.type];
   return (
     <div className="question">
+      <span className={`difficulty difficulty-${props.question.difficulty}`}>
+        {props.question.difficulty}
+      </span>
       <p className="prompt">{props.question.prompt}</p>
       <View {...props} />
     </div>
