@@ -315,7 +315,8 @@
       "type": "single_choice",
       "difficulty": "medium",
       "topic": "Creational Patterns",
-      "prompt": "Which pattern does this Java code from the slides implement?\n\nprivate Singleton() { }\nprivate static Singleton instance;\npublic static Singleton getInstance() {\n  if (instance == null)\n    instance = new Singleton();\n  return instance;\n}",
+      "prompt": "Which pattern does this Java code from the slides implement?",
+      "code": "private Singleton() { }\nprivate static Singleton instance;\npublic static Singleton getInstance() {\n  if (instance == null)\n    instance = new Singleton();\n  return instance;\n}",
       "options": [
         { "id": "a", "text": "Singleton (with lazy instantiation)" },
         { "id": "b", "text": "Factory Method" },
@@ -330,7 +331,8 @@
       "type": "single_choice",
       "difficulty": "medium",
       "topic": "Behavioral Patterns",
-      "prompt": "Which design pattern is illustrated by Comparator in this slide example?\n\nclass StudentCmp implements Comparator<Student> {\n  public int compare(Student a, Student b) {\n    return a.id - b.id;\n  }\n}\nArrays.sort(sv, new StudentCmp());",
+      "prompt": "Which design pattern is illustrated by Comparator in this slide example?",
+      "code": "class StudentCmp implements Comparator<Student> {\n  public int compare(Student a, Student b) {\n    return a.id - b.id;\n  }\n}\nArrays.sort(sv, new StudentCmp());",
       "options": [
         { "id": "a", "text": "Strategy" },
         { "id": "b", "text": "Observer" },
@@ -345,7 +347,8 @@
       "type": "single_choice",
       "difficulty": "hard",
       "topic": "Behavioral Patterns",
-      "prompt": "Which pattern keeps the stable sort algorithm fixed while letting subclasses define compare()?\n\npublic abstract class Sorter {\n  public void sort(Object v[]) {\n    for (int i=1; i<v.length; ++i)\n      for (int j=0; j<v.length-i; ++j)\n        if (compare(v[j], v[j+1]) > 0) { /* swap v[j], v[j+1] */ }\n  }\n  abstract int compare(Object a, Object b);\n}",
+      "prompt": "Which pattern keeps the stable sort algorithm fixed while letting subclasses define compare()?",
+      "code": "public abstract class Sorter {\n  public void sort(Object v[]) {\n    for (int i=1; i<v.length; ++i)\n      for (int j=0; j<v.length-i; ++j)\n        if (compare(v[j], v[j+1]) > 0) { /* swap v[j], v[j+1] */ }\n  }\n  abstract int compare(Object a, Object b);\n}",
       "options": [
         { "id": "a", "text": "Template Method" },
         { "id": "b", "text": "Strategy" },
@@ -360,7 +363,8 @@
       "type": "single_choice",
       "difficulty": "medium",
       "topic": "Idioms",
-      "prompt": "Which idiom does this object-construction code from the slides demonstrate?\n\nMeasure power = Measure.value(10.4).is(\"kg\").by(\"m\").squared().by(\"s\").to(-3).withPrecision(2).done();",
+      "prompt": "Which idiom does this object-construction code from the slides demonstrate?",
+      "code": "Measure power = Measure.value(10.4).is(\"kg\").by(\"m\").squared().by(\"s\").to(-3).withPrecision(2).done();",
       "options": [
         { "id": "a", "text": "Fluent interface (method chaining)" },
         { "id": "b", "text": "Singleton" },
@@ -375,7 +379,8 @@
       "type": "multi_select",
       "difficulty": "hard",
       "topic": "Behavioral Patterns",
-      "prompt": "This expression tree from the slides:\n\nExpression e = new Operation('*', new Value(6), new Operation('+', new Value(4), new Value(3)));\nIO.println(e.formula() + \" = \" + e.eval());\n\nWhich patterns underlie its structure and evaluation?",
+      "prompt": "Which patterns underlie the structure and evaluation of this expression tree from the slides?",
+      "code": "Expression e = new Operation('*', new Value(6), new Operation('+', new Value(4), new Value(3)));\nIO.println(e.formula() + \" = \" + e.eval());",
       "options": [
         { "id": "a", "text": "Composite (operators and operands form a tree)" },
         { "id": "b", "text": "Interpreter (evaluating the expression)" },

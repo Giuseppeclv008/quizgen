@@ -12,6 +12,7 @@ const baseFields = {
   difficulty: difficultySchema,
   topic: z.string().min(1),
   prompt: z.string().min(1),
+  code: z.string().min(1).optional(),
   explanation: z.string().min(1),
 };
 

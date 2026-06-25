@@ -254,6 +254,31 @@ button.ghost:hover { color: var(--text); border-color: var(--line-2); background
   vertical-align: middle;
 }
 
+.code-block {
+  margin: 0 0 1.3rem;
+  padding: 0.85rem 1rem;
+  background: var(--bg);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-sm);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--text);
+  overflow-x: auto;
+  white-space: pre;
+  -webkit-overflow-scrolling: touch;
+}
+.code-block code {
+  font-family: inherit;
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+.review-item .code-block {
+  margin-bottom: 0.7rem;
+  font-size: 0.78rem;
+}
+
 .question .prompt {
   font-family: var(--display);
   font-size: clamp(1.25rem, 3vw, 1.6rem);

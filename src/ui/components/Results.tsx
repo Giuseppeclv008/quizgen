@@ -56,6 +56,11 @@ export function Results({ quiz, answers, result, onBackToMenu }: ResultsProps) {
               <span className={`difficulty difficulty-${q.difficulty}`}>{q.difficulty}</span>
               <strong>{q.prompt}</strong> — <span className="review-status">{status}</span>
             </p>
+            {q.code && (
+              <pre className="code-block">
+                <code>{q.code}</code>
+              </pre>
+            )}
             <p className="review-line">Your answer: {formatUserAnswer(q, answers[q.id])}</p>
             <p className="review-line">Correct answer: {formatCorrectAnswer(q)}</p>
             <p className="review-explain">{q.explanation}</p>

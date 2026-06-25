@@ -26,6 +26,11 @@ export function QuestionView(props: QuestionViewProps) {
         {props.question.difficulty}
       </span>
       <p className="prompt">{props.question.prompt}</p>
+      {props.question.code && (
+        <pre className="code-block">
+          <code>{props.question.code}</code>
+        </pre>
+      )}
       <View {...props} />
     </div>
   );
