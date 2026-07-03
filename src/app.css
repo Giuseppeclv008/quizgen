@@ -438,3 +438,24 @@ button.ghost:hover { color: var(--text); border-color: var(--line-2); background
 .tab.is-active { background: var(--line); font-weight: 600; }
 .selector { display: grid; gap: 0.75rem; }
 .pdf-list { list-style: none; padding: 0; margin: 0 0 1rem; display: grid; gap: 0.5rem; }
+
+.course-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.course-card a {
+  display: block;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.16s ease;
+}
+
+.course-card a:hover {
+  border-color: var(--accent);
+}
