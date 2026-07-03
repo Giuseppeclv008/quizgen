@@ -145,3 +145,29 @@ describe("assembleFromSources", () => {
     expect(quizOut.createdAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
   });
 });
+
+describe("course-tagged combined ids", () => {
+  const groups = [
+    {
+      topic: "General",
+      questions: [
+        { id: "q1", type: "true_false", difficulty: "easy", topic: "General",
+          prompt: "p", correctValue: true, explanation: "e" },
+      ],
+    },
+  ] as TopicGroup[];
+
+  it("assembleQuiz tags the combined id with the course id", () => {
+    const quiz = assembleQuiz(groups, ["General"], 5, Math.random, "swda");
+    expect(quiz.id).toBe("combined:swda");
+  });
+
+  it("assembleQuiz keeps legacy 'combined' id without a course id", () => {
+    expect(assembleQuiz(groups, ["General"], 5).id).toBe("combined");
+  });
+
+  it("assembleFromSources tags the combined id with the course id", () => {
+    const sources = [{ quizId: "a", title: "A", questions: groups[0].questions }];
+    expect(assembleFromSources(sources, ["a"], 5, Math.random, "swda").id).toBe("combined:swda");
+  });
+});

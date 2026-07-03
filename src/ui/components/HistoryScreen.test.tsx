@@ -76,4 +76,10 @@ describe("HistoryScreen", () => {
     render(<HistoryScreen groups={groups} onBack={vi.fn()} />);
     expect(screen.getByRole("heading", { name: "quiz-x" })).toBeInTheDocument();
   });
+
+  it("shows 'Combined quizzes' heading for course-tagged combined attempts", () => {
+    const groups = { "combined:swda": [attempt("combined:swda", "General", "2026-06-21T10:00:00.000Z", 80)] };
+    render(<HistoryScreen groups={groups} onBack={vi.fn()} />);
+    expect(screen.getByRole("heading", { name: /combined quizzes/i })).toBeInTheDocument();
+  });
 });

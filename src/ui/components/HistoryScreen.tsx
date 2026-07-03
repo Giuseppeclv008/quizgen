@@ -11,7 +11,7 @@ function sortedDesc(attempts: Attempt[]): Attempt[] {
 }
 
 function headingFor(quizId: string, rows: Attempt[]): string {
-  if (quizId === "combined") return "Combined quizzes";
+  if (quizId === "combined" || quizId.startsWith("combined:")) return "Combined quizzes";
   return rows[0]?.quizTitle || quizId;
 }
 

@@ -56,9 +56,9 @@ function pickEvenly(groups: { questions: Question[] }[], cap: number, rng: Rng):
   return picked;
 }
 
-function synthetic(title: string, questions: Question[]): Quiz {
+function synthetic(title: string, questions: Question[], courseId?: string): Quiz {
   return {
-    id: "combined",
+    id: courseId ? `combined:${courseId}` : "combined",
     title,
     source: "combined",
     createdAt: new Date().toISOString().slice(0, 10),
@@ -71,9 +71,10 @@ export function assembleQuiz(
   selectedTopics: string[],
   cap: number,
   rng: Rng = Math.random,
+  courseId?: string,
 ): Quiz {
   const selected = groups.filter((g) => selectedTopics.includes(g.topic));
-  return synthetic(selectedTopics.join(", "), shuffle(pickEvenly(selected, cap, rng), rng));
+  return synthetic(selectedTopics.join(", "), shuffle(pickEvenly(selected, cap, rng), rng), courseId);
 }
 
 export function assembleFromSources(
@@ -81,7 +82,12 @@ export function assembleFromSources(
   selectedQuizIds: string[],
   cap: number,
   rng: Rng = Math.random,
+  courseId?: string,
 ): Quiz {
   const selected = sources.filter((s) => selectedQuizIds.includes(s.quizId));
-  return synthetic(selected.map((s) => s.title).join(", "), shuffle(pickEvenly(selected, cap, rng), rng));
+  return synthetic(
+    selected.map((s) => s.title).join(", "),
+    shuffle(pickEvenly(selected, cap, rng), rng),
+    courseId,
+  );
 }
