@@ -3,13 +3,14 @@ import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { HomePage } from "./HomePage";
 import type { Course } from "../../domain/course";
+import type { LoadError } from "../../data/QuizRepository";
 
 const courses: Course[] = [
   { id: "swda", title: "SW Design", description: "Design course", quizzes: [] },
   { id: "new-course", title: "New Course", description: "Placeholder", quizzes: [] },
 ];
 
-function renderHome(list: Course[] = courses, errors = []) {
+function renderHome(list: Course[] = courses, errors: LoadError[] = []) {
   return render(
     <MemoryRouter>
       <HomePage courses={list} errors={errors} />
