@@ -1,82 +1,55 @@
 import { useEffect, useMemo, useState } from "react";
-import type { Quiz } from "./domain/schema";
-import type { Attempt } from "./domain/models";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import {
-  collectTopics,
-  collectSources,
-  assembleQuiz,
-  assembleFromSources,
-  type TopicGroup,
-  type SourceGroup,
-} from "./domain/topics";
-import { shuffleQuizOptions } from "./domain/shuffle";
-import { GlobQuizRepository, type QuizModuleMap } from "./data/GlobQuizRepository";
+  GlobCourseRepository,
+  type CourseListing,
+  type QuizModuleMap,
+} from "./data/CourseRepository";
 import { createAttemptRepository } from "./data/createAttemptRepository";
-import type { LoadError } from "./data/QuizRepository";
-import { QuizMenu } from "./ui/components/QuizMenu";
-import { QuizRunner } from "./ui/components/QuizRunner";
-import { HistoryScreen } from "./ui/components/HistoryScreen";
+import { HomePage } from "./ui/pages/HomePage";
+import { CoursePage } from "./ui/pages/CoursePage";
+import { CourseHistoryPage } from "./ui/pages/CourseHistoryPage";
 
 export function App() {
   const repository = useMemo(() => {
-    const modules = import.meta.glob("./quizzes/*.json") as QuizModuleMap;
-    return new GlobQuizRepository(modules);
+    const courseModules = import.meta.glob("./quizzes/*/course.json") as QuizModuleMap;
+    const quizModules = import.meta.glob("./quizzes/*/*.json") as QuizModuleMap;
+    return new GlobCourseRepository(courseModules, quizModules);
   }, []);
   const attemptRepo = useMemo(() => createAttemptRepository(), []);
 
-  const [topics, setTopics] = useState<TopicGroup[] | null>(null);
-  const [sources, setSources] = useState<SourceGroup[]>([]);
-  const [errors, setErrors] = useState<LoadError[]>([]);
-  const [active, setActive] = useState<Quiz | null>(null);
-  const [view, setView] = useState<"menu" | "history">("menu");
-  const [groups, setGroups] = useState<Record<string, Attempt[]>>({});
+  const [listing, setListing] = useState<CourseListing | null>(null);
 
   useEffect(() => {
     let alive = true;
-    repository.list().then((listing) => {
-      if (!alive) return;
-      setTopics(collectTopics(listing.quizzes));
-      setSources(collectSources(listing.quizzes));
-      setErrors(listing.errors);
-    }).catch(() => {
-      if (alive) setTopics([]);
-    });
+    repository
+      .list()
+      .then((l) => {
+        if (alive) setListing(l);
+      })
+      .catch(() => {
+        if (alive) setListing({ courses: [], errors: [] });
+      });
     return () => {
       alive = false;
     };
   }, [repository]);
 
-  useEffect(() => {
-    if (view !== "history") return;
-    let alive = true;
-    attemptRepo.allByQuiz().then((g) => {
-      if (alive) setGroups(g);
-    });
-    return () => {
-      alive = false;
-    };
-  }, [view, attemptRepo]);
-
-  if (active) {
-    return <QuizRunner quiz={active} attemptRepo={attemptRepo} onExit={() => setActive(null)} />;
-  }
-  if (!topics) return <p className="loading">Loading…</p>;
-  if (view === "history") {
-    return <HistoryScreen groups={groups} onBack={() => setView("menu")} />;
-  }
+  if (!listing) return <p className="loading">Loading…</p>;
 
   return (
-    <QuizMenu
-      topics={topics}
-      sources={sources}
-      errors={errors}
-      onShowHistory={() => setView("history")}
-      onStartTopics={(selectedTopics, max) =>
-        setActive(shuffleQuizOptions(assembleQuiz(topics, selectedTopics, max)))
-      }
-      onStartPdfs={(selectedQuizIds, max) =>
-        setActive(shuffleQuizOptions(assembleFromSources(sources, selectedQuizIds, max)))
-      }
-    />
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<HomePage courses={listing.courses} errors={listing.errors} />} />
+        <Route
+          path="/course/:courseId"
+          element={<CoursePage courses={listing.courses} attemptRepo={attemptRepo} />}
+        />
+        <Route
+          path="/course/:courseId/history"
+          element={<CourseHistoryPage courses={listing.courses} attemptRepo={attemptRepo} />}
+        />
+      </Routes>
+    </HashRouter>
   );
 }
