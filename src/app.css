@@ -459,3 +459,16 @@ button.ghost:hover { color: var(--text); border-color: var(--line-2); background
 .course-card a:hover {
   border-color: var(--accent);
 }
+
+/* ---------- breadcrumbs ---------- */
+.crumbs {
+  margin: 0 0 1.5rem;
+}
+.crumbs a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.crumbs a:hover {
+  color: var(--text);
+}

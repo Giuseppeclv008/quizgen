@@ -5,6 +5,7 @@ import { TopicSelector } from "./TopicSelector";
 import { PdfSelector } from "./PdfSelector";
 
 export interface QuizMenuProps {
+  title?: string;
   topics: TopicGroup[];
   sources: SourceGroup[];
   errors: LoadError[];
@@ -14,6 +15,7 @@ export interface QuizMenuProps {
 }
 
 export function QuizMenu({
+  title,
   topics,
   sources,
   errors,
@@ -25,7 +27,7 @@ export function QuizMenu({
 
   return (
     <main className="menu">
-      <h1>Quiz Generator</h1>
+      <h1>{title ?? "Quiz Generator"}</h1>
       <p className="lede">Pick a source and how many questions to practice.</p>
       <button className="ghost" onClick={onShowHistory}>Past attempts</button>
       {sources.length === 0 ? (
