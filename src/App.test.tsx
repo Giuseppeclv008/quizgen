@@ -54,4 +54,11 @@ describe("App", () => {
     await userEvent.click(await screen.findByRole("link", { name: /New Course/ }));
     expect(await screen.findByText(/no quizzes found/i)).toBeInTheDocument();
   });
+
+  it("shows a not-found page for an unmatched route", async () => {
+    window.location.hash = "#/nonsense";
+    render(<App />);
+    expect(await screen.findByText(/page not found/i)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /back to courses/i })).toBeInTheDocument();
+  });
 });

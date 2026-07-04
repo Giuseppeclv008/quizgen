@@ -102,19 +102,30 @@ Notes:
 
 ## Adding questions manually
 
-Quizzes are plain JSON files. **One file = one quiz.**
+Quizzes are plain JSON files. **One file = one quiz.** Quizzes are organized into
+**courses** — each course is a folder under `src/quizzes/`.
 
 ### Where to put the file
 
-Drop a new `.json` file into:
+Each course lives in its own folder:
 
 ```
-src/quizzes/
+src/quizzes/<course>/
+├─ course.json      # { "id", "title", "description" } — id must equal the folder name
+├─ some-quiz.json
+└─ another-quiz.json
 ```
 
-Every `src/quizzes/*.json` file is picked up automatically at build/dev time
-(via `import.meta.glob`) — no registration or imports needed. After adding a
-file, reload the page (the dev server hot-reloads).
+To add a quiz to an existing course, drop a new `.json` file into that course's
+folder. To add a new course, create a new folder with its own `course.json` plus
+one or more quiz files.
+
+Every `src/quizzes/*/course.json` and `src/quizzes/*/*.json` file is picked up
+automatically at build/dev time (via `import.meta.glob`, through
+`CourseRepository.ts`) — no registration or imports needed. After adding a file,
+reload the page (the dev server hot-reloads). Courses are reachable in the app at
+`#/course/:courseId`, where `:courseId` is the folder name (and `course.json`'s
+`id` field).
 
 > Quiz files are bundled into the app at build time. They are **not** stored in the
 > database — only attempt history is. To change questions, edit the JSON and reload.
@@ -216,8 +227,8 @@ The schema is enforced at runtime, but you can sanity-check the whole folder:
 npm test            # the suite covers schema validation and app behaviour
 ```
 
-`src/quizzes/example.json` is a complete reference file with all three question
-types.
+`src/quizzes/software-design-architecture/example.json` is a complete reference
+file with all three question types.
 
 ---
 
@@ -234,8 +245,10 @@ quizgen/
    ├─ main.tsx                # React entry
    ├─ App.tsx                 # composition root: loads quizzes, wires screens
    ├─ app.css                 # styles
-   ├─ quizzes/                # ← add quiz JSON files here
-   │  └─ *.json
+   ├─ quizzes/                # ← one subfolder per course
+   │  └─ <course>/
+   │     ├─ course.json       # { id, title, description }
+   │     └─ *.json            # quiz files for that course
    ├─ domain/
    │  ├─ schema.ts            # Zod schema + types for quizzes/questions
    │  ├─ models.ts            # Attempt / result types
@@ -245,7 +258,8 @@ quizgen/
    ├─ session/                # quiz session state machine (reducer + hook)
    ├─ data/
    │  ├─ QuizRepository.ts        # quiz loading interface + errors
-   │  ├─ GlobQuizRepository.ts    # loads src/quizzes/*.json via import.meta.glob
+   │  ├─ CourseRepository.ts      # GlobCourseRepository: loads src/quizzes/*/course.json
+   │  │                           # + src/quizzes/*/*.json via import.meta.glob
    │  ├─ AttemptRepository.ts     # async persistence interface
    │  ├─ HttpAttemptRepository.ts # talks to the API server (default)
    │  ├─ LocalStorageAttemptRepository.ts  # browser-only alternative

@@ -33,7 +33,7 @@ export function QuizMenu({
       {sources.length === 0 ? (
         <div className="empty">
           <p>No quizzes found.</p>
-          <p className="muted">Drop a quiz JSON into <code>src/quizzes/</code> and reload.</p>
+          <p className="muted">Drop a quiz JSON into <code>src/quizzes/&lt;course&gt;/</code> and reload.</p>
         </div>
       ) : (
         <>

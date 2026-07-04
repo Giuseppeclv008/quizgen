@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import {
   GlobCourseRepository,
   type CourseListing,
@@ -48,6 +48,15 @@ export function App() {
         <Route
           path="/course/:courseId/history"
           element={<CourseHistoryPage courses={listing.courses} attemptRepo={attemptRepo} />}
+        />
+        <Route
+          path="*"
+          element={
+            <main className="menu">
+              <h1>Page not found</h1>
+              <Link to="/">Back to courses</Link>
+            </main>
+          }
         />
       </Routes>
     </HashRouter>
